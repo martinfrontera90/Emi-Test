@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage
+    x:Class="Emi.Portal.Movil.Pages.Home.MenuPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CI="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}"
+    BackgroundColor="{StaticResource WhiteColor}"
+    BindingContext="{Binding MenuPage, Source={StaticResource Locator}}"
+    Icon="menu.png">
+
+
+    <MasterDetailPage.Master>
+        <ContentPage Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}">
+
+            <StackLayout BackgroundColor="{StaticResource WhiteColor}" Orientation="Vertical">
+
+                <StackLayout
+                    Padding="20,20,20,5"
+                    BackgroundColor="{StaticResource Color5}"
+                    Spacing="0">
+
+                    <CI:CircleImage
+                        Margin="0,0,0,10"
+                        HeightRequest="70"
+                        HorizontalOptions="Start"
+                        Source="avatar.png"
+                        VerticalOptions="Start"
+                        WidthRequest="70" />
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="{StaticResource font15}"
+                        HorizontalOptions="Start"
+                        HorizontalTextAlignment="Start"
+                        Text="{Binding UserName}"
+                        TextColor="{StaticResource Color13}"
+                        VerticalOptions="Start"
+                        VerticalTextAlignment="Start" />
+
+                    <Label
+                        FontSize="{StaticResource font14}"
+                        HorizontalOptions="Start"
+                        HorizontalTextAlignment="Start"
+                        Text="{Binding Email}"
+                        TextColor="{StaticResource Color13}"
+                        VerticalOptions="Start" />
+
+                    <Label
+                        FontSize="{StaticResource font10}"
+                        HorizontalOptions="Start"
+                        HorizontalTextAlignment="Start"
+                        Text="{Binding AppVersion}"
+                        TextColor="{StaticResource Color13}"
+                        VerticalOptions="Start" />
+
+
+                </StackLayout>
+
+                <ActivityIndicator
+                    Margin="0,20"
+                    IsRunning="{Binding IsRunning}"
+                    IsVisible="{Binding IsRunning}"
+                    Color="{StaticResource Color1}" />
+
+                <ListView
+                    x:Name="MenuList"
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    HasUnevenRows="True"
+                    ItemTemplate="{StaticResource ListMenuTemplate}"
+                    ItemsSource="{Binding MenuItems}"
+                    RowHeight="40"
+                    SelectedItem="{Binding SelectedItem}"
+                    SeparatorVisibility="None" />
+
+            </StackLayout>
+
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+
+        <NavigationPage />
+
+    </MasterDetailPage.Detail>
+
+
+</MasterDetailPage>

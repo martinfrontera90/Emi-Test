@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage    
+    BindingContext="{Binding RegisterPage, Source={StaticResource Locator}}"
+    xmlns:behaviors="clr-namespace:Emi.Portal.Movil.Logic.Behaviors;assembly=Emi.Portal.Movil.Logic"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:Emi.Portal.Movil.Controls"
+    x:Class="Emi.Portal.Movil.Pages.Register.RegisterDataPersonalPage"
+    xmlns:iOSSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <AbsoluteLayout                          
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+
+            <Image 
+                AbsoluteLayout.LayoutFlags="All" 
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                Aspect="AspectFill"
+                Source="bg_login"/>
+
+            <StackLayout
+                AbsoluteLayout.LayoutFlags="All" 
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                HorizontalOptions="FillAndExpand"
+                Spacing="0"
+                VerticalOptions="FillAndExpand">
+                <StackLayout           
+                    BackgroundColor="{StaticResource Color13}"
+                    Padding="10"
+                    HorizontalOptions="FillAndExpand"           
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label                    
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource SeccionNameStyle}"
+                        Text="Registro"/>
+                </StackLayout>
+                <BoxView Style="{StaticResource LineTitleStyle}"/>
+                <ScrollView                 
+                    VerticalOptions="FillAndExpand">
+                    <StackLayout
+                        Padding="20"
+                        VerticalOptions="FillAndExpand">
+
+                        <StackLayout 
+                            Padding="0 ,0, 0, 10"
+                            VerticalOptions="Start">
+                            <Label 
+                                FontAttributes="Bold"     
+                                HorizontalTextAlignment="Start"
+                                HorizontalOptions="StartAndExpand"
+                                Style="{StaticResource DescriptionStyle}"
+                                Text="Ingresar los siguientes datos para completar el registro."/>
+                        </StackLayout>
+
+                        <StackLayout 
+                            Orientation="Vertical"
+                            VerticalOptions="StartAndExpand">
+
+                            <Label 
+                                Text="Departamento"
+                                Style="{StaticResource LabelTitleEntryStyle}"/>
+                            <Picker                                      
+                                iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                ItemDisplayBinding="{Binding Name}"
+                                ItemsSource="{Binding Departaments}"                        
+                                SelectedItem="{Binding DepartamentSelected, Mode=TwoWay}"
+                                Style="{StaticResource PickerStyle}"/>
+
+                            <Label 
+                                Style="{StaticResource LabelErrorEntryStyle}"
+                                Text="{Binding ErrorDepartment, Mode=TwoWay}"/>
+
+                            <Label 
+                                Text="Ciudad"
+                                Style="{StaticResource LabelTitleEntryStyle}"/>
+                            <Picker                                      
+                                iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                IsEnabled="{Binding IsEnabledCities}"
+                                ItemDisplayBinding="{Binding Name}"
+                                ItemsSource="{Binding Cities, Mode=TwoWay}"                        
+                                SelectedItem="{Binding CitySelected, Mode=TwoWay}"
+                                Style="{StaticResource PickerStyle}"/>
+                            <Label 
+                                Style="{StaticResource LabelErrorEntryStyle}"
+                                Text="{Binding ErrorCity, Mode=TwoWay}"/>
+
+
+                            <Label 
+                                Text="Género"
+                                Style="{StaticResource LabelTitleEntryStyle}"/>
+                            <Picker                                      
+                                iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                ItemDisplayBinding="{Binding Description}"
+                                ItemsSource="{Binding Genders, Mode=TwoWay}"                        
+                                SelectedItem="{Binding GenderSelected, Mode=TwoWay}"
+                                Style="{StaticResource PickerStyle}"/>
+
+                            <Label 
+                                Style="{StaticResource LabelErrorEntryStyle}"
+                                Text=""/>
+
+                            <Label 
+                                Text="Fecha de nacimiento"
+                                Style="{StaticResource LabelTitleEntryStyle}"/>
+                            <StackLayout                                 
+                                    Orientation="Horizontal">
+                                <DatePicker        
+                                    Date="{Binding BirthDate}"
+                                    Format="d"  
+                                    HorizontalOptions="FillAndExpand"
+                                    MinimumDate="{Binding MinimumDate, Mode=TwoWay}"
+                                    MaximumDate="{Binding MaximumDate, Mode=TwoWay}"
+                                    Style="{StaticResource DatePickerStyle}"/>
+                                <Image
+                                    HorizontalOptions="End"
+                                    Source="help.png">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Command="{Binding InformationCommand}"
+                                            CommandParameter="1"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+
+                            <Label Text=""/>
+
+                            <Label 
+                                Text="Teléfono celular"
+                                Style="{StaticResource LabelTitleEntryStyle}"/>
+                            <StackLayout 
+                                Orientation="Horizontal">
+
+                                <Entry            
+                                    Keyboard="Numeric"                        
+                                    HorizontalOptions="FillAndExpand"
+                                    Style="{StaticResource EntryStyle}"
+                                    Text="{Binding CellPhone, Mode=TwoWay}">
+                                    <Entry.Behaviors>
+                                        <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthCellPhone], Source={StaticResource Locator}}"/>
+                                    </Entry.Behaviors>
+                                </Entry>
+                                <Image
+                                    HorizontalOptions="End"
+                                    Source="help.png">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Command="{Binding InformationCommand}"
+                                            CommandParameter="2"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+
+                            <Label
+                                Style="{StaticResource LabelErrorEntryStyle}"
+                                Text="{Binding ErrorCellPhone, Mode=TwoWay}"/>
+
+                            <Label 
+                                Text="Teléfono fijo"
+                                Style="{StaticResource LabelTitleEntryStyle}"/>
+                            <StackLayout                                 
+                                Orientation="Horizontal">
+
+                                <Entry                             
+                                    HorizontalOptions="FillAndExpand"
+                                    Keyboard="Numeric"
+                                    Style="{StaticResource EntryStyle}"
+                                    Text="{Binding Phone, Mode=TwoWay}">
+                                    <Entry.Behaviors>
+                                        <behaviors:EntryLengthValidatorBehavior MaxLength="8"/>
+                                    </Entry.Behaviors>
+                                </Entry>
+                                <Image
+                                    HorizontalOptions="End"
+                                    Source="help.png">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Command="{Binding InformationCommand}"
+                                            CommandParameter="3"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                            <Label                     
+                                Style="{StaticResource LabelErrorEntryStyle}"
+                                Text="{Binding ErrorPhone, Mode=TwoWay}"/>
+                        </StackLayout>
+
+                        <StackLayout                                                       
+                            VerticalOptions="End">
+                            <Button                                                            
+                                Command="{Binding NextToPasswordCommand}"                       
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="Siguiente"/>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding CancelCommand}"
+            Icon="ic_close"
+            Text="Cancelar"/>
+    </ContentPage.ToolbarItems>
+</ContentPage>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    BindingContext="{Binding ServicesPage, Source={StaticResource Locator}}"
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Emi.Portal.Movil.Pages.Services.AdvanceLocationPage"
+    xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views">
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="{StaticResource Color11}"                        
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            
+            <views:CurrentServiceView />
+            
+            <StackLayout           
+                BackgroundColor="{StaticResource Color13}"
+                Padding="10"
+                HorizontalOptions="FillAndExpand"           
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                
+                <Label                        
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding Resources[TitleRequestRervice], Source={StaticResource Locator}}"/>
+                
+            </StackLayout>
+            
+            <BoxView Style="{StaticResource LineTitleStyle}"/>
+            
+            <maps:Map 
+                x:Name="map"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

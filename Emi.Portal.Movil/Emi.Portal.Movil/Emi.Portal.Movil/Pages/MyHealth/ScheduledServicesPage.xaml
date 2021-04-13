@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.MyHealth.ScheduledServicesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}"
+    BindingContext="{Binding Call, Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="{StaticResource GeneralBackgroundColor}"
+            BindingContext="{Binding ScheduledServicesPage, Source={StaticResource Locator}}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <views:CurrentServiceView />
+            <StackLayout
+                Padding="10"
+                BackgroundColor="{StaticResource Color13}"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding TitlePage}" />
+            </StackLayout>
+            <BoxView Style="{StaticResource LineTitleStyle}" />
+            <StackLayout
+                Padding="20,10,20,0"
+                BackgroundColor="{StaticResource GeneralBackgroundColor}"
+                VerticalOptions="Start">
+                <Label Style="{StaticResource DescriptionStyle}" Text="Para información sobre cómo visualizar servicios programados para terceros, debes comunicarte con nuestra línea de servicio al cliente." />
+            </StackLayout>
+            <StackLayout BackgroundColor="{StaticResource GeneralBackgroundColor}" VerticalOptions="FillAndExpand">
+                <ListView
+                    BackgroundColor="{StaticResource GeneralBackgroundColor}"
+                    HasUnevenRows="True"
+                    IsPullToRefreshEnabled="True"
+                    IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                    IsVisible="{Binding ScheduledServices.Count, Converter={StaticResource ListViewVisibleConverter}}"
+                    ItemTemplate="{StaticResource ScheduledServicesTemplate}"
+                    ItemsSource="{Binding ScheduledServices}"
+                    RefreshCommand="{Binding RefreshScheduledServicesCommand}"
+                    SelectedItem="{Binding ScheduleSelected, Mode=TwoWay}"
+                    SeparatorVisibility="None"
+                    VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"
+            Text="Llamar" />
+    </ContentPage.ToolbarItems>
+</ContentPage>

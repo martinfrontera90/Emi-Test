@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<NavigationPage 
+    BarTextColor="{StaticResource Color7}"
+    BarBackgroundColor="{StaticResource WhiteColor}"
+    BindingContext="{Binding MainPage, Source={StaticResource Locator}}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Emi.Portal.Movil"
+    x:Class="Emi.Portal.Movil.Pages.MainPage"
+    Icon="menu.png">
+
+</NavigationPage>

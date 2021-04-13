@@ -1,0 +1,424 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.MyHealth.ProductsAndPlansPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Emi.Portal.Movil.Logic.ViewModels.Domain;assembly=Emi.Portal.Movil.Logic"
+    BindingContext="{Binding ProductsAndPlansPage, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource Color13}" Spacing="0">
+                <StackLayout
+                    Padding="10"
+                    BackgroundColor="{StaticResource Color13}"
+                    HeightRequest="25"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource SeccionNameStyle}"
+                        Text="{Binding Resources[TitleProductsAndPlans], Source={StaticResource Locator}}" />
+                </StackLayout>
+
+                <StackLayout>
+                    <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding HasNoProducts}"
+                        Spacing="0">
+                        <Label
+                            BackgroundColor="{StaticResource Color2}"
+                            FontAttributes="Bold"
+                            HeightRequest="50"
+                            HorizontalTextAlignment="Center"
+                            Text="NO TIENE PLANES O PRODUCTOS"
+                            TextColor="White"
+                            VerticalTextAlignment="Center" />
+                        <Frame HasShadow="False">
+                            <StackLayout Orientation="Horizontal">
+
+                                <Label HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Para adquirir alguno de nuestros planes ingresa " />
+                                            <Span
+                                                Text="aquí."
+                                                TextColor="{StaticResource Color2}"
+                                                TextDecorations="Underline">
+                                                <Span.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding BuyProductTestCommand}" />
+                                                </Span.GestureRecognizers>
+                                            </Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout IsVisible="{Binding ResponsableCards.Count, Converter={StaticResource ListViewVisibleConverter}}" Spacing="0">
+                        <StackLayout BackgroundColor="{StaticResource Color2}" Spacing="0">
+                            <Label
+                                Margin="0,10,0,10"
+                                FontAttributes="Bold"
+                                HeightRequest="30"
+                                HorizontalTextAlignment="Center"
+                                Text="PLANES Y PRODUCTOS ACTIVOS "
+                                TextColor="White"
+                                VerticalTextAlignment="Center" />
+                            <Button
+                                BackgroundColor="#f2f2f2"
+                                Command="{Binding BuyProductCommand}"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Contratar para nuevo beneficiario"
+                                TextColor="{StaticResource Color2}" />
+                        </StackLayout>
+
+                        <StackLayout BindableLayout.ItemsSource="{Binding ResponsableCards}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame
+                                        Margin="0,5"
+                                        HasShadow="False"
+                                        HeightRequest="{Binding HeightTest}">
+                                        <StackLayout Spacing="0">
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout>
+                                                    <Label
+                                                        FontAttributes="Bold"
+                                                        Text="RESPONSABLE DE PAGO"
+                                                        TextColor="{StaticResource Color1}" />
+                                                    <Label FontSize="12" Text="{Binding FullName}" />
+                                                </StackLayout>
+
+                                            </StackLayout>
+                                            <Label
+                                                Margin="0,10,0,0"
+                                                Style="{StaticResource LabelTitleEntryStyle}"
+                                                Text="Identificador de familia / Matrícula:" />
+                                            <Label FontSize="12" Text="{Binding FamilyEnrollment}" />
+
+                                            <Grid Margin="0,10" RowSpacing="0">
+
+                                                <StackLayout>
+                                                    <Label
+                                                        Margin="{OnPlatform Android='0'}"
+                                                        Style="{StaticResource LabelTitleEntryStyle}"
+                                                        Text="Total:" />
+                                                    <Label FontSize="12" Text="{Binding Billing.Amount, StringFormat='$ {0}'}" />
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="1">
+                                                    <Label
+                                                        Margin="{OnPlatform Android='0'}"
+                                                        Style="{StaticResource LabelTitleEntryStyle}"
+                                                        Text="Modalidad de pago:" />
+                                                    <Label FontSize="12" Text="{Binding Bill}" />
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Column="1">
+                                                    <Label
+                                                        Margin="{OnPlatform Android='0'}"
+                                                        Style="{StaticResource LabelTitleEntryStyle}"
+                                                        Text="Última fecha facturada:" />
+                                                    <Label FontSize="12" Text="{Binding BillDate}" />
+                                                </StackLayout>
+
+
+                                                <StackLayout
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    IsVisible="{Binding BillAddress}">
+                                                    <Label
+                                                        Margin="{OnPlatform Android='0'}"
+                                                        LineBreakMode="WordWrap"
+                                                        Style="{StaticResource LabelTitleEntryStyle}"
+                                                        Text="Dirección de cobro:" />
+                                                    <Label FontSize="12" Text="{Binding FullAddress}" />
+                                                </StackLayout>
+
+                                                <StackLayout
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    IsVisible="{Binding Debit}">
+                                                    <Label
+                                                        Margin="{OnPlatform Android='0'}"
+                                                        Style="{StaticResource LabelTitleEntryStyle}"
+                                                        Text="Banco:" />
+                                                    <Label FontSize="12" Text="{Binding Bank.Bank}" />
+                                                </StackLayout>
+
+                                                <StackLayout
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    IsVisible="{Binding CreditCard}">
+                                                    <Label
+                                                        Margin="{OnPlatform Android='0'}"
+                                                        Style="{StaticResource LabelTitleEntryStyle}"
+                                                        Text="Franquicia:" />
+                                                    <Label FontSize="12" Text="{Binding Card.Card}" />
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="2">
+                                                    <Label
+                                                        Margin="0,10,0,0"
+                                                        Style="{StaticResource LabelTitleEntryStyle}"
+                                                        Text="Periodicidad de pago:" />
+                                                    <Label FontSize="12" Text="{Binding Periodicity}" />
+                                                </StackLayout>
+                                            </Grid>
+
+                                            <Label
+                                                Margin="0,10,0,0"
+                                                FontAttributes="Bold"
+                                                Text="Beneficiarios" />
+
+
+                                            <ListView
+                                                HasUnevenRows="True"
+                                                HeightRequest="{Binding HeighBeneficiary}"
+                                                IsGroupingEnabled="True"
+                                                ItemsSource="{Binding Beneficiaries}"
+                                                SeparatorVisibility="None"
+                                                VerticalOptions="FillAndExpand">
+                                                <ListView.GroupHeaderTemplate>
+                                                    <DataTemplate>
+                                                        <ViewCell Height="{OnPlatform Android='35'}">
+                                                            <StackLayout BackgroundColor="{OnPlatform Android='#f1f1f1'}" Orientation="Horizontal">
+                                                                <StackLayout
+                                                                    Margin="5,0"
+                                                                    Spacing="0"
+                                                                    VerticalOptions="Center">
+                                                                    <Label Style="{StaticResource DescriptionStyle}" Text="{Binding Name, StringFormat='{0}'}" />
+                                                                    <Label Style="{StaticResource DescriptionStyle}">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding DocumentType, StringFormat='{0}'}" />
+                                                                                <Span Text="{Binding Document, StringFormat=' {0}'}" />
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>
+                                                                </StackLayout>
+
+
+                                                                <Image
+                                                                    Margin="0,0,8,0"
+                                                                    HeightRequest="20"
+                                                                    HorizontalOptions="EndAndExpand"
+                                                                    Rotation="{Binding IconRotation}"
+                                                                    Source="arrow_tabs.png" />
+                                                                <StackLayout.GestureRecognizers>
+                                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:ContractedPlanCard}}, Path=RefreshItemsCommand}" CommandParameter="{Binding .}" />
+                                                                </StackLayout.GestureRecognizers>
+                                                            </StackLayout>
+                                                        </ViewCell>
+                                                    </DataTemplate>
+                                                </ListView.GroupHeaderTemplate>
+
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <ViewCell>
+                                                            <ListView
+                                                                HeightRequest="100"
+                                                                ItemsSource="{Binding HiredProducts}"
+                                                                SeparatorVisibility="None"
+                                                                VerticalOptions="FillAndExpand">
+                                                                <ListView.Header>
+                                                                    <Grid BackgroundColor="{StaticResource Color13}" ColumnSpacing="30">
+                                                                        <Grid.ColumnDefinitions>
+                                                                            <ColumnDefinition Width="*" />
+                                                                            <ColumnDefinition Width="*" />
+                                                                        </Grid.ColumnDefinitions>
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="40" />
+                                                                        </Grid.RowDefinitions>
+
+                                                                        <Label
+                                                                            Margin="5,0,0,0"
+                                                                            FontAttributes="Bold"
+                                                                            Style="{StaticResource TextStyle}"
+                                                                            Text="Descripción"
+                                                                            VerticalTextAlignment="Center" />
+                                                                        <Label
+                                                                            Grid.Column="1"
+                                                                            FontAttributes="Bold"
+                                                                            Style="{StaticResource TextStyle}"
+                                                                            Text="Valor última factura"
+                                                                            VerticalTextAlignment="Center" />
+                                                                    </Grid>
+                                                                </ListView.Header>
+                                                                <ListView.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <ViewCell>
+                                                                            <StackLayout>
+                                                                                <Grid ColumnSpacing="30">
+                                                                                    <Grid.ColumnDefinitions>
+                                                                                        <ColumnDefinition Width="*" />
+                                                                                        <ColumnDefinition Width="*" />
+                                                                                    </Grid.ColumnDefinitions>
+                                                                                    <Grid.RowDefinitions>
+                                                                                        <RowDefinition Height="40" />
+                                                                                    </Grid.RowDefinitions>
+
+                                                                                    <Label
+                                                                                        Margin="5,0,0,0"
+                                                                                        FontAttributes="Bold"
+                                                                                        Style="{StaticResource TextStyle}"
+                                                                                        Text="{Binding PlanName}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                    <Label
+                                                                                        Grid.Column="1"
+                                                                                        FontAttributes="Bold"
+                                                                                        Style="{StaticResource TextStyle}"
+                                                                                        Text="{Binding BilledRate.Amount, StringFormat='${0}'}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </Grid>
+                                                                            </StackLayout>
+                                                                        </ViewCell>
+                                                                    </DataTemplate>
+                                                                </ListView.ItemTemplate>
+                                                            </ListView>
+                                                        </ViewCell>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                        </StackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+
+                        </StackLayout>
+
+
+                    </StackLayout>
+
+
+                    <StackLayout IsVisible="{Binding Beneficiaries.Count, Converter={StaticResource ListViewVisibleConverter}}" Spacing="0">
+                        <StackLayout BackgroundColor="{StaticResource Color2}" Spacing="0">
+                            <Label
+                                Margin="0,10,0,10"
+                                FontAttributes="Bold"
+                                HeightRequest="30"
+                                HorizontalTextAlignment="Center"
+                                Text="SUS PLANES ACTIVOS COMO BENEFICIARIO "
+                                TextColor="White"
+                                VerticalTextAlignment="Center" />
+                            <Button
+                                BackgroundColor="#f2f2f2"
+                                BorderColor="White"
+                                Command="{Binding BuyProductBeneficiaryCommand}"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Comprar nuevo plan"
+                                TextColor="{StaticResource Color2}" />
+                        </StackLayout>
+                        <StackLayout BindableLayout.ItemsSource="{Binding Beneficiaries}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame HasShadow="False" HeightRequest="300">
+                                        <StackLayout Spacing="0">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                Text="RESPONSABLE DE PAGO"
+                                                TextColor="{StaticResource Color1}" />
+                                            <Label FontAttributes="Bold" Text="{Binding FullName}" />
+                                            <ScrollView Margin="0,10,0,0" Orientation="Both">
+
+                                                <StackLayout BindableLayout.ItemsSource="{Binding Beneficiaries}" HeightRequest="200">
+
+                                                    <BindableLayout.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <StackLayout>
+                                                                <Label Text="{Binding Name}" />
+                                                                <Label Margin="0,10,0,0" Style="{StaticResource DescriptionStyle}">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Name, StringFormat='Productos de {0}'}" />
+                                                                            <Span Text="{Binding DocumentType, StringFormat=' {0}'}" />
+                                                                            <Span Text="{Binding Document, StringFormat=' {0}'}" />
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </Label>
+                                                                <ListView
+                                                                    HasUnevenRows="True"
+                                                                    HeightRequest="200"
+                                                                    ItemsSource="{Binding Products}"
+                                                                    SeparatorVisibility="None">
+                                                                    <ListView.Header>
+                                                                        <Grid BackgroundColor="{StaticResource Color13}" ColumnSpacing="30">
+
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="*" />
+                                                                                <ColumnDefinition Width="*" />
+                                                                            </Grid.ColumnDefinitions>
+
+                                                                            <Grid.RowDefinitions>
+                                                                                <RowDefinition Height="40" />
+                                                                            </Grid.RowDefinitions>
+
+                                                                            <Label
+                                                                                Grid.Column="0"
+                                                                                Margin="5,0,0,0"
+                                                                                FontAttributes="Bold"
+                                                                                Style="{StaticResource TextStyle}"
+                                                                                Text="DESCRIPCIÓN"
+                                                                                VerticalTextAlignment="Center" />
+                                                                            <Label
+                                                                                Grid.Column="1"
+                                                                                FontAttributes="Bold"
+                                                                                Style="{StaticResource TextStyle}"
+                                                                                Text="VALOR ÚLTIMA FACTURA"
+                                                                                VerticalTextAlignment="Center" />
+
+                                                                        </Grid>
+                                                                    </ListView.Header>
+                                                                    <ListView.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <ViewCell>
+                                                                                <Grid ColumnSpacing="30">
+                                                                                    <Grid.ColumnDefinitions>
+                                                                                        <ColumnDefinition Width="*" />
+                                                                                        <ColumnDefinition Width="*" />
+                                                                                    </Grid.ColumnDefinitions>
+                                                                                    <Grid.RowDefinitions>
+                                                                                        <RowDefinition Height="40" />
+                                                                                    </Grid.RowDefinitions>
+
+                                                                                    <Label
+                                                                                        Margin="5,0,0,0"
+                                                                                        FontAttributes="Bold"
+                                                                                        Style="{StaticResource TextStyle}"
+                                                                                        Text="{Binding PlanName}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                    <Label
+                                                                                        Grid.Column="1"
+                                                                                        FontAttributes="Bold"
+                                                                                        Style="{StaticResource TextStyle}"
+                                                                                        Text="{Binding BilledRate.Amount, StringFormat='$ {0}'}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </Grid>
+                                                                            </ViewCell>
+                                                                        </DataTemplate>
+                                                                    </ListView.ItemTemplate>
+                                                                </ListView>
+                                                            </StackLayout>
+
+
+                                                        </DataTemplate>
+                                                    </BindableLayout.ItemTemplate>
+                                                </StackLayout>
+
+
+                                            </ScrollView>
+                                        </StackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

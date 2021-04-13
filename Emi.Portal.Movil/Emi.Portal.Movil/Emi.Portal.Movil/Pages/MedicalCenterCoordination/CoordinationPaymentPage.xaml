@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    BindingContext="{Binding Call, Source={StaticResource Locator}}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Emi.Portal.Movil.Pages.MedicalCenterCoordination.CoordinationPaymentPage"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}">
+    
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding NewMedicalCenterCoordinationPage, Source={StaticResource Locator}}"            
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <views:CurrentServiceView />
+            <StackLayout                
+                Orientation="Horizontal"
+                Padding="20, 20, 20, 0">
+                <Label 
+                    x:Name="LoadingLabel"
+                    Text="Cargando..."
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="True" />
+                <Label Text="{Binding PersonSelected.FullNames}"/>
+                <Image 
+                    HorizontalOptions="EndAndExpand"
+                    Source="ic_close">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ClosePaymentPageCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <WebView
+                x:Name="WebViewPay"
+                HorizontalOptions="FillAndExpand"                
+                Navigated="OnNavigated"
+                Navigating="OnNavigating"
+                Source="{Binding HtmlCoordinationPayment}"                
+                VerticalOptions="FillAndExpand"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"            
+            Text="Llamar"/>
+    </ContentPage.ToolbarItems>
+</ContentPage>

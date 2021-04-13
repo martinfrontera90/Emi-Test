@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.Services.AddNewAddressPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Emi.Portal.Movil.Logic.Behaviors;assembly=Emi.Portal.Movil.Logic"
+    xmlns:iOSSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    BindingContext="{Binding ServicesPage, Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+
+        <StackLayout
+            BackgroundColor="{StaticResource Color11}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+
+            <views:CurrentServiceView />
+            <StackLayout
+                Padding="10"
+                BackgroundColor="{StaticResource Color13}"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding Resources[TitleRequestRervice], Source={StaticResource Locator}}" />
+            </StackLayout>
+            <BoxView Style="{StaticResource LineTitleStyle}" />
+            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout
+                    BackgroundColor="{StaticResource Color11}"
+                    HorizontalOptions="FillAndExpand"
+                    Spacing="0"
+                    VerticalOptions="Fill">
+                    <Grid BackgroundColor="#f2f2f2">
+                        <WebView
+                            HeightRequest="250"
+                            IsVisible="{Binding IsVisibleMap}"
+                            Source="{Binding UrlMap}"
+                            VerticalOptions="Start">
+                            <WebView.Behaviors>
+                                <behaviors:EventToCommandBehavior Command="{Binding NavigatingCommand}" EventName="Navigating" />
+                                <behaviors:EventToCommandBehavior Command="{Binding NavigatedCommand}" EventName="Navigated" />
+                            </WebView.Behaviors>
+                        </WebView>
+                        <ActivityIndicator
+                            BackgroundColor="#f5f5f5"
+                            IsRunning="{Binding IsNavigating}"
+                            IsVisible="{Binding IsVisibleLoading}" />
+                        <Label
+                            Margin="20,5"
+                            IsVisible="{Binding IsVisibleMap, Converter={StaticResource VisibleInverseBoolConverter}}"
+                            Style="{StaticResource SeccionNameStyle}"
+                            Text="{Binding OtherSelected}" />
+                    </Grid>
+
+                    <!--<Button
+                        Command="{Binding AdvanceLocationCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="Mover pin"/>-->
+
+                    <StackLayout
+                        BackgroundColor="{StaticResource Color12}"
+                        HorizontalOptions="FillAndExpand"
+                        Spacing="10"
+                        VerticalOptions="Start">
+                        <StackLayout Padding="20" HorizontalOptions="FillAndExpand">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource TitleStyle}"
+                                Text="Agregar una dirección" />
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource DescriptionStyle}"
+                                Text="Recuerda que la información que nos brindes sobre la ubicación del paciente, nos permitirá se más oportunos en la atención que le brindemos." />
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource DescriptionStyle}"
+                                Text="Todos los campos marcados con (*) son obligatorios" />
+                        </StackLayout>
+                        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <StackLayout Padding="20,0,20,20" HorizontalOptions="FillAndExpand">
+
+                                <Label Style="{StaticResource LabelTitleEntryStyle}" Text="(*) País" />
+
+
+                                <Picker
+                                    iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                    ItemDisplayBinding="{Binding Name}"
+                                    ItemsSource="{Binding Countries}"
+                                    SelectedItem="{Binding CountrySelected, Mode=TwoWay}"
+                                    Style="{StaticResource PickerStyle}" />
+                                <Label
+                                    IsVisible="{Binding NewAddress.ErrorCountry, Converter={StaticResource VisibleLabelConverter}}"
+                                    Style="{StaticResource LabelErrorEntryStyle}"
+                                    Text="{Binding NewAddress.ErrorCountry, Mode=TwoWay}" />
+
+                                <Label Style="{StaticResource LabelTitleEntryStyle}" Text="(*) Departamento" />
+                                <Picker
+                                    iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                    IsEnabled="{Binding IsEnabledDepartments}"
+                                    ItemDisplayBinding="{Binding Name}"
+                                    ItemsSource="{Binding Departaments}"
+                                    SelectedItem="{Binding DepartamentSelected, Mode=TwoWay}"
+                                    Style="{StaticResource PickerStyle}" />
+                                <Label
+                                    IsVisible="{Binding NewAddress.ErrorDepartment, Converter={StaticResource VisibleLabelConverter}}"
+                                    Style="{StaticResource LabelErrorEntryStyle}"
+                                    Text="{Binding NewAddress.ErrorDepartment, Mode=TwoWay}" />
+
+                                <Label Style="{StaticResource LabelTitleEntryStyle}" Text="{Binding NewAddress.TitleCity, StringFormat='(*) {0}'}" />
+                                <Picker
+                                    iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                    IsEnabled="{Binding IsEnabledCities}"
+                                    ItemDisplayBinding="{Binding Name}"
+                                    ItemsSource="{Binding Cities}"
+                                    SelectedItem="{Binding CitySelected, Mode=TwoWay}"
+                                    Style="{StaticResource PickerStyle}" />
+                                <Label
+                                    IsVisible="{Binding NewAddress.ErrorCity, Converter={StaticResource VisibleLabelConverter}}"
+                                    Style="{StaticResource LabelErrorEntryStyle}"
+                                    Text="{Binding NewAddress.ErrorCity, Mode=TwoWay}" />
+
+                                <Label Style="{StaticResource LabelTitleEntryStyle}" Text="{Binding NewAddress.Neighborhood}" />
+                                <Picker
+                                    iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                    IsEnabled="{Binding IsEnabledNeighborhood}"
+                                    ItemDisplayBinding="{Binding Name}"
+                                    ItemsSource="{Binding Neighborhoods}"
+                                    SelectedItem="{Binding NeighborhoodSelected, Mode=TwoWay}"
+                                    Style="{StaticResource PickerStyle}" />
+                                <Label
+                                    IsVisible="{Binding NewAddress.ErrorNeighborhood, Converter={StaticResource VisibleLabelConverter}}"
+                                    Style="{StaticResource LabelErrorEntryStyle}"
+                                    Text="{Binding NewAddress.ErrorNeighborhood, Mode=TwoWay}" />
+
+                                <StackLayout>
+                                    <Label Style="{StaticResource LabelTitleEntryStyle}" Text="(*) Calle" />
+                                    <Entry
+                                        IsEnabled="{Binding IsEnabledDetail}"
+                                        Style="{StaticResource EntryStyle}"
+                                        Text="{Binding NewAddress.Street}">
+                                        <Entry.Behaviors>
+                                            <behaviors:EntryLengthValidatorBehavior MaxLength="50" />
+                                        </Entry.Behaviors>
+                                    </Entry>
+                                    <Label
+                                        IsVisible="{Binding NewAddress.ErrorStreet, Converter={StaticResource VisibleLabelConverter}}"
+                                        Style="{StaticResource LabelErrorEntryStyle}"
+                                        Text="{Binding NewAddress.ErrorStreet, Mode=TwoWay}" />
+                                    <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Número de puerta" />
+                                    <Entry
+                                        IsEnabled="{Binding IsEnabledDetail}"
+                                        Style="{StaticResource EntryStyle}"
+                                        Text="{Binding NewAddress.DoorNumber}">
+                                        <Entry.Behaviors>
+                                            <behaviors:EntryLengthValidatorBehavior MaxLength="6" />
+                                        </Entry.Behaviors>
+                                    </Entry>
+
+                                    <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Bis" />
+                                    <Entry
+                                        IsEnabled="{Binding IsEnabledDetail}"
+                                        Style="{StaticResource EntryStyle}"
+                                        Text="{Binding NewAddress.Bis}">
+                                        <Entry.Behaviors>
+                                            <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthBis], Source={StaticResource Locator}}" />
+                                        </Entry.Behaviors>
+                                    </Entry>
+
+                                    <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Número de apartamento" />
+                                    <Entry
+                                        IsEnabled="{Binding IsEnabledDetail}"
+                                        Keyboard="Numeric"
+                                        Style="{StaticResource EntryStyle}"
+                                        Text="{Binding NewAddress.NumberApto}">
+                                        <Entry.Behaviors>
+                                            <behaviors:EntryLengthValidatorBehavior MaxLength="10" />
+                                        </Entry.Behaviors>
+                                    </Entry>
+
+                                    <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Esquina" />
+                                    <Entry
+                                        IsEnabled="{Binding IsEnabledDetail}"
+                                        Style="{StaticResource EntryStyle}"
+                                        Text="{Binding NewAddress.Corner}">
+                                        <Entry.Behaviors>
+                                            <behaviors:EntryLengthValidatorBehavior MaxLength="50" />
+                                        </Entry.Behaviors>
+                                    </Entry>
+                                </StackLayout>
+
+                                <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Detalles de la dirección" />
+                                <Entry
+                                    IsEnabled="{Binding IsEnabledDetail}"
+                                    Style="{StaticResource EntryStyle}"
+                                    Text="{Binding NewAddress.AddressDetails}">
+                                    <Entry.Behaviors>
+                                        <behaviors:EntryLengthValidatorBehavior MaxLength="285" />
+                                    </Entry.Behaviors>
+                                </Entry>
+
+                                <StackLayout
+                                    Padding="0,20,0,0"
+                                    HorizontalOptions="FillAndExpand"
+                                    Spacing="10"
+                                    VerticalOptions="End">
+
+                                    <Button
+                                        Command="{Binding CheckCoverageCommand}"
+                                        IsVisible="{Binding ConfirmAddress, Converter={StaticResource VisibleInverseBoolConverter}}"
+                                        Style="{StaticResource PrimaryButtonStyle}"
+                                        Text="Guardar" />
+
+                                    <Button
+                                        Command="{Binding ConfirmAddressCommand}"
+                                        IsVisible="{Binding ConfirmAddress}"
+                                        Style="{StaticResource PrimaryButtonStyle}"
+                                        Text="Confirmar" />
+
+                                    <Button
+                                        Command="{Binding CancelNewAddressCommand}"
+                                        Style="{StaticResource CancelButtonStyle}"
+                                        Text="Cancelar" />
+
+                                </StackLayout>
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"
+            Text="Llamar" />
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

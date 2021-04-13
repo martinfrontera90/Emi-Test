@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.MyAccount.FamilyPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}"
+    BindingContext="{Binding Call, Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding FamilyPage, Source={StaticResource Locator}}"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <views:CurrentServiceView />
+            <StackLayout
+                Padding="10"
+                BackgroundColor="{StaticResource Color13}"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding TitlePage}" />
+            </StackLayout>
+            <BoxView Style="{StaticResource LineTitleStyle}" />
+            <ListView
+                BackgroundColor="{StaticResource Color11}"
+                HasUnevenRows="True"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemTemplate="{StaticResource ListMyFamilyTemplate}"
+                ItemsSource="{Binding Members}"
+                RefreshCommand="{Binding RefreshFamilyCommand}"
+                SelectedItem="{Binding MemberSelected}"
+                SeparatorVisibility="None"
+                VerticalOptions="FillAndExpand" />
+            <StackLayout BackgroundColor="{StaticResource Color11}" VerticalOptions="End">
+                <Button
+                    Margin="20,10,20,20"
+                    Command="{Binding AddMemberCommand}"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="Agregar familiar" />
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"
+            Text="Llamar" />
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

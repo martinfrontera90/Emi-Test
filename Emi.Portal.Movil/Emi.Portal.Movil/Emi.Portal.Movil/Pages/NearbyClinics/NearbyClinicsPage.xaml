@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="Emi.Portal.Movil.Pages.NearbyClinicsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}"
+    android:BarBackgroundColor="{StaticResource WhiteColor}"
+    android:TabbedPage.BarSelectedItemColor="{StaticResource Color1}"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    BindingContext="{Binding NearbyClinicsPage, Source={StaticResource Locator}}">
+    <TabbedPage.Children>
+        <ContentPage Title="Lista" Icon="IconList">
+            <StackLayout BackgroundColor="{StaticResource Color11}" VerticalOptions="FillAndExpand">
+                <views:CurrentServiceView />
+                <StackLayout
+                    Padding="20,10,10,10"
+                    BackgroundColor="{StaticResource Color13}"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        Style="{StaticResource SeccionNameStyle}"
+                        Text="{Binding TitlePage}" />
+                </StackLayout>
+
+                <ListView
+                    BackgroundColor="{StaticResource Color11}"
+                    HasUnevenRows="True"
+                    IsPullToRefreshEnabled="False"
+                    ItemTemplate="{StaticResource ListNearbyClinicTemplate}"
+                    ItemsSource="{Binding Clinics}"
+                    SelectedItem="{Binding ClinicSelected, Mode=TwoWay}"
+                    SeparatorVisibility="None" />
+
+            </StackLayout>
+
+        </ContentPage>
+        <ContentPage Title="Mapa" Icon="IconMap">
+            <StackLayout Spacing="0">
+
+                <views:CurrentServiceView />
+                <StackLayout
+                    Padding="20,10,10,10"
+                    BackgroundColor="{StaticResource Color13}"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        Style="{StaticResource SeccionNameStyle}"
+                        Text="{Binding Resources[TitleNearbyClinics], Source={StaticResource Locator}}" />
+                </StackLayout>
+                <BoxView Style="{StaticResource LineTitleStyle}" />
+                <StackLayout
+                    x:Name="stackMap"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ContentPage>
+    </TabbedPage.Children>
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"
+            Order="Primary"
+            Text="Llamar" />
+    </TabbedPage.ToolbarItems>
+
+</TabbedPage>       

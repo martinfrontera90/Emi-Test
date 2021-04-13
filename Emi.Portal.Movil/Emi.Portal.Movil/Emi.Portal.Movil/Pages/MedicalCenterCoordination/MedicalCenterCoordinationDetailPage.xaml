@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    BindingContext="{Binding MedicalCenterCoordinationPage, Source={StaticResource Locator}}" 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Emi.Portal.Movil.Pages.MedicalCenterCoordination.MedicalCenterCoordinationDetailPage" 
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views" 
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout 
+            BackgroundColor="{StaticResource GeneralBackgroundColor}" 
+            Spacing="0" VerticalOptions="FillAndExpand">
+            
+            <views:CurrentServiceView />
+            
+            <StackLayout 
+                BackgroundColor="{StaticResource Color13}" 
+                Padding="20, 10, 10, 10" 
+                HorizontalOptions="FillAndExpand" 
+                Orientation="Horizontal" 
+                VerticalOptions="Start">
+                <Label 
+                    HorizontalTextAlignment="Center" 
+                    HorizontalOptions="CenterAndExpand" 
+                    Style="{StaticResource SeccionNameStyle}" 
+                    Text="{Binding Resources[TittleMedicalCenterCoordination], Source={StaticResource Locator}}" />
+            </StackLayout>
+            
+            <BoxView Style="{StaticResource LineTitleStyle}" />
+            
+            <StackLayout
+                Padding="20, 5, 5, 0">
+                <Label 
+                    HorizontalOptions="Start" 
+                    Style="{StaticResource TitleStyle}" 
+                    Text="Información sobre tu coordinación" />
+            </StackLayout>
+                
+            <StackLayout 
+                BindingContext="{Binding CoordinationSelected}"
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand">
+                <ScrollView 
+                    VerticalOptions="FillAndExpand">
+                    <StackLayout>
+                        
+                        <!--Mapa-->
+                        <Frame 
+                            x:Name="frameMap" 
+                            HasShadow="False" 
+                            HeightRequest="150"
+                            Padding="0" 
+                            VerticalOptions="Start"/>
+                        
+                        <StackLayout 
+                            Padding="20" 
+                            VerticalOptions="FillAndExpand">
+                            <Label 
+                                Style="{StaticResource TitleStyle}" 
+                                Text="{Binding Names}" 
+                                TextColor="{StaticResource Color5}" />
+                            
+                            <Label 
+                                Margin="0, 0, 0, 10" 
+                                Style="{StaticResource SubTitleStyle}" 
+                                Text="{Binding AgendaName}" />
+                            
+                            <StackLayout 
+                                VerticalOptions="FillAndExpand">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image WidthRequest="10" HeightRequest="10" Source="favorite.png" />
+                                    <Label Grid.Column="1" Style="{StaticResource DescriptionStyle}" Text="{Binding NameSpecialty}" HorizontalOptions="StartAndExpand" />
+                                    <Image WidthRequest="10" HeightRequest="10" Grid.Row="1" Source="navigation.png" />
+                                    <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource DescriptionStyle}" Text="{Binding FullAddress}" HorizontalOptions="StartAndExpand" />
+                                    <Image HeightRequest="10" Grid.Row="2" Source="time.png" WidthRequest="10" />
+                                    <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource DescriptionStyle}" Text="{Binding Date}" HorizontalOptions="StartAndExpand" />
+                                    <Image HeightRequest="10" Grid.Row="3" Source="cost.png" WidthRequest="10" />
+                                    <Label Grid.Column="1" Grid.Row="3" Style="{StaticResource DescriptionStyle}" Text="{Binding Price}" HorizontalOptions="StartAndExpand" />
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout 
+                                IsVisible="{Binding IsVisiblePay}" 
+                                VerticalOptions="End">
+                                <Button 
+                                    Command="{Binding ConfirmationCommand}" 
+                                    Margin="0, 10, 0, 0" 
+                                    Style="{StaticResource PrimaryButtonStyle}" 
+                                    Text="{Binding TitleButton}" />
+                            </StackLayout>
+                            <StackLayout 
+                                IsVisible="{Binding IsVisibleRecommendation}" 
+                                Padding="0, 10, 0, 0">
+                                <StackLayout 
+                                    VerticalOptions="StartAndExpand">
+                                    <Label 
+                                        Text="Recomendaciones" 
+                                        Style="{StaticResource SubTitleStyle}" 
+                                        TextColor="{StaticResource Color5}" />
+                                    <Label 
+                                        Style="{StaticResource DescriptionStyle}" 
+                                        Text="{Binding Recommendations}" />
+                                    <Label 
+                                        Style="{StaticResource DescriptionStyle}" 
+                                        Text="En caso de no poder asistir, debes cancelar la consulta con 24 horas hábiles de anticipación, de lo contrario perderás el derecho a ella." />
+                                </StackLayout>
+                                <StackLayout 
+                                    VerticalOptions="End">
+                                    <Button 
+                                        Command="{Binding CallMedicalCenterCommand}" 
+                                        Margin="0, 10, 0, 0" 
+                                        Style="{StaticResource PrimaryButtonStyle}" 
+                                        Text="Llamar" />
+                                    <Button 
+                                        Command="{Binding CancelCoordinationCommand}" 
+                                        Style="{StaticResource CancelButtonStyle}" 
+                                        Text="Cancelar" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding CoordinationSelected.CallCategoryCommand}" 
+            Icon="phone.png" 
+            Text="Llamar" />
+    </ContentPage.ToolbarItems>
+</ContentPage>

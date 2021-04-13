@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.MyHealth.ExpiredMedicalServicesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:iOSSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    x:Name="Padre"
+    BackgroundColor="#f9f9f9"
+    BindingContext="{Binding ExpiredMedicalServices, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="{StaticResource Color13}">
+                <Label
+                    Padding="10"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding TitlePage}"
+                    VerticalOptions="Start" />
+            </StackLayout>
+            <ScrollView>
+                <StackLayout Margin="20">
+                    <StackLayout Margin="0,0,0,10">
+                        <StackLayout IsVisible="{Binding IsVisiblePatient}">
+                            <Label Style="{StaticResource LabelTitleEntryStyle}" Text="(*) Paciente" />
+                            <Picker
+                                iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                ItemDisplayBinding="{Binding Name}"
+                                ItemsSource="{Binding Patients}"
+                                SelectedItem="{Binding PatientSelected}"
+                                Style="{StaticResource PickerStyle}" />
+                        </StackLayout>
+
+
+                        <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Estado" />
+                        <Picker
+                            iOSSpecific:Picker.UpdateMode="WhenFinished"
+                            ItemDisplayBinding="{Binding Name}"
+                            ItemsSource="{Binding Statuses}"
+                            SelectedItem="{Binding StatusSelected}"
+                            Style="{StaticResource PickerStyle}" />
+                        <!--<Button
+                            Command="{Binding SearchCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="Buscar" />-->
+                    </StackLayout>
+                    <Label IsVisible="{Binding IsVisibleEmpty}" Text="No se han encontrado resultados para tu búsqueda." />
+                    <StackLayout BindableLayout.ItemsSource="{Binding Products}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Frame HasShadow="False">
+                                    <StackLayout>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="3*" />
+                                                <ColumnDefinition Width="1*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="{StaticResource font16}"
+                                                Text="{Binding DescProduct}"
+                                                TextColor="{StaticResource Color1}"
+                                                VerticalOptions="Center" />
+                                            <Label
+                                                Grid.Column="1"
+                                                FontSize="{StaticResource font14}"
+                                                HorizontalOptions="EndAndExpand"
+                                                LineBreakMode="NoWrap"
+                                                Text="Coordinar"
+                                                TextColor="{StaticResource Color1}"
+                                                VerticalOptions="Start">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding BindingContext.CoordinateCommand, Source={x:Reference Padre}}" CommandParameter="{Binding .}" />
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </Grid>
+
+                                        <Label Style="{StaticResource TitleStyle}" Text="{Binding FullName}" />
+                                        <Label Margin="0,-8,0,0" Style="{StaticResource TextStyle}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding DescDocument}" />
+                                                    <Span Text="{Binding Document, StringFormat=' {0}'}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <Grid>
+                                            <StackLayout>
+                                                <Label
+                                                    Margin="0,5,0,0"
+                                                    FontAttributes="Bold"
+                                                    Style="{StaticResource SubTitleStyle}"
+                                                    Text="Fecha de realización" />
+                                                <Label Style="{StaticResource TextStyle}" Text="{Binding DateAccomplished}" />
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="1">
+                                                <Label
+                                                    Margin="0,5,0,0"
+                                                    FontAttributes="Bold"
+                                                    Style="{StaticResource SubTitleStyle}"
+                                                    Text="Fecha vencimiento" />
+                                                <Label Style="{StaticResource TextStyle}" Text="{Binding DateExpired}" />
+                                            </StackLayout>
+                                        </Grid>
+
+
+                                        <Label
+                                            Margin="0,5,0,0"
+                                            FontAttributes="Bold"
+                                            Style="{StaticResource SubTitleStyle}"
+                                            Text="Estado" />
+                                        <Label Style="{StaticResource TextStyle}" Text="{Binding DescStatus}">
+                                            <Label.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding Status}"
+                                                    TargetType="Label"
+                                                    Value="2">
+                                                    <Setter Property="TextColor" Value="Red" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+
+                </StackLayout>
+
+
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

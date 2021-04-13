@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    BindingContext="{Binding Call, Source={StaticResource Locator}}"    
+    x:Class="Emi.Portal.Movil.Pages.MyAccount.SearchFamilyPage"
+    xmlns:behaviors="clr-namespace:Emi.Portal.Movil.Logic.Behaviors;assembly=Emi.Portal.Movil.Logic"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+    xmlns:control="clr-namespace:Emi.Portal.Movil.Controls"
+    xmlns:iOSSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <views:CurrentServiceView />
+            <StackLayout           
+                BackgroundColor="{StaticResource Color13}"
+                Padding="10"
+                HorizontalOptions="FillAndExpand"           
+                VerticalOptions="Start">
+            <Label                    
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource SeccionNameStyle}"
+                Text="{Binding Resources[TitleFamily], Source={StaticResource Locator}}"/>
+            </StackLayout>
+            <BoxView Style="{StaticResource LineTitleStyle}"/>
+            <ScrollView         
+                BackgroundColor="{StaticResource Color11}"    
+                BindingContext="{Binding SearchFamilyPage, Source={StaticResource Locator}}"   
+
+                VerticalOptions="FillAndExpand">
+                
+                <StackLayout                
+                    VerticalOptions="FillAndExpand">
+
+                    <StackLayout 
+                        BackgroundColor="{StaticResource Color11}"
+                        HorizontalOptions="FillAndExpand"
+                        Padding="20, 20, 20, 0"
+                        VerticalOptions="Start">
+                        <Label 
+                            Style="{StaticResource TextStyle}"
+                            Text="Ingresa los siguientes datos de tu familiar para iniciar la búsqueda en nuestra base de datos."                                        
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Start"/>
+                        
+                        <Label                         
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource TextStyle}"
+                            Text="{Binding Resources[AllFieldsRequired], Source={StaticResource Locator}}"/>
+                        
+                        <Label                         
+                            FontAttributes="Bold"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource TextStyle}"
+                            Text="Aquí podrás agregar a personas que ya estén asociadas a ucm para solicitar algún servicio para ellos. Recuerda que esta acción no genera un costo de afiliación adicional."/>
+                    </StackLayout>
+
+                    <StackLayout 
+                        Padding="20"
+                        VerticalOptions="StartAndExpand">
+                        <StackLayout                     
+                            Orientation="Vertical"
+                            VerticalOptions="FillAndExpand">
+
+                            <StackLayout 
+                                Orientation="Vertical">
+
+                                <Label 
+                                    Text="Tipo de documento"
+                                    Style="{StaticResource LabelTitleEntryStyle}"/>
+                                <Picker                                                                
+                                    iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                    ItemsSource="{Binding Documents}"
+                                    ItemDisplayBinding="{Binding Name}"
+                                    SelectedIndexChanged="Picker_SelectedIndexChanged"
+                                    SelectedItem="{Binding DocumentSelected}"
+                                    Style="{StaticResource DatePickerStyle}"/>
+                                <Label                    
+                                    Style="{StaticResource LabelErrorEntryStyle}"
+                                    Text="{Binding ErrorDocumentType, Mode=TwoWay}"/>
+
+                                <Label 
+                                    Text="Documento"
+                                    Style="{StaticResource LabelTitleEntryStyle}"/>
+                                <Entry             
+                                    x:Name="NumDocument"                                                                
+                                    Text="{Binding Document, Mode=TwoWay}"
+                                    Style="{StaticResource EntryStyle}">
+
+                                    <Entry.Behaviors>
+                                        <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthDocument], Source={StaticResource Locator}}"/>
+                                    </Entry.Behaviors>
+
+                                </Entry>
+
+                                <Label                    
+                                    Style="{StaticResource LabelErrorEntryStyle}"
+                                    Text="{Binding ErrorDocument, Mode=TwoWay}"/>
+
+                            </StackLayout>
+
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout 
+                        BackgroundColor="{StaticResource Color11}"
+                        VerticalOptions="End">
+                        <Button                                    
+                            Command="{Binding SearchFamilyCommand}"    
+                            Margin="20, 10, 20, 20"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="Buscar"/>
+                    </StackLayout>
+
+                </StackLayout>
+
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"            
+            Text="Llamar"/>
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

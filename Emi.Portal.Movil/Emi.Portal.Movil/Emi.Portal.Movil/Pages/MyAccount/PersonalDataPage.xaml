@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.MyAccount.PersonalDataPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Emi.Portal.Movil.Logic.Behaviors;assembly=Emi.Portal.Movil.Logic"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}"
+    BindingContext="{Binding Call, Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding PersonalDataPage, Source={StaticResource Locator}}"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+
+            <views:CurrentServiceView />
+            <StackLayout
+                Padding="10"
+                BackgroundColor="{StaticResource Color13}"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding TitlePage}" />
+            </StackLayout>
+            <BoxView Style="{StaticResource LineTitleStyle}" />
+            <ScrollView BackgroundColor="{StaticResource Color11}" VerticalOptions="FillAndExpand">
+
+                <StackLayout Padding="20,10,20,20" VerticalOptions="FillAndExpand">
+
+                    <Label
+                        FontAttributes="Bold"
+                        Style="{StaticResource TitleStyle}"
+                        Text="{Binding DataCoveragePercentage, StringFormat='Datos completados: {0}%'}"
+                        VerticalOptions="Center" />
+
+                    <ProgressBar
+                        Margin="0,10,0,10"
+                        HeightRequest="5"
+                        Progress="{Binding Percentage}" />
+
+                    <StackLayout
+                        Padding="0,5,0,10"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal">
+
+                        <Label
+                            FontSize="{StaticResource font14}"
+                            HorizontalOptions="StartAndExpand"
+                            Text="0%"
+                            VerticalOptions="Center" />
+                        <Label
+                            FontSize="{StaticResource font14}"
+                            HorizontalOptions="EndAndExpand"
+                            Text="100%"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+
+                    <Label
+                        FontSize="{StaticResource font12}"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource DescriptionStyle}"
+                        Text="Llena tus datos hasta completar el 100%" />
+
+                    <Label
+                        Margin="0,10,0,10"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource TextStyle}"
+                        Text="{Binding Resources[MessagePersonalDataPage], Source={StaticResource Locator}}" />
+
+                    <Label
+                        Margin="0,10,0,10"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource TextStyle}"
+                        Text="{Binding Resources[AllFieldsRequired], Source={StaticResource Locator}}" />
+
+
+                    <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Primer nombre" />
+                    <Entry
+                        IsEnabled="False"
+                        Style="{StaticResource EntryDisabledStyle}"
+                        Text="{Binding FirstName}" />
+
+                    <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Segundo nombre" />
+                    <Entry
+                        IsEnabled="False"
+                        Style="{StaticResource EntryDisabledStyle}"
+                        Text="{Binding SecondName}" />
+
+                    <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Primer apellido" />
+                    <Entry
+                        IsEnabled="False"
+                        Style="{StaticResource EntryDisabledStyle}"
+                        Text="{Binding FirstSurname}" />
+
+                    <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Segundo apellido" />
+                    <Entry
+                        IsEnabled="False"
+                        Style="{StaticResource EntryDisabledStyle}"
+                        Text="{Binding SecondSurname}" />
+
+                    <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Tipo de documento" />
+                    <Entry
+                        IsEnabled="False"
+                        Style="{StaticResource EntryDisabledStyle}"
+                        Text="{Binding DocumentSelected.Name}" />
+
+                    <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Número de documento" />
+                    <Entry
+                        IsEnabled="False"
+                        Style="{StaticResource EntryDisabledStyle}"
+                        Text="{Binding Document}" />
+
+                    <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Teléfono celular" />
+                    <StackLayout Orientation="Horizontal">
+                        <Entry
+                            Keyboard="Numeric"
+                            Style="{StaticResource EntryStyle}"
+                            Text="{Binding CellPhoneNumber}">
+
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthCellPhone], Source={StaticResource Locator}}" />
+                            </Entry.Behaviors>
+
+                        </Entry>
+                        <Image HorizontalOptions="End" Source="help.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding InformationCommand}" CommandParameter="1" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                    <Label Style="{StaticResource LabelErrorEntryStyle}" Text="{Binding ErrorCellPhone}" />
+
+                    <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Correo electrónico" />
+                    <StackLayout Orientation="Horizontal">
+                        <Entry
+                            IsEnabled="False"
+                            Keyboard="Email"
+                            Style="{StaticResource EntryStyle}"
+                            Text="{Binding Email}">
+
+                            <Entry.Behaviors>
+                                <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthEmail], Source={StaticResource Locator}}" />
+                            </Entry.Behaviors>
+
+                        </Entry>
+                        <Image HorizontalOptions="End" Source="help.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding InformationCommand}" CommandParameter="2" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                    <Label Style="{StaticResource LabelErrorEntryStyle}" Text="{Binding ErrorEmail, Mode=TwoWay}" />
+                    <Button
+                        Command="{Binding UpdateCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="Guardar" />
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"
+            Text="Llamar" />
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

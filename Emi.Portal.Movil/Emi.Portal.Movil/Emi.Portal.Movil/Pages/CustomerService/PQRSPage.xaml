@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<TabbedPage
+    x:Class="Emi.Portal.Movil.Pages.CustomerService.PQRSPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:iOSSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    android:BarBackgroundColor="{StaticResource WhiteColor}"
+    android:TabbedPage.BarSelectedItemColor="{StaticResource Color1}"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    BindingContext="{Binding PQRSPageViewModel, Source={StaticResource Locator}}">
+
+    <TabbedPage.Children>
+        <ContentPage Title="Solicitar" IconImageSource="RequestIcon.png">
+            <StackLayout Spacing="0">
+                <StackLayout BackgroundColor="{StaticResource Color13}">
+                    <Label
+                        Padding="10"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource SeccionNameStyle}"
+                        Text="{Binding TitlePage}"
+                        VerticalOptions="Start" />
+                </StackLayout>
+                <ScrollView>
+                    <StackLayout>
+                        <Label
+                            Margin="20"
+                            Style="{StaticResource DescriptionStyle}"
+                            Text="{Binding Resources[PQRSText], Source={StaticResource Locator}}" />
+                        <Label
+                            Padding="20,0,20,0"
+                            Style="{StaticResource LabelTitleEntryStyle}"
+                            Text="(*) Tipo de evento" />
+
+                        <Picker
+                            Margin="20,0,20,0"
+                            ItemDisplayBinding="{Binding Name}"
+                            ItemsSource="{Binding EventType}"
+                            SelectedItem="{Binding EventTypeSelected}"
+                            Style="{StaticResource PickerStyle}" />
+
+
+                        <Label
+                            Margin="20,20,20,0"
+                            IsVisible="{Binding IsVisibleWho}"
+                            Style="{StaticResource DescriptionStyle}"
+                            Text="¿A quién le sucedió el evento que motiva tu comentario o solicitud?" />
+                        <Label
+                            Padding="20,10,20,0"
+                            IsVisible="{Binding IsVisibleWho}"
+                            Style="{StaticResource LabelTitleEntryStyle}"
+                            Text="(*) Sujeto para solicitud del evento" />
+                        <Picker
+                            Margin="20,0,20,0"
+                            iOSSpecific:Picker.UpdateMode="WhenFinished"
+                            IsVisible="{Binding IsVisibleWho}"
+                            ItemsSource="{Binding WhoPicker}"
+                            SelectedItem="{Binding WhoSelected}"
+                            Style="{StaticResource PickerStyle}" />
+
+                        <Label
+                            Margin="20,20,20,0"
+                            IsVisible="{Binding IsVisibleThirdParty}"
+                            Style="{StaticResource DescriptionStyle}"
+                            Text="Por favor ingresa los datos del tercero." />
+                        <Label
+                            Padding="20,10,20,0"
+                            IsVisible="{Binding IsVisibleThirdParty}"
+                            Style="{StaticResource LabelTitleEntryStyle}"
+                            Text="(*) Tipo de documento" />
+                        <Picker
+                            Margin="20,0,20,0"
+                            IsVisible="{Binding IsVisibleThirdParty}"
+                            ItemDisplayBinding="{Binding Name}"
+                            ItemsSource="{Binding Documents}"
+                            SelectedItem="{Binding DocumentSelected}"
+                            Style="{StaticResource DatePickerStyle}" />
+                        <Label
+                            Margin="20,0"
+                            Style="{StaticResource LabelErrorEntryStyle}"
+                            Text="{Binding ErrorDocumentType, Mode=TwoWay}" />
+                        <Label
+                            Padding="20,0,20,0"
+                            IsVisible="{Binding IsVisibleThirdParty}"
+                            Style="{StaticResource LabelTitleEntryStyle}"
+                            Text="(*) Número de documento " />
+                        <Entry
+                            Margin="20,0,20,0"
+                            IsVisible="{Binding IsVisibleThirdParty}"
+                            Keyboard="Numeric"
+                            Placeholder="Número de documento"
+                            Style="{StaticResource EntryStyle}"
+                            Text="{Binding Document}" />
+                        <Label
+                            Margin="20,0"
+                            Style="{StaticResource LabelErrorEntryStyle}"
+                            Text="{Binding ErrorDocument, Mode=TwoWay}" />
+
+                        <Button
+                            Margin="20,10,20,20"
+                            Command="{Binding SearchCommand}"
+                            IsVisible="{Binding IsVisibleThirdParty}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="Buscar" />
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+
+
+        </ContentPage>
+        <ContentPage Title="En curso" IconImageSource="TracingIcon.png">
+            <StackLayout>
+                <StackLayout BackgroundColor="{StaticResource Color13}">
+                    <Label
+                        Padding="10"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource SeccionNameStyle}"
+                        Text="{Binding Resources[TitlePQRS], Source={StaticResource Locator}}"
+                        VerticalOptions="Start" />
+                </StackLayout>
+                <ScrollView>
+                    <StackLayout>
+                        <Label
+                            Margin="20"
+                            Style="{StaticResource DescriptionStyle}"
+                            Text="Aquí podrás conocer el estado de tus solicitudes de reembolso que estén siendo gestionadas actualmente." />
+                        <StackLayout BindableLayout.ItemsSource="{Binding PQRSInCourse}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame
+                                        Margin="20,5,20,5"
+                                        HasShadow="True"
+                                        Style="{StaticResource FrameStyle}">
+                                        <StackLayout Spacing="7" VerticalOptions="Center">
+
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="{StaticResource font18}"
+                                                    Text="Factura No. "
+                                                    TextColor="{StaticResource Color1}"
+                                                    VerticalOptions="Center"
+                                                    XAlign="Start" />
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="{StaticResource font18}"
+                                                    Text="{Binding VoucherNumber}"
+                                                    TextColor="{StaticResource Color1}"
+                                                    VerticalOptions="Center"
+                                                    XAlign="Start" />
+                                            </StackLayout>
+                                            <Frame
+                                                Padding="0"
+                                                BackgroundColor="{StaticResource Color1}"
+                                                CornerRadius="15"
+                                                HasShadow="False"
+                                                HorizontalOptions="Start">
+                                                <Label
+                                                    Margin="10,5,10,5"
+                                                    BackgroundColor="Transparent"
+                                                    HorizontalOptions="Center"
+                                                    Text="{Binding EventStatusName}"
+                                                    TextColor="White" />
+                                            </Frame>
+                                            <Label Margin="0,0,0,10" Text="{Binding PersonOccurredEvent}" />
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image
+                                                    HeightRequest="10"
+                                                    Source="calendar_black.png"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="10" />
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="{StaticResource font14}"
+                                                    Text="Fecha del reporte:"
+                                                    VerticalOptions="Center" />
+                                            </StackLayout>
+                                            <Label
+                                                Margin="15,0,0,10"
+                                                FontSize="{StaticResource font14}"
+                                                Text="{Binding ReportDate}"
+                                                VerticalOptions="Center" />
+
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image
+                                                    HeightRequest="10"
+                                                    Source="calendar_black.png"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="10" />
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="{StaticResource font14}"
+                                                    Text="Fecha del evento:"
+                                                    VerticalOptions="Center" />
+                                            </StackLayout>
+                                            <Label
+                                                Margin="15,0,0,10"
+                                                FontSize="{StaticResource font14}"
+                                                Text="{Binding EventDate}"
+                                                VerticalOptions="Center" />
+
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="{StaticResource font14}"
+                                                Text="Tipo de evento:"
+                                                VerticalOptions="Center" />
+                                            <Label
+                                                Margin="0,0,0,10"
+                                                FontSize="{StaticResource font14}"
+                                                Text="{Binding EventTypeName}"
+                                                VerticalOptions="Center" />
+
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="{StaticResource font14}"
+                                                Text="Area Relacionada:"
+                                                VerticalOptions="Center" />
+                                            <Label
+                                                Margin="0,0,0,10"
+                                                FontSize="{StaticResource font14}"
+                                                Text="{Binding EventRelatedAreaName}"
+                                                VerticalOptions="Center" />
+
+
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="{StaticResource font14}"
+                                                Text="Comentario:"
+                                                VerticalOptions="Center" />
+                                            <ScrollView HeightRequest="100">
+                                                <Label Text="{Binding Commentary}" />
+                                            </ScrollView>
+                                        </StackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </ContentPage>
+    </TabbedPage.Children>
+</TabbedPage>

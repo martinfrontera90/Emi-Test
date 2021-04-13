@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.LandingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ext="clr-namespace:Emi.Portal.Movil.Controls"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}"
+    BackgroundColor="{StaticResource Color13}"
+    BindingContext="{Binding Call, Source={StaticResource Locator}}"
+    Icon="menu.png">
+
+    <ContentPage.Content>
+
+        <AbsoluteLayout
+            BindingContext="{Binding LandingPage, Source={StaticResource Locator}}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+
+            <Image
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All"
+                Aspect="AspectFill"
+                Source="bg_home" />
+
+            <StackLayout
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="FillAndExpand">
+
+                <views:CurrentServiceView />
+
+                <StackLayout Padding="20" VerticalOptions="FillAndExpand">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="{StaticResource font18}"
+                        HorizontalOptions="Center"
+                        Style="{StaticResource TitleStyle}"
+                        Text="{Binding UserName, StringFormat='Hola {0}'}"
+                        VerticalOptions="StartAndExpand" />
+
+                    <ListView
+                        BackgroundColor="Transparent"
+                        IsPullToRefreshEnabled="True"
+                        IsRefreshing="{Binding IsRefreshing}"
+                        ItemsSource="{Binding Items}"
+                        RefreshCommand="{Binding RefreshHomeCommand}"
+                        SeparatorVisibility="None" />
+
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="End">
+
+                        <Button
+                            Command="{Binding ServicesCommand}"
+                            Style="{StaticResource SecundaryButtonStyle}"
+                            Text="Solicitar Servicio" />
+
+                        <Button
+                            Command="{Binding ScheduledServicesCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="Servicios en Centros Médicos" />
+
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"
+            Text="Llamar" />
+        <ToolbarItem
+            Command="{Binding OpenChatCommand}"
+            Icon="IconNewChat.png"
+            Text="Chat" />
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

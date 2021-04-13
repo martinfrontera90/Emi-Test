@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ViewCell
+    x:Class="Emi.Portal.Movil.Views.OutgoingViewCell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ViewCell.View>
+        <StackLayout>
+
+            <Frame
+                Margin="80,10,10,0"
+                Padding="10"
+                BackgroundColor="#5bccfd"
+                FlowDirection="RightToLeft"
+                HasShadow="false"
+                IsVisible="{Binding IsFile, Converter={StaticResource VisibleInverseBoolConverter}}"
+                Rotation="180">
+                <Label Text="{Binding Text}" TextColor="Black" />
+                <Frame.CornerRadius>
+                    <OnPlatform x:TypeArguments="x:Single">
+                        <On Platform="iOS" Value="23" />
+                        <On Platform="Android" Value="40" />
+                    </OnPlatform>
+                </Frame.CornerRadius>
+            </Frame>
+            <Image
+                Margin="80,10,10,0"
+                FlowDirection="LeftToRight"
+                HeightRequest="50"
+                HorizontalOptions="End"
+                IsVisible="{Binding IsFile}"
+                Rotation="180"
+                Source="IconFile.png"
+                WidthRequest="50" />
+            <Label
+                Padding="10,0,0,0"
+                FontSize="9"
+                Rotation="180"
+                Text="{Binding CompleteName}"
+                TextColor="#999" />
+
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding OpenFileCommand}" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>

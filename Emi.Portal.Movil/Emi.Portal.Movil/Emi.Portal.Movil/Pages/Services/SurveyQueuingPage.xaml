@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    BindingContext="{Binding SurveyQueuingViewModel, Source={StaticResource Locator}}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Emi.Portal.Movil.Pages.Services.SurveyQueuingPage"
+    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views">
+    <ContentPage.Content><StackLayout
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical"
+            Margin="0, 20, 0, 0"
+            Spacing="0">
+             <views:CurrentServiceView />
+             <StackLayout           
+                BackgroundColor="{StaticResource Color13}"
+                Padding="10"
+                HorizontalOptions="FillAndExpand"           
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label                        
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="Motivos de Cancelación"/>
+             </StackLayout>
+             <BoxView Style="{StaticResource LineTitleStyle}"/>
+             <StackLayout                  
+                HorizontalOptions="FillAndExpand"
+                Padding="20"                                            
+                VerticalOptions="FillAndExpand">
+                 <input:RadioButtonGroupView
+                     BindableLayout.ItemsSource="{Binding Reasons}">
+                     <BindableLayout.ItemTemplate>
+                         <DataTemplate>
+                             <StackLayout
+                                 Spacing="0"
+                                 Margin="0, 5"
+                                 HorizontalOptions="FillAndExpand">
+                                
+                                <input:RadioButton
+                                    ClickCommand="{Binding SelectCommand}"
+                                     Value="{Binding Code}"
+                                     Text="{Binding Name}"/>
+
+                                <Entry
+                                     Style="{StaticResource EntryStyle}"
+                                     Margin="0, 5"
+                                     Placeholder="{Binding Name}"
+                                     Text="{Binding Comment}"
+                                     IsVisible="{Binding IsVisible}"
+                                     HorizontalOptions="FillAndExpand"  />
+                                 <Label                                      
+                                    Style="{StaticResource LabelErrorEntryStyle}"
+                                    Text="{Binding ErrorOther, Mode=TwoWay}"/>
+                             </StackLayout>
+                         </DataTemplate>  
+                     </BindableLayout.ItemTemplate>
+                 </input:RadioButtonGroupView>
+                  <StackLayout 
+                    BackgroundColor="{StaticResource WhiteColor}" 
+                    HorizontalOptions="FillAndExpand" 
+                    Padding="20" 
+                    VerticalOptions="EndAndExpand">
+                    <Button 
+                        Command="{Binding SendReasonCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}" 
+                        Text="Enviar" />
+
+                    <Button 
+                        Command="{Binding CancelarCommand}"
+                        Style="{StaticResource SecundaryButtonStyle}" 
+                        Text="Cancelar" />
+                </StackLayout>
+            </StackLayout>
+         </StackLayout>
+     </ContentPage.Content>
+
+</ContentPage>

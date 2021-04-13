@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+        BindingContext="{Binding ServicesPage, Source={StaticResource Locator}}"
+        xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:behaviors="clr-namespace:Emi.Portal.Movil.Logic.Behaviors;assembly=Emi.Portal.Movil.Logic"
+        x:Class="Emi.Portal.Movil.Pages.Services.EvaluateVideoCallPage"
+        xmlns:control="clr-namespace:Emi.Portal.Movil.Pages.Services">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"
+            Text="Llamar"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout BindingContext="{Binding EvaluateVideoCall, Source={StaticResource Locator}}">
+            <StackLayout BackgroundColor="{StaticResource Color13}"
+                        Padding="10"
+                        HorizontalOptions="FillAndExpand"           
+                        Orientation="Horizontal"
+                        VerticalOptions="Start">
+                <Label VerticalOptions="Start" 
+                       HorizontalOptions="CenterAndExpand" 
+                       HorizontalTextAlignment="Center"
+                       Style="{StaticResource SeccionNameStyle}"
+                       Text="{Binding Resources[EvaluateVideoCallTittle], Source={StaticResource Locator}}" />
+
+            </StackLayout>
+
+            <ScrollView HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand">
+
+                    <Label VerticalOptions="Start" 
+                           HorizontalOptions="CenterAndExpand" 
+                           HorizontalTextAlignment="Center"
+                           Text="{Binding Resources[QuestionEvaluate], Source={StaticResource Locator}}" />
+
+                    <control:ControlStarsRating GroupName="starsG2"
+                                                RatingControl="{Binding RatingQ2}"
+                                                Margin="0,5,0,0"
+                                                Padding="5"/>
+
+                    <Label                                      
+                        Style="{StaticResource LabelErrorEntryStyle}" 
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding ErrorStar, Mode=TwoWay}"/>
+
+
+                    <Editor VerticalOptions="FillAndExpand" Keyboard="Text" 
+                            HeightRequest="100" 
+                            MinimumHeightRequest="100" 
+                            BackgroundColor="White"
+                            Text="{Binding CommentEvaluateVideoCall}"
+                            InputTransparent="false"
+                            Placeholder="{Binding Resources[ObservationEvaluate], Source={StaticResource Locator}}"/>
+
+                    <Button VerticalOptions="End"
+                            Margin="10"
+                            Command="{Binding CancelEvaluateCommand}"                                    
+                            Style="{StaticResource CancelButtonStyle}"
+                            Text="{Binding Resources[NotNowEvaluate], Source={StaticResource Locator}}"/>
+
+
+                    <Button VerticalOptions="End"
+                            Margin="10"
+                            Command="{Binding SendEvaluateCommand}"                                    
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{Binding Resources[SendEvaluate], Source={StaticResource Locator}}"/>
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

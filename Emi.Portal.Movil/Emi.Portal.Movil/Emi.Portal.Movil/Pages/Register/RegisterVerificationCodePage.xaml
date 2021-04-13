@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage     
+    BindingContext="{Binding RegisterPage, Source={StaticResource Locator}}"
+    xmlns:behaviors="clr-namespace:Emi.Portal.Movil.Logic.Behaviors;assembly=Emi.Portal.Movil.Logic"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Emi.Portal.Movil.Pages.Register.RegisterVerificationCodePage"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+
+        <AbsoluteLayout                          
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+
+            <Image 
+                AbsoluteLayout.LayoutFlags="All" 
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                Aspect="AspectFill"
+                Source="bg_login"/>
+
+            <StackLayout
+                AbsoluteLayout.LayoutFlags="All" 
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                HorizontalOptions="FillAndExpand"
+                Spacing="0"
+                VerticalOptions="FillAndExpand">
+                <StackLayout    
+                    BackgroundColor="{StaticResource Color13}"
+                    Padding="10"
+                    HorizontalOptions="FillAndExpand"           
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label                    
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource SeccionNameStyle}"
+                        Text="Registro"/>
+                </StackLayout>
+                <BoxView Style="{StaticResource LineTitleStyle}"/>
+                <ScrollView                 
+                    VerticalOptions="FillAndExpand">
+                    <StackLayout
+                        Padding="20"
+                        VerticalOptions="FillAndExpand">
+
+                        <StackLayout                                                              
+                            VerticalOptions="Start">
+                            <Label
+                                FontAttributes="Bold"                            
+                                FontSize="{StaticResource font18}"          
+                                HorizontalTextAlignment="Center"                            
+                                HorizontalOptions="Center"
+                                Text="Verificación"/>
+                            <Label 
+                                FontSize="{StaticResource font16}"          
+                                Margin="0, 5, 0, 0"
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions="Center"
+                                Text="{Binding CellPhone, StringFormat='Por favor ingrese el código enviado al: {0}'}"/>
+                        </StackLayout>
+
+                        <StackLayout                         
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand">
+
+                            <Entry                                                       
+                                BackgroundColor="Transparent"                                                        
+                                HorizontalOptions="FillAndExpand"        
+                                Keyboard="Numeric"
+                                Placeholder="Código de verificación"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding CodeVerification, Mode=TwoWay}">
+
+                                <Entry.Behaviors>
+                                    <behaviors:EntryLengthValidatorBehavior MaxLength="6"/>
+                                </Entry.Behaviors>
+
+                            </Entry>
+
+                        </StackLayout>
+
+                        <StackLayout                         
+                            VerticalOptions="End">
+                            <Button
+                                Command="{Binding VerificationCodeCommand}"                        
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="Siguiente"/>
+                        </StackLayout>
+
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding CancelCommand}"
+            Icon="ic_close"
+            Text="Cancelar"/>
+    </ContentPage.ToolbarItems>
+</ContentPage>

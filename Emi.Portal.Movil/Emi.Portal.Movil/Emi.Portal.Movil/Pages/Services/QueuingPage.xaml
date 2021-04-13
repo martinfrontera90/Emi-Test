@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    BindingContext="{Binding QueuingViewModel, Source={StaticResource Locator}}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Emi.Portal.Movil.Pages.Services.QueuingPage">
+    <ContentPage.Content>
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical"
+            Spacing="0">
+
+                <Label
+                    Style="{StaticResource TitleStyle}"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    FontAttributes="Bold"
+                    Margin="15, 25, 15, 5"
+                    Text="Sala de Espera" />
+
+                 <Label
+                    Style="{StaticResource TitleStyle}"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource Color1}"
+                    Margin="15, 5"
+                    Text="{Binding TextQueuing}" />
+
+                <Label
+                    Style="{StaticResource TitleStyle}"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Margin="15, 5"
+                    Text="Nuestros médicos están en atención en este momento. Por favor espera." />
+
+                <StackLayout 
+                    BackgroundColor="{StaticResource WhiteColor}" 
+                    HorizontalOptions="FillAndExpand" 
+                    Padding="20" 
+                    VerticalOptions="EndAndExpand">
+                    <Button 
+                        Command="{Binding GetOutCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}" 
+                        Text="Salir" />
+                </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"            
+            Text="Llamar"/>
+    </ContentPage.ToolbarItems>
+</ContentPage>

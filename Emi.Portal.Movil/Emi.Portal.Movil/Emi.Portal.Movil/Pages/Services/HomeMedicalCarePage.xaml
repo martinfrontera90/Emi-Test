@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.Services.HomeMedicalCarePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Emi.Portal.Movil.Logic.Behaviors;assembly=Emi.Portal.Movil.Logic"
+    xmlns:iOSSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    BindingContext="{Binding ServicesPage, Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="{StaticResource Color12}"
+            BindingContext="{Binding ServicesPage, Source={StaticResource Locator}}"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <views:CurrentServiceView />
+            <StackLayout
+                Padding="20,10,10,10"
+                BackgroundColor="{StaticResource Color13}"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding DynamicTitlePage}" />
+            </StackLayout>
+            <BoxView Style="{StaticResource LineTitleStyle}" />
+            <StackLayout
+                BackgroundColor="{StaticResource WhiteColor}"
+                HorizontalOptions="FillAndExpand"
+                Spacing="0"
+                VerticalOptions="FillAndExpand">
+                <ScrollView VerticalOptions="FillAndExpand">
+                    <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Spacing="0"
+                        VerticalOptions="FillAndExpand">
+                        <Grid BackgroundColor="#f2f2f2">
+                            <WebView
+                                HeightRequest="250"
+                                IsVisible="{Binding IsVisibleMap}"
+                                Source="{Binding UrlMap}"
+                                VerticalOptions="Start">
+                                <WebView.Behaviors>
+                                    <behaviors:EventToCommandBehavior Command="{Binding NavigatingCommand}" EventName="Navigating" />
+                                    <behaviors:EventToCommandBehavior Command="{Binding NavigatedCommand}" EventName="Navigated" />
+                                </WebView.Behaviors>
+                            </WebView>
+                            <ActivityIndicator
+                                BackgroundColor="#f5f5f5"
+                                IsRunning="{Binding IsNavigating}"
+                                IsVisible="{Binding IsVisibleLoading}" />
+                            <Label
+                                Margin="20,5"
+                                IsVisible="{Binding IsVisibleMap, Converter={StaticResource VisibleInverseBoolConverter}}"
+                                Style="{StaticResource SeccionNameStyle}"
+                                Text="{Binding OtherSelected}" />
+                        </Grid>
+                        <!--  Detalle de la dirección  -->
+                        <StackLayout
+                            Padding="20"
+                            BackgroundColor="{StaticResource Color13}"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding IsVisibleDetailAddress}"
+                            Spacing="0"
+                            VerticalOptions="FillAndExpand">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource TitleStyle}"
+                                Text="Datos del paciente" />
+
+                            <StackLayout Padding="0,10">
+                                <Label
+                                    FontAttributes="Bold"
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource DescriptionStyle}"
+                                    Text="{Binding PersonSelected.FullNames}" />
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Image
+                                    HeightRequest="10"
+                                    HorizontalOptions="Start"
+                                    Source="navigation"
+                                    VerticalOptions="Start"
+                                    WidthRequest="10" />
+                                <StackLayout Spacing="1">
+                                    <Label
+                                        HorizontalOptions="Start"
+                                        IsVisible="{Binding FullCountry, Converter={StaticResource VisibleLabelConverter}}"
+                                        Style="{StaticResource TextStyle}"
+                                        Text="{Binding FullCountry}"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Label
+                                        HorizontalOptions="Start"
+                                        IsVisible="{Binding AddressSelected.StandardizedAddress, Converter={StaticResource VisibleLabelConverter}}"
+                                        Style="{StaticResource TextStyle}"
+                                        Text="{Binding AddressSelected.StandardizedAddress}"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout
+                                Padding="0,0,0,10"
+                                IsVisible="{Binding IsVisibleDetailAparment}"
+                                Orientation="Horizontal"
+                                Spacing="10">
+                                <Image
+                                    HeightRequest="10"
+                                    HorizontalOptions="Start"
+                                    Source="domain"
+                                    WidthRequest="10" />
+                                <StackLayout Spacing="1">
+                                    <Label
+                                        HorizontalOptions="Start"
+                                        IsVisible="{Binding AddressSelected.Apartment, Converter={StaticResource VisibleLabelConverter}}"
+                                        Style="{StaticResource TextStyle}"
+                                        Text="{Binding AddressSelected.Apartment, StringFormat='Apartamento {0}'}"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Label
+                                        HorizontalOptions="Start"
+                                        IsVisible="{Binding AddressSelected.AddressDetails, Converter={StaticResource VisibleLabelConverter}}"
+                                        Style="{StaticResource TextStyle}"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource LineTitleStyle}" />
+                        <!--  Detalle del solicitante  -->
+                        <StackLayout
+                            Padding="20"
+                            BackgroundColor="{StaticResource WhiteColor}"
+                            HorizontalOptions="FillAndExpand"
+                            Spacing="15"
+                            VerticalOptions="FillAndExpand">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource TitleStyle}"
+                                Text="Teléfono del solicitante" />
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource DescriptionStyle}"
+                                Text="Recuerda ingresar un número telefónico donde nuestro personal pueda contactarte en caso de requerirlo." />
+                            <StackLayout Spacing="0">
+                                <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Teléfono celular" />
+                                <Entry
+                                    Keyboard="Telephone"
+                                    Style="{StaticResource EntryStyle}"
+                                    Text="{Binding ApplicantCellPhone, Mode=TwoWay}">
+                                    <Entry.Behaviors>
+                                        <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthCellPhone], Source={StaticResource Locator}}" />
+                                    </Entry.Behaviors>
+                                </Entry>
+                                <Label Style="{StaticResource LabelErrorEntryStyle}" Text="{Binding ErrorApplicantCellPhone, Mode=TwoWay}" />
+                            </StackLayout>
+                            <StackLayout
+                                BackgroundColor="{StaticResource WhiteColor}"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                VerticalOptions="FillAndExpand">
+                                <Label
+                                    HorizontalOptions="FillAndExpand"
+                                    Style="{StaticResource TextStyle}"
+                                    Text="¿Este es el número donde podemos contactar al paciente?" />
+                                <Switch HorizontalOptions="End" IsToggled="{Binding IsToggledPhoneNumber}" />
+                            </StackLayout>
+                        </StackLayout>
+                        <BoxView IsVisible="{Binding IsVisiblePatientData}" Style="{StaticResource LineTitleStyle}" />
+                        <!--  Detalle del paciente  -->
+                        <StackLayout
+                            Padding="20"
+                            BackgroundColor="{StaticResource WhiteColor}"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding IsVisiblePatientData}"
+                            Spacing="15"
+                            VerticalOptions="FillAndExpand">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource TitleStyle}"
+                                Text="Teléfono del paciente" />
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource DescriptionStyle}"
+                                Text="Recuerda ingresar un número telefónico donde nuestro personal pueda contactar al paciente en caso de requerirlo." />
+
+                            <StackLayout Spacing="0">
+                                <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Teléfono celular" />
+                                <Entry
+                                    Keyboard="Telephone"
+                                    Style="{StaticResource EntryStyle}"
+                                    Text="{Binding PatientCellPhone, Mode=TwoWay}">
+                                    <Entry.Behaviors>
+                                        <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthCellPhone], Source={StaticResource Locator}}" />
+                                    </Entry.Behaviors>
+                                </Entry>
+                                <Label Style="{StaticResource LabelErrorEntryStyle}" Text="{Binding ErrorPatientCellPhone, Mode=TwoWay}" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout
+                            Padding="20"
+                            BackgroundColor="{StaticResource WhiteColor}"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="EndAndExpand">
+                            <Button
+                                Command="{Binding ConfirmateServiceCommand}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="Solicitar" />
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"
+            Text="Llamar" />
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

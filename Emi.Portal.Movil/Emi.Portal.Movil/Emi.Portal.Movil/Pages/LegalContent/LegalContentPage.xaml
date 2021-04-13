@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.LegalContent.LegalContentPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BindingContext="{Binding LegalContent, Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <StackLayout
+                Padding="10"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Start">
+                <Label
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding TitleLegalContent}" />
+            </StackLayout>
+            <BoxView Style="{StaticResource LineTitleStyle}" />
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Label
+                        x:Name="LoadingLabel"
+                        HorizontalOptions="Center"
+                        IsVisible="false"
+                        Text="Cargando..." />
+                    <WebView
+                        HorizontalOptions="FillAndExpand"
+                        Navigated="OnNavigated"
+                        Navigating="OnNavigating"
+                        Source="{Binding HtmlSource}"
+                        VerticalOptions="FillAndExpand" />
+                </StackLayout>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding CancelCallCommand}" Icon="{Binding Icon}" />
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

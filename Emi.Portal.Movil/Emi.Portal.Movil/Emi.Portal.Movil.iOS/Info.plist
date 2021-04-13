@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>MinimumOSVersion</key>
+	<string>11.0</string>
+	<key>CFBundleDisplayName</key>
+	<string>ucm</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>waze</string>
+	</array>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Esta aplicación necesita acceso al calendario</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Esta aplicación necesita acceso a la cámara</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Esta aplicación necesita acceso a las fotos.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>ucm requiere conocer tu ubicación para prestarte nuestros servicios de atención y/o asistencia médica.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>ucm requiere conocer tu ubicación para prestarte nuestros servicios de atención y/o asistencia médica.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>ucm requiere conocer tu ubicación para prestarte nuestros servicios de atención y/o asistencia médica.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Roboto-Regular.ttf</string>
+	</array>
+	<key>CFBundleName</key>
+	<string>ucm</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads </key>
+		<true/>
+	</dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>es</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>es</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+		<string>remote-notification</string>
+	</array>
+	<key>XSAppIconAssets</key>
+	<string>Resources/Media.xcassets/AppIcons.appiconset</string>
+	<key>XSLaunchImageAssets</key>
+	<string>Resources/Media.xcassets/LaunchImages.launchimage</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>use microphone to start video call</string>
+	<key>CFBundleShortVersionString</key>
+	<string>7.0</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.ucm.ucmapp</string>
+	<key>CFBundleVersion</key>
+	<string>79</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
+</dict>
+</plist>

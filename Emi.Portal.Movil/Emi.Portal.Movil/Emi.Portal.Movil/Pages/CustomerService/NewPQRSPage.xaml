@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.CustomerService.NewPQRSPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout BindingContext="{Binding PQRSPageViewModel, Source={StaticResource Locator}}" Spacing="0">
+            <StackLayout BackgroundColor="{StaticResource Color13}">
+                <Label
+                    Padding="10"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding TitlePQRS}"
+                    VerticalOptions="Start" />
+            </StackLayout>
+            <ScrollView>
+
+                <StackLayout>
+                    <StackLayout BackgroundColor="#f9f9f9">
+                        <Label Padding="20,10,20,10" Text="Información del usuario" />
+                        <Label
+                            Padding="20,0,20,0"
+                            Style="{StaticResource DescriptionStyle}"
+                            Text="{Binding PQRSUser.ResponseUser.FullName}" />
+                        <StackLayout Padding="20,0,20,10" Orientation="Horizontal">
+                            <Label Style="{StaticResource DescriptionStyle}" Text="{Binding PQRSUser.ResponseUser.DocumentName}" />
+                            <Label Style="{StaticResource DescriptionStyle}" Text="{Binding PQRSUser.ResponseUser.Document}" />
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <StackLayout Padding="20,0">
+                        <Label Text="Información del evento" />
+                        <Label Style="{StaticResource DescriptionStyle}" Text="Deberás diligenciar todos los campos obligatorios marcados con (*) dentro del siguiente formulario." />
+
+                        <Label
+                            Margin="0,10,0,0"
+                            Style="{StaticResource LabelTitleEntryStyle}"
+                            Text="(*) Área con la que se relaciona el evento" />
+                        <Picker
+                            ItemDisplayBinding="{Binding Name}"
+                            ItemsSource="{Binding Areas}"
+                            SelectedItem="{Binding AreaSelected}"
+                            Style="{StaticResource PickerStyle}" />
+                        <Label
+                            IsVisible="{Binding ErrorArea, Converter={StaticResource VisibleLabelConverter}}"
+                            Style="{StaticResource LabelErrorEntryStyle}"
+                            Text="{Binding ErrorArea, Mode=TwoWay}" />
+
+                        <Label
+                            Margin="0,10,0,0"
+                            Style="{StaticResource LabelTitleEntryStyle}"
+                            Text="Funcionario relacionado" />
+                        <Entry
+                            Keyboard="Text"
+                            Placeholder="Nombre del funcionario"
+                            Style="{StaticResource EntryStyle}"
+                            Text="{Binding NameOfficial}" />
+                        <Label
+                            IsVisible="{Binding ErrorOfficial, Converter={StaticResource VisibleLabelConverter}}"
+                            Style="{StaticResource LabelErrorEntryStyle}"
+                            Text="{Binding ErrorOfficial, Mode=TwoWay}" />
+
+                        <Label
+                            Margin="0,10,0,0"
+                            Style="{StaticResource LabelTitleEntryStyle}"
+                            Text="(*) Fecha que ocurrió el evento" />
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <DatePicker
+                                Date="{Binding EventDate}"
+                                Format="dd/MM/yyyy"
+                                MaximumDate="{Binding MaximumDate, Mode=TwoWay}"
+                                MinimumDate="{Binding MinimumDate, Mode=TwoWay}"
+                                Style="{StaticResource DatePickerStyle}" />
+                            <Image
+                                Grid.Column="1"
+                                HeightRequest="30"
+                                HorizontalOptions="End"
+                                Source="InformationIcon.png"
+                                VerticalOptions="Center"
+                                WidthRequest="30">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding InformationDateCommand}" CommandParameter="1" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                        <Frame
+                            BackgroundColor="#d9edf7"
+                            HasShadow="False"
+                            IsVisible="{Binding IsVisibleInformationDate}">
+                            <Label
+                                FontSize="{StaticResource font12}"
+                                Text="Para situaciones que superen los tres meses de antigüedad, puedes comunicarte con Servicio al Cliente vía chat o telefónicamente."
+                                TextColor="#31708f" />
+                        </Frame>
+
+
+                        <StackLayout IsVisible="{Binding IsVisibleRefundMotive}">
+                            <Label
+                                Margin="0,10,0,0"
+                                Style="{StaticResource LabelTitleEntryStyle}"
+                                Text="(*) Motivo del reembolso" />
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Picker
+                                    Margin="0"
+                                    FontSize="12"
+                                    HorizontalOptions="FillAndExpand"
+                                    ItemDisplayBinding="{Binding Name}"
+                                    ItemsSource="{Binding RefundMotive}"
+                                    SelectedItem="{Binding RefundMotiveSelected, Mode=TwoWay}"
+                                    Style="{StaticResource PickerStyle}" />
+                                <Image
+                                    Grid.Column="1"
+                                    HeightRequest="30"
+                                    HorizontalOptions="End"
+                                    Source="InformationIcon.png"
+                                    VerticalOptions="Center"
+                                    WidthRequest="30">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding InformationFileCommand}" CommandParameter="1" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                            <Frame
+                                BackgroundColor="#d9edf7"
+                                HasShadow="False"
+                                IsVisible="{Binding InformationFile}">
+                                <Label
+                                    FontSize="{StaticResource font12}"
+                                    Text="Para solicitud de reembolso por motivos diferentes a las opciones que encontrarás a continuación, debes comunicarte con Servicio al cliente. "
+                                    TextColor="#31708f" />
+                            </Frame>
+                            <Label
+                                IsVisible="{Binding ErrorRefundMotive, Converter={StaticResource VisibleLabelConverter}}"
+                                Style="{StaticResource LabelErrorEntryStyle}"
+                                Text="{Binding ErrorRefundMotive, Mode=TwoWay}" />
+                        </StackLayout>
+
+
+                        <Frame
+                            BackgroundColor="#d9edf7"
+                            HasShadow="False"
+                            IsVisible="{Binding IsVisibleHelpText}">
+                            <Label
+                                FontSize="{StaticResource font12}"
+                                Text="{Binding HelpText}"
+                                TextColor="#31708f" />
+                        </Frame>
+                        <Label
+                            Margin="0,10,0,0"
+                            Style="{StaticResource LabelTitleEntryStyle}"
+                            Text="Adjuntar documentos" />
+
+                        <StackLayout
+                            BindableLayout.ItemsSource="{Binding DocumentsRequired, Mode=TwoWay}"
+                            Spacing="5"
+                            VerticalOptions="FillAndExpand">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <StackLayout x:Name="father" IsVisible="{Binding IsVisibleFileList}">
+                                            <StackLayout IsVisible="{Binding ListFilled, Converter={StaticResource VisibleInverseBoolConverter}}">
+                                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                                    <Frame
+                                                        BackgroundColor="{StaticResource Color12}"
+                                                        HasShadow="False"
+                                                        HeightRequest="10"
+                                                        HorizontalOptions="FillAndExpand">
+                                                        <StackLayout Margin="-5" Orientation="Horizontal">
+                                                            <Image Margin="0,-10,0,-10" Source="ClipIcon.png" />
+                                                            <Label Text="{Binding Name}" TextColor="#727272" />
+                                                        </StackLayout>
+                                                        <Frame.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding AddFileListCommand}" />
+                                                        </Frame.GestureRecognizers>
+                                                    </Frame>
+                                                    <Image
+                                                        HeightRequest="30"
+                                                        HorizontalOptions="End"
+                                                        IsVisible="{Binding InformationFile, Converter={StaticResource VisibleLabelConverter}}"
+                                                        Source="InformationIcon.png"
+                                                        VerticalOptions="Center"
+                                                        WidthRequest="30">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding InformationFileCommand}" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </StackLayout>
+                                                <Frame
+                                                    BackgroundColor="#d9edf7"
+                                                    HasShadow="False"
+                                                    IsVisible="{Binding IsVisibleInformationFile}">
+                                                    <Label
+                                                        FontSize="{StaticResource font12}"
+                                                        Text="{Binding InformationFile}"
+                                                        TextColor="#31708f" />
+                                                </Frame>
+                                            </StackLayout>
+
+                                            <StackLayout BindableLayout.ItemsSource="{Binding FilesSelected}" IsVisible="{Binding FilesSelected.count, Converter={StaticResource ListViewVisibleConverter}}">
+                                                <BindableLayout.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Frame
+                                                            BackgroundColor="{StaticResource Color12}"
+                                                            HasShadow="False"
+                                                            HeightRequest="10">
+                                                            <StackLayout
+                                                                Margin="-5"
+                                                                Orientation="Horizontal"
+                                                                VerticalOptions="Center">
+                                                                <Image
+                                                                    Margin="0,-10,0,-10"
+                                                                    HorizontalOptions="Start"
+                                                                    Source="FileIcon.png" />
+                                                                <Label
+                                                                    HorizontalOptions="StartAndExpand"
+                                                                    Text="{Binding NameDocument}"
+                                                                    TextColor="#727272" />
+                                                                <Image HorizontalOptions="End" Source="TrashIcon.png">
+                                                                    <Image.GestureRecognizers>
+                                                                        <TapGestureRecognizer Command="{Binding BindingContext.DeleteFileListCommand, Source={x:Reference father}}" CommandParameter="{Binding .}" />
+                                                                    </Image.GestureRecognizers>
+                                                                </Image>
+                                                            </StackLayout>
+                                                        </Frame>
+                                                    </DataTemplate>
+                                                </BindableLayout.ItemTemplate>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <StackLayout IsVisible="{Binding IsVisibleFileList, Converter={StaticResource VisibleInverseBoolConverter}}">
+
+                                            <Label
+                                                Margin="0,10,0,0"
+                                                Style="{StaticResource LabelTitleEntryStyle}"
+                                                Text="{Binding Name}" />
+
+
+                                            <StackLayout IsVisible="{Binding IsVisibleAddFile}">
+                                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                                    <Frame
+                                                        BackgroundColor="{StaticResource Color12}"
+                                                        HasShadow="False"
+                                                        HeightRequest="10"
+                                                        HorizontalOptions="FillAndExpand">
+                                                        <StackLayout Margin="-5" Orientation="Horizontal">
+                                                            <Image Margin="0,-10,0,-10" Source="ClipIcon.png" />
+
+                                                            <Label Text="Adjuntar documento" TextColor="#727272" />
+
+                                                        </StackLayout>
+                                                        <Frame.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding AddFileCommand}" />
+                                                        </Frame.GestureRecognizers>
+
+                                                    </Frame>
+
+                                                    <Image
+                                                        HeightRequest="30"
+                                                        HorizontalOptions="End"
+                                                        IsVisible="{Binding InformationFile, Converter={StaticResource VisibleLabelConverter}}"
+                                                        Source="InformationIcon.png"
+                                                        VerticalOptions="Center"
+                                                        WidthRequest="30">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding InformationFileCommand}" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </StackLayout>
+                                                <Label
+                                                    IsVisible="{Binding IsVisibleError}"
+                                                    Style="{StaticResource LabelErrorEntryStyle}"
+                                                    Text="El adjunto es requerido" />
+                                                <Frame
+                                                    BackgroundColor="#d9edf7"
+                                                    HasShadow="False"
+                                                    IsVisible="{Binding IsVisibleInformationFile}">
+                                                    <Label
+                                                        FontSize="{StaticResource font12}"
+                                                        Text="{Binding InformationFile}"
+                                                        TextColor="#31708f" />
+                                                </Frame>
+                                            </StackLayout>
+                                            <Frame
+                                                BackgroundColor="{StaticResource Color12}"
+                                                HasShadow="False"
+                                                HeightRequest="10"
+                                                IsVisible="{Binding IsVisibleAddFile, Converter={StaticResource VisibleInverseBoolConverter}}">
+                                                <StackLayout
+                                                    Margin="-5"
+                                                    Orientation="Horizontal"
+                                                    VerticalOptions="Center">
+                                                    <Image
+                                                        Margin="0,-10,0,-10"
+                                                        HorizontalOptions="Start"
+                                                        Source="FileIcon.png" />
+                                                    <Label
+                                                        HorizontalOptions="StartAndExpand"
+                                                        Text="{Binding NameDocument}"
+                                                        TextColor="#727272" />
+                                                    <Image HorizontalOptions="End" Source="TrashIcon.png">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding DeleteFileCommand}" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </StackLayout>
+                                            </Frame>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                        <Frame
+                            BackgroundColor="#d9edf7"
+                            HasShadow="False"
+                            IsVisible="{Binding HasBankAccount}">
+                            <Label
+                                FontSize="{StaticResource font12}"
+                                Text="Debido a que el pago de nuestros servicios lo realizas a través de una cuenta bancaria, el reembolso se hará a la misma. "
+                                TextColor="#31708f" />
+                        </Frame>
+                        <Label
+                            Margin="0,10,0,0"
+                            Style="{StaticResource LabelTitleEntryStyle}"
+                            Text="(*) Comentario" />
+                        <Frame
+                            Padding="1"
+                            BackgroundColor="LightGray"
+                            CornerRadius="7"
+                            HasShadow="False"
+                            IsClippedToBounds="True">
+                            <Editor
+                                BackgroundColor="White"
+                                HeightRequest="80"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Text"
+                                MaxLength="1000"
+                                Placeholder="Detalla aquí tu comentario"
+                                Style="{Binding EditorStyle, Source={StaticResource Locator}}"
+                                Text="{Binding Comment}" />
+                        </Frame>
+                        <Label
+                            Padding="10"
+                            BackgroundColor="{StaticResource Color13}"
+                            Text="{Binding CharactersAvailable, StringFormat='{0} caracteres disponibles'}"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            IsVisible="{Binding ErrorComment, Converter={StaticResource VisibleLabelConverter}}"
+                            Style="{StaticResource LabelErrorEntryStyle}"
+                            Text="{Binding ErrorComment, Mode=TwoWay}" />
+                        <Button
+                            Margin="0,10,0,20"
+                            Command="{Binding ContinueCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="Enviar" />
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

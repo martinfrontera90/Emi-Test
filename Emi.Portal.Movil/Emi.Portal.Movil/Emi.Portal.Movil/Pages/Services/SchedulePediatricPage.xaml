@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.Services.SchedulePediatricPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="Padre"
+    BackgroundColor="{StaticResource GeneralBackgroundColor}"
+    BindingContext="{Binding ServicesPage, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="{StaticResource Color13}">
+                <Label
+                    Margin="0,10"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding DynamicTitlePage}"
+                    VerticalOptions="Start" />
+            </StackLayout>
+            <StackLayout Margin="20,10,20,20">
+                <StackLayout>
+                    <Label Style="{StaticResource DescriptionStyle}" Text="Recuerda ingresar un número telefónico donde nuestro personal pueda contactarte." />
+                    <Label Style="{StaticResource DescriptionStyle}" Text="Si en este número telefónico no podemos contactar al paciente por favor editarlo." />
+                    <Label Style="{StaticResource LabelTitleEntryStyle}" Text="* Teléfono celular" />
+                    <Entry Style="{StaticResource EntryDefaultStyle}" Text="{Binding PediatricPhone}" />
+                    <Label
+                        IsVisible="{Binding ErrorPediatricPhone, Converter={StaticResource VisibleLabelConverter}}"
+                        Style="{StaticResource LabelErrorEntryStyle}"
+                        Text="{Binding ErrorPediatricPhone, Mode=TwoWay}" />
+                </StackLayout>
+                <Label Style="{StaticResource TitleStyle}" Text="Fecha" />
+                <DatePicker
+                    Date="{Binding DateSelected}"
+                    Format="dd/MM/yyyy"
+                    MaximumDate="{Binding LatestDate}"
+                    MinimumDate="{Binding EarliestDate}"
+                    Style="{StaticResource DatePickerStyle}" />
+                <ScrollView>
+                    <StackLayout Margin="0,10,0,0" BindableLayout.ItemsSource="{Binding Agendas}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Style="{StaticResource FrameStyle}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout>
+
+                                            <StackLayout
+                                                Padding="2"
+                                                Orientation="Horizontal"
+                                                VerticalOptions="FillAndExpand">
+
+                                                <Image
+                                                    HeightRequest="10"
+                                                    Source="calendar_black"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="10" />
+                                                <Label
+                                                    Style="{StaticResource TextStyle}"
+                                                    Text="{Binding Day}"
+                                                    TextColor="{StaticResource Color1}"
+                                                    VerticalOptions="Center" />
+                                                <Label
+                                                    Style="{StaticResource TextStyle}"
+                                                    Text="{Binding Date}"
+                                                    TextColor="{StaticResource Color1}"
+                                                    VerticalOptions="Center" />
+                                            </StackLayout>
+                                            <StackLayout
+                                                Padding="2"
+                                                Orientation="Horizontal"
+                                                VerticalOptions="FillAndExpand">
+                                                <Image
+                                                    HeightRequest="10"
+                                                    Source="time2"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="10" />
+                                                <Label
+                                                    Style="{StaticResource TextStyle}"
+                                                    Text="{Binding Time}"
+                                                    VerticalOptions="Center" />
+                                            </StackLayout>
+
+                                        </StackLayout>
+                                        <!--  time2  -->
+                                        <Image
+                                            Grid.Column="1"
+                                            HeightRequest="10"
+                                            Source="arrow_tabs.png"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.ScheduleCommand, Source={x:Reference Padre}}" CommandParameter="{Binding .}" />
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

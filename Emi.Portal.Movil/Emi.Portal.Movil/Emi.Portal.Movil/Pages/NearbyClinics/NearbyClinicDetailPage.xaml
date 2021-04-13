@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    BackgroundColor="{StaticResource Color11}"
+    BindingContext="{Binding NearbyClinicsPage, Source={StaticResource Locator}}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Emi.Portal.Movil.Pages.NearbyClinicDetailPage"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}">
+    
+    <ContentPage.Content>
+        <StackLayout 
+            BindingContext="{Binding ClinicSelected}"
+            Spacing="0"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <views:CurrentServiceView />
+            <StackLayout           
+                BackgroundColor="{StaticResource Color13}"
+                Padding="20, 10, 10, 10"
+                HorizontalOptions="FillAndExpand"           
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label                                                                             
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding Resources[TitleNearbyClinics], Source={StaticResource Locator}}"/>
+            </StackLayout>
+            
+            <BoxView Style="{StaticResource LineTitleStyle}"/>
+            
+            <StackLayout
+                Spacing="0"
+                VerticalOptions="Fill"
+                HorizontalOptions="FillAndExpand">
+
+                <ListView     
+                    BackgroundColor="{StaticResource Color13}"
+                    HasUnevenRows="True"                            
+                    IsPullToRefreshEnabled="false"                    
+                    ItemTemplate="{StaticResource ListClinicServicesTemplate}"
+                    ItemsSource="{Binding Services}"                    
+                    SeparatorVisibility="None"
+                    VerticalOptions="FillAndExpand">
+                
+                    <ListView.Header>
+                        <StackLayout
+                            BackgroundColor="{StaticResource Color13}"
+                            Padding="0"
+                            Spacing="0"
+                            Orientation="Vertical"                    
+                            VerticalOptions="FillAndExpand">
+                        
+                            <StackLayout          
+                                BackgroundColor="{StaticResource Color11}"
+                                Padding="20, 10"
+                                VerticalOptions="Start">
+                                <Label                                                         
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource SubTitleStyle}"
+                                    Text="Información sobre el centro médico"/>
+                            </StackLayout>
+
+                            <Frame                        
+                                x:Name="stackMap"
+                                HasShadow="False"
+                                HeightRequest="150"
+                                Padding="0"
+                                VerticalOptions="Start">
+                            </Frame>
+
+                            <StackLayout                                                 
+                                Orientation="Vertical"
+                                Padding="20">
+                                <Label                   
+                                    Style="{StaticResource TitleStyle}"
+                                    Text="{Binding Name}"
+                                    TextColor="{StaticResource Color5}"/>
+                                <StackLayout 
+                                    Padding="0, 10, 0, 10"
+                                    Orientation="Vertical">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image 
+                                            Source="navigation.png"/>
+                                        <Label                                                                         
+                                            Grid.Column="1"                        
+                                            Style="{StaticResource TextStyle}"
+                                            Text="{Binding Address}"                                    
+                                            HorizontalOptions="StartAndExpand"/>
+                                        <Image 
+                                            Source="time.png" 
+                                            Grid.Row="1"/>
+                                        <Label                                                                         
+                                            Grid.Column="1" 
+                                            Grid.Row="1"         
+                                            FontAttributes="Bold"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource TextStyle}"
+                                            Text="Horario"/>
+                                        <Label                                     
+                                            FontSize="{StaticResource font14}"    
+                                            Grid.Column="1" 
+                                            Grid.Row="2"             
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding Schedule}"/>
+                                    </Grid>
+                                </StackLayout>
+                                
+                                <StackLayout 
+                                    IsVisible="{Binding Distance, Converter={StaticResource VisibleDistanceConverter}}"
+                                    Spacing="0">
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>                                                
+                                        </Grid.ColumnDefinitions> 
+
+                                        <Image   
+                                            HeightRequest="13"
+                                            Source="time.png"/>
+                                        <StackLayout
+                                            Spacing="0"
+                                            Grid.Column="1">
+                                            <Label                 
+                                                FontAttributes="Bold"
+                                                FontSize="{StaticResource font14}"
+                                                Text="Consulta Médica Adultos"
+                                                TextColor="#313131"/>
+                                            <Label                 
+                                                FontSize="{StaticResource font14}"
+                                                Text="Tiempo estimado de atención"
+                                                TextColor="#313131"/>
+                                            <Label                                                                 
+                                                FontSize="{StaticResource font14}"
+                                                Text="{Binding AdultTime}"
+                                                TextColor="{StaticResource Color1}"/>
+                                        </StackLayout>
+                                            
+                                    </Grid>
+                                </StackLayout>
+                                
+                                <StackLayout  
+                                    IsVisible="{Binding Distance, Converter={StaticResource VisibleDistanceConverter}}"
+                                    Spacing="0">
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>                                                
+                                        </Grid.ColumnDefinitions> 
+
+                                        <Image   
+                                            HeightRequest="13"
+                                            Source="time.png"/>
+                                        <StackLayout
+                                            Spacing="0"
+                                            Grid.Column="1">
+                                            <Label                 
+                                                FontAttributes="Bold"
+                                                FontSize="{StaticResource font14}"
+                                                Text="Consulta Médica Pediátrica"
+                                                TextColor="#313131"/>
+                                            <Label                 
+                                                FontSize="{StaticResource font14}"
+                                                Text="Tiempo estimado de atención"
+                                                TextColor="#313131"/>
+                                            <Label                                                                 
+                                                FontSize="{StaticResource font14}"
+                                                Text="{Binding PediatricTime}"
+                                                TextColor="{StaticResource Color1}"/>
+                                        </StackLayout>
+                                            
+                                    </Grid>
+                                </StackLayout>                                                                                       
+                            </StackLayout>
+                            <StackLayout
+                                Padding="20">
+                                <Button                                           
+                                    Command="{Binding GoToWazeCommand}"                                   
+                                    Style="{StaticResource CancelButtonStyle}"
+                                    Text="Cómo llegar"/>
+                                <Button                   
+                                    BackgroundColor="{StaticResource Color2}"
+                                    Command="{Binding CallMedicalCenterCommand}"                            
+                                    Style="{StaticResource SecundaryButtonStyle}"
+                                    Text="Llamar"/>
+                                <Button
+                                    BindingContext="{Binding MedicalCenterCoordinationPage, Source={StaticResource Locator}}"
+                                    Command="{Binding CoordinationCommand}"                        
+                                    IsVisible="{Binding IsVisibleCoordination}"
+                                    Style="{StaticResource SecundaryButtonStyle}"
+                                    Text="Coordinar servicios"/> 
+                            </StackLayout>
+                            <BoxView  WidthRequest="2" Style="{StaticResource LineTitleStyle}"/>
+                            <StackLayout                         
+                                Orientation="Vertical"
+                                Padding="20, 5, 20, 5">
+                                <Label
+                                    Text="Servicios disponibles"
+                                    TextColor="{StaticResource Color5}"/>
+                                <Label                            
+                                    FontSize="{StaticResource font14}"
+                                    Text="Atención con médicos especialistas a los que puedes acceder de forma ágil y en la comodidad de nuetros centros médicos."/>
+                            </StackLayout>
+                            
+                        </StackLayout>
+                    </ListView.Header>
+                    
+                </ListView>
+            </StackLayout>                
+        </StackLayout>
+
+
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"             
+            Text="Llamar"/>
+    </ContentPage.ToolbarItems>
+</ContentPage>

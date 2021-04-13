@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    BindingContext="{Binding Call, Source={StaticResource Locator}}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:iOSSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    x:Class="Emi.Portal.Movil.Pages.MyAccount.InvoiceDetailPage"
+    Title="{Binding Resource[TitleEmpty], Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+
+        
+        <StackLayout 
+            BindingContext="{Binding InvoiceDetailPage, Source={StaticResource Locator}}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"                         
+            Spacing="0">
+
+            <views:CurrentServiceView />
+            
+            <StackLayout           
+                BackgroundColor="{StaticResource Color13}"
+                Padding="10"
+                HorizontalOptions="FillAndExpand"           
+                VerticalOptions="Start">
+                <Label                                            
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding Resources[TitleInvoiceDetail], Source={StaticResource Locator}}">
+                </Label>
+            </StackLayout>
+            
+            <ScrollView 
+                HeightRequest="-1"
+                VerticalOptions="FillAndExpand">
+                <StackLayout 
+                    Spacing="0">
+                    
+                    <StackLayout 
+                        BackgroundColor="{StaticResource Color11}">                        
+                        <StackLayout 
+                            Padding="10">
+                            <Label 
+                                Style="{StaticResource TitleStyle}"
+                                FontAttributes="Bold"
+                                Text="{Binding InvoiceNumber, StringFormat='Factura No. {0}'}"                              
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center">
+                            </Label>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <BoxView
+                                VerticalOptions="Center"
+                                HorizontalOptions="FillAndExpand"
+                                HeightRequest="1"
+                                WidthRequest="50"  
+                                Color="LightGray">
+                            </BoxView>
+                        </StackLayout>
+
+                        <StackLayout 
+                            Margin="10, 0, 0, 8"                                                                                 
+                            Padding="2"
+                            Orientation="Vertical"
+                            VerticalOptions="FillAndExpand">
+                            <StackLayout 
+                                Orientation="Horizontal">
+                                <Image 
+                                    Source="calendar_black.png"
+                                    WidthRequest="10"
+                                    HeightRequest="10"
+                                    VerticalOptions="Center">
+                                </Image>
+                                <Label 
+                                    FontSize="{StaticResource font14}"
+                                    Text="Fecha de facturación:"
+                                    FontAttributes="Bold"
+                                    VerticalOptions="Center">
+                                </Label>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label 
+                                    Margin="15, 0, 0, 0"
+                                    FontSize="{StaticResource font14}"
+                                    Text="{Binding GeneratedDate}"
+                                    VerticalOptions="Center">
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout 
+                            Margin="10, 0, 0, 8"
+                            Orientation="Vertical"
+                            Padding="2"
+                            VerticalOptions="FillAndExpand">
+                            <StackLayout 
+                                Orientation="Horizontal">
+                                <Image 
+                                    Source="calendar_black.png"
+                                    WidthRequest="10"
+                                    HeightRequest="10"
+                                    VerticalOptions="Center">
+                                </Image>
+                                <Label 
+                                    FontSize="{StaticResource font14}"
+                                    Text="Fecha de vencimiento:"
+                                    FontAttributes="Bold"
+                                    VerticalOptions="Center"/>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label 
+                                    Margin="15, 0, 0, 0"
+                                    FontSize="{StaticResource font14}"
+                                    Text="{Binding ExpirationDate}"
+                                    VerticalOptions="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout 
+                        Padding="5" Orientation="Horizontal"                             
+                        BackgroundColor="Gray">
+                        <Label 
+                            Margin="10,0,0,0"
+                            Text="{Binding AmountTitle}"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalTextAlignment="Center"
+                            TextColor="White">
+                        </Label>
+                        <Label 
+                            Margin="5" 
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="End"
+                            Text="{Binding Amount, StringFormat='${0}'}"
+                            TextColor="White">
+                        </Label>
+                    </StackLayout>
+                    
+                    <StackLayout>
+                        <ListView 
+                            HeightRequest="{Binding HeightRequestList}"
+                            BackgroundColor="{StaticResource WhiteColor}"                
+                            HasUnevenRows="True"         
+                            IsPullToRefreshEnabled="false"                        
+                            ItemsSource="{Binding BeneficiaryAndProduct}"
+                            ItemTemplate="{StaticResource ListBeneficiariosTemplate}"                                                                                
+                            SeparatorVisibility="None">
+                        </ListView>
+                    </StackLayout>
+
+                    <StackLayout
+                        BackgroundColor="{StaticResource WhiteColor}"
+                        VerticalOptions="Start">
+                        
+                        <StackLayout                     
+                            Margin="10, 0, 0, 8"
+                            Padding="2"
+                            VerticalOptions="FillAndExpand">
+                            <StackLayout 
+                                Orientation="Horizontal">
+                                <Image 
+                                    Source="ic_done.png"
+                                    WidthRequest="10"
+                                    HeightRequest="10"
+                                    VerticalOptions="Center">
+                                </Image>
+                                <Label 
+                                    FontSize="{StaticResource font14}"
+                                    Text="Estado:"
+                                    FontAttributes="Bold"
+                                    VerticalOptions="Center">
+                                </Label>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label 
+                                    Margin="15, 0, 0, 0"
+                                    FontSize="{StaticResource font14}"
+                                    Text="{Binding State}"
+                                    VerticalOptions="Center">
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+                                                
+                        <StackLayout                     
+                            Margin="10, 0, 0, 8"
+                            Padding="2"
+                            VerticalOptions="FillAndExpand">
+                            <StackLayout 
+                                Orientation="Horizontal">
+                                <Image 
+                                    Source="{Binding IconPaymentMethod}"
+                                    WidthRequest="10"
+                                    HeightRequest="10"
+                                    VerticalOptions="Center">
+                                </Image>
+                                <Label 
+                                    FontSize="{StaticResource font14}"
+                                    Text="Modalidad de pago:"
+                                    FontAttributes="Bold"
+                                    VerticalOptions="Center">
+                                </Label>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label 
+                                    Margin="15, 0, 0, 0"
+                                    FontSize="{StaticResource font14}"
+                                    Text="{Binding Paymentmode}"
+                                    VerticalOptions="Center">
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+                        
+                        <StackLayout   
+                            IsVisible="{Binding IsVisibleAddressCharge}"
+                            Margin="10, 0, 0, 8"
+                            Padding="2"
+                            VerticalOptions="FillAndExpand">
+                            <StackLayout 
+                                Orientation="Horizontal">
+                                <Image 
+                                    Source="navigation.png"
+                                    WidthRequest="10"
+                                    HeightRequest="10"
+                                    VerticalOptions="Center">
+                                </Image>
+                                <Label 
+                                    FontSize="{StaticResource font14}"
+                                    Text="Dirección de cobro:"
+                                    FontAttributes="Bold"
+                                    VerticalOptions="Center">
+                                </Label>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label 
+                                    Margin="15, 0, 0, 0"
+                                    FontSize="{StaticResource font14}"
+                                    Text="{Binding AddressCharge}"
+                                    VerticalOptions="Center">
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+                        
+                        <StackLayout   
+                            IsVisible="{Binding IsVisibleCompany}"
+                            Margin="10, 0, 0, 8"
+                            Padding="2"
+                            VerticalOptions="FillAndExpand">
+                            <StackLayout 
+                                Orientation="Horizontal">
+                                <Image 
+                                    Source="navigation.png"
+                                    WidthRequest="10"
+                                    HeightRequest="10"
+                                    VerticalOptions="Center">
+                                </Image>
+                                <Label 
+                                    FontSize="{StaticResource font14}"
+                                    Text="Empresa:"
+                                    FontAttributes="Bold"
+                                    VerticalOptions="Center">
+                                </Label>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label 
+                                    Margin="15, 0, 0, 0"
+                                    FontSize="{StaticResource font14}"
+                                    Text="{Binding CompanyPayment}"
+                                    VerticalOptions="Center">
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+                        
+                        <StackLayout 
+                            IsVisible="{Binding IsVisibleBank}"
+                            Margin="10, 0, 0, 8"
+                            Orientation="Horizontal"
+                            Padding="2">
+                            <Image 
+                                Source="ic_account_balance.png"
+                                WidthRequest="10"
+                                HeightRequest="10"
+                                VerticalOptions="Center">
+                            </Image>
+                            <Label                             
+                                FontSize="{StaticResource font14}"
+                                Text="{Binding BankCardPayment}"
+                                VerticalOptions="Center">
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+
+                    
+                </StackLayout>
+            </ScrollView>
+            
+            <StackLayout
+                Padding="20"
+                VerticalOptions="EndAndExpand">
+                <Button
+                    Command="{Binding PayInvoiceCommand}"
+                    IsVisible="{Binding IsVisibleButtonPagar}"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="Pagar">
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding CallCategoryCommand}" 
+            Icon="phone.png" 
+            Text="Llamar" />
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

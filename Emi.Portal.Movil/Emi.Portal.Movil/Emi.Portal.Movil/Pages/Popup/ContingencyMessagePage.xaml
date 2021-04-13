@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<popup:PopupPage
+    x:Class="Emi.Portal.Movil.Pages.Popup.ContingencyMessagePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    x:Name="Padre"
+    BindingContext="{Binding ContingencyMessage, Source={StaticResource Locator}}"
+    CloseWhenBackgroundIsClicked="False">
+    <StackLayout Spacing="0">
+        <CarouselView
+            x:Name="Caru"
+            Margin="10,0"
+            HeightRequest="350"
+            IndicatorView="indicatorview"
+            ItemsSource="{Binding Messages}"
+            VerticalOptions="EndAndExpand"
+            WidthRequest="270">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        Margin="20"
+                        CornerRadius="10"
+                        HasShadow="False"
+                        VerticalOptions="CenterAndExpand">
+                        <StackLayout>
+                            <Image Aspect="AspectFit" HeightRequest="90">
+                                <Image.Source>
+                                    <UriImageSource CachingEnabled="false" Uri="{Binding Imagen}" />
+                                </Image.Source>
+                            </Image>
+                            <Label
+                                Margin="0,0,0,5"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource SeccionNameStyle}"
+                                Text="{Binding Title}" />
+                            <ScrollView HeightRequest="90">
+                                <Label
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Message}"
+                                    TextType="Html">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.OpenUrlCommand, Source={x:Reference Padre}}" CommandParameter="{Binding .}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </ScrollView>
+                            <Button
+                                Margin="0,10,0,0"
+                                Command="{Binding BindingContext.CloseCommand, Source={x:Reference Padre}}"
+                                IsVisible="{Binding Last}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="Aceptar" />
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <IndicatorView
+            x:Name="indicatorview"
+            Margin="0,-30,0,0"
+            IndicatorColor="{StaticResource Color10}"
+            IndicatorSize="10"
+            SelectedIndicatorColor="{StaticResource Color1}"
+            VerticalOptions="StartAndExpand" />
+    </StackLayout>
+
+</popup:PopupPage>

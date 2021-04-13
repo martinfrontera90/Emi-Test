@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    BindingContext="{Binding Call, Source={StaticResource Locator}}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Emi.Portal.Movil.Pages.CustomerService.ChatCustomerServicePage"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views">
+
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding ChatCustomerServicePage, Source={StaticResource Locator}}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <views:CurrentServiceView />
+            <WebView 
+                HorizontalOptions="FillAndExpand"
+                Source="{Binding HtmlSource, Mode=TwoWay}"
+                VerticalOptions="FillAndExpand"/>
+
+            <StackLayout
+                HorizontalOptions="FillAndExpand"
+                Padding="10, 0, 10, 20"
+                VerticalOptions="End">
+
+                <Button                                                   
+                    Command="{Binding ExitChatCommand}"
+                    HorizontalOptions="FillAndExpand"                    
+                    BorderRadius="2"
+                    Style="{StaticResource CancelButtonStyle}"
+                    Text="Salir"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"            
+            Text="Llamar"/>
+    </ContentPage.ToolbarItems>
+</ContentPage>

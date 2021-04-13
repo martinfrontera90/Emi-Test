@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.MyAccount.Cards.CardsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="Padre"
+    BackgroundColor="#f2f2f2"
+    BindingContext="{Binding CardsPageViewModel, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="{StaticResource Color13}">
+                <Label
+                    Padding="10"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding Resources[TitleCard], Source={StaticResource Locator}}"
+                    VerticalOptions="Start" />
+            </StackLayout>
+            <ScrollView>
+                <StackLayout BindableLayout.ItemsSource="{Binding Cards}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="15" HasShadow="False">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout>
+                                        <Label Text="{Binding NameAffiliate}" />
+                                        <Label Style="{StaticResource TextStyle}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding DescDocumentType}" />
+                                                    <Span Text="{Binding DocumentAffiliate.Document, StringFormat=' {0}'}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+
+                                    <Image
+                                        HeightRequest="20"
+                                        HorizontalOptions="EndAndExpand"
+                                        Source="arrow_tabs"
+                                        VerticalOptions="Center"
+                                        WidthRequest="20" />
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.OpenCardCommand, Source={x:Reference Padre}}" CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

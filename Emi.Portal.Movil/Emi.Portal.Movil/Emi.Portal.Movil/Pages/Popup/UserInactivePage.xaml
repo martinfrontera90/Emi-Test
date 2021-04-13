@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<dialog:DialogView 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    IsCanceledOnTouchOutside="False"
+    BindingContext="{Binding UserInactiveViewModel, Mode=OneWay, Source={StaticResource Locator}}"
+    xmlns:dialog="clr-namespace:AiForms.Dialogs.Abstractions;assembly=AiForms.Dialogs.Abstractions"
+    x:Class="Emi.Portal.Movil.Pages.Popup.UserInactivePage"
+    CornerRadius="15"
+    OverlayColor="#B3000000">
+    <ContentView BackgroundColor="White" Padding="12,12,12,4">
+        <StackLayout WidthRequest="315" 
+                     BackgroundColor="White" 
+                     Padding="0,5,0,0" 
+                     Spacing="0" 
+                     HorizontalOptions="CenterAndExpand">
+            
+            <Image Source="ModalAlert" />
+
+            <Label Text="{Binding Title}" 
+                    Style="{StaticResource TitleStyle}"
+                    FontAttributes="Bold"
+                    Margin="0,9,0,0"
+                    HorizontalTextAlignment="Center"/>
+
+            <Label Text="{Binding Message}" 
+                   Style="{StaticResource DescriptionStyle}" 
+                   LineBreakMode="WordWrap" 
+                   HorizontalTextAlignment="Center"
+                   Margin="5,3,5,2" />
+
+            <Button
+                Style="{StaticResource PrimaryButtonStyle}"
+                Margin="20, 10, 20, 0"
+                Text="{Binding TitleButton}"
+                Command="{Binding SendActiveUserCommand}"
+                Clicked="Button_Clicked" />
+
+            <Button
+                Style="{StaticResource CancelButtonStyle}"
+                Margin="20, 10, 20, 20"
+                Text="Cancelar" 
+                Clicked="Button_Clicked" 
+                BackgroundColor="Transparent"/>
+
+        </StackLayout>
+    </ContentView>
+</dialog:DialogView>

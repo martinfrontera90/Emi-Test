@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Emi.Portal.Movil.Views.ChatInputBarView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Emi.Portal.Movil.Logic.Behaviors;assembly=Emi.Portal.Movil.Logic"
+    xmlns:controls="clr-namespace:Emi.Portal.Movil.Controls">
+    <StackLayout Orientation="Horizontal">
+        <Frame
+            Margin="10,0,0,10"
+            Padding="0"
+            BackgroundColor="#dedfed"
+            BorderColor="#005187"
+            HeightRequest="40"
+            HorizontalOptions="FillAndExpand"
+            IsClippedToBounds="True">
+            <controls:ExtendedEditorControl
+                x:Name="chatTextInput"
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="10,0,15,0"
+                BackgroundColor="Transparent"
+                HorizontalOptions="FillAndExpand"
+                Keyboard="Chat"
+                Placeholder="Escriba su mensaje aquí"
+                Text="{Binding TextToSend}"
+                TextColor="Black"
+                VerticalOptions="EndAndExpand">
+                <controls:ExtendedEditorControl.Behaviors>
+                    <behaviors:EventToCommandBehavior Command="{Binding SendMessageCommand}" EventName="Completed" />
+                </controls:ExtendedEditorControl.Behaviors>
+            </controls:ExtendedEditorControl>
+            <Frame.CornerRadius>
+                <OnPlatform x:TypeArguments="x:Single">
+                    <On Platform="iOS" Value="23" />
+                    <On Platform="Android" Value="40" />
+                </OnPlatform>
+            </Frame.CornerRadius>
+        </Frame>
+        <Image
+            x:Name="image"
+            Margin="0,-10,5,0"
+            BackgroundColor="Transparent"
+            HeightRequest="50"
+            Source="EnviarMensajeChat.png"
+            WidthRequest="40">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SendMessageCommand}" />
+            </Image.GestureRecognizers>
+        </Image>
+    </StackLayout>
+</ContentView>

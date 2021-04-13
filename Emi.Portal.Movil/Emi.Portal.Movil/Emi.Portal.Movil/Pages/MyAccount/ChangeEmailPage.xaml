@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.MyAccount.ChangeEmailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}"
+    BindingContext="{Binding Call, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding ChangeEmailPage, Source={StaticResource Locator}}"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <views:CurrentServiceView />
+            <StackLayout
+                Padding="10"
+                BackgroundColor="{StaticResource Color13}"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding TitlePage}" />
+            </StackLayout>
+            <BoxView Style="{StaticResource LineTitleStyle}" />
+            <ScrollView BackgroundColor="{StaticResource Color11}" VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <StackLayout Padding="20">
+                        <Label
+                            FontSize="{StaticResource font14}"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding Resources[TextChangeEmail], Source={StaticResource Locator}}" />
+                        <Label
+                            Margin="10,10,10,0"
+                            FontSize="{StaticResource font14}"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding Resources[AllFieldStarRequired], Source={StaticResource Locator}}" />
+                    </StackLayout>
+                    <StackLayout Padding="20,0,20,0" VerticalOptions="FillAndExpand">
+                        <StackLayout VerticalOptions="FillAndExpand">
+
+                            <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Correo electrónico actual (*)" />
+                            <Entry
+                                Keyboard="Email"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding OldEmail, Mode=TwoWay}" />
+                            <Label Style="{StaticResource LabelErrorEntryStyle}" Text="{Binding ErrorOldEmail, Mode=TwoWay}" />
+
+                            <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Nuevo correo electrónico (*)" />
+                            <Entry
+                                Keyboard="Email"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding NewEmail, Mode=TwoWay}" />
+                            <Label Style="{StaticResource LabelErrorEntryStyle}" Text="{Binding ErrorNewEmail, Mode=TwoWay}" />
+
+                            <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Confirmar correo electrónico (*)" />
+                            <Entry
+                                Keyboard="Email"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding ConfirmEmail, Mode=TwoWay}" />
+                            <Label Style="{StaticResource LabelErrorEntryStyle}" Text="{Binding ErrorConfirmEmail, Mode=TwoWay}" />
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <Button
+                        Margin="20,10,20,0"
+                        Command="{Binding ChangeEmailCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="Cambiar Correo" />
+
+                    <Button
+                        Margin="20,10,20,20"
+                        Command="{Binding CancelChangeEmailCommand}"
+                        Style="{StaticResource CancelButtonStyle}"
+                        Text="Cancelar" />
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"
+            Text="Llamar" />
+    </ContentPage.ToolbarItems>
+</ContentPage>

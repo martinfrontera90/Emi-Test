@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.Register.RegisterDocumentPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Emi.Portal.Movil.Logic.Behaviors;assembly=Emi.Portal.Movil.Logic"
+    xmlns:iOSSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}"
+    BindingContext="{Binding RegisterPage, Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <Image
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All"
+                Aspect="AspectFill"
+                Source="bg_login" />
+
+            <StackLayout
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All"
+                HorizontalOptions="FillAndExpand"
+                Spacing="0"
+                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    Padding="10"
+                    BackgroundColor="{StaticResource Color13}"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource SeccionNameStyle}"
+                        Text="Registro" />
+                </StackLayout>
+                <BoxView Style="{StaticResource LineTitleStyle}" />
+                <ScrollView VerticalOptions="FillAndExpand">
+                    <StackLayout Padding="20" VerticalOptions="FillAndExpand">
+
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+
+                            <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Tipo de documento" />
+                            <Picker
+                                iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                HorizontalOptions="FillAndExpand"
+                                ItemDisplayBinding="{Binding Name}"
+                                ItemsSource="{Binding Documents}"
+                                SelectedIndexChanged="Picker_SelectedIndexChanged"
+                                SelectedItem="{Binding DocumentSelected, Mode=TwoWay}"
+                                Style="{StaticResource PickerStyle}" />
+
+                            <Label Style="{StaticResource LabelErrorEntryStyle}" Text="{Binding ErrorDocumentSelected, Mode=TwoWay}" />
+
+                            <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Número de documento" />
+                            <Entry
+                                x:Name="NumDocument"
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Numeric"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding DocumentNumber, Mode=TwoWay}" />
+
+                            <Label Style="{StaticResource LabelErrorEntryStyle}" Text="{Binding ErrorDocumentNumber, Mode=TwoWay}" />
+
+                            <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Correo electrónico" />
+                            <StackLayout Orientation="Horizontal">
+                                <Entry
+                                    HorizontalOptions="FillAndExpand"
+                                    Keyboard="Email"
+                                    Style="{StaticResource EntryStyle}"
+                                    Text="{Binding Email, Mode=TwoWay}">
+
+                                    <Entry.Behaviors>
+                                        <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthEmail], Source={StaticResource Locator}}" />
+                                    </Entry.Behaviors>
+                                </Entry>
+                                <Image HorizontalOptions="End" Source="help.png">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding InformationCommand}" CommandParameter="4" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+
+                            <Label Style="{StaticResource LabelErrorEntryStyle}" Text="{Binding ErrorEmail, Mode=TwoWay}" />
+
+                            <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Repetir correo electrónico" />
+
+                            <StackLayout Orientation="Horizontal">
+                                <Entry
+                                    HorizontalOptions="FillAndExpand"
+                                    Keyboard="Email"
+                                    Style="{StaticResource EntryStyle}"
+                                    Text="{Binding ConfirmationEmail, Mode=TwoWay}">
+
+                                    <Entry.Behaviors>
+                                        <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthEmail], Source={StaticResource Locator}}" />
+                                    </Entry.Behaviors>
+
+                                </Entry>
+
+                                <Image HorizontalOptions="End" Source="help.png">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding InformationCommand}" CommandParameter="4" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+
+                            <Label Style="{StaticResource LabelErrorEntryStyle}" Text="{Binding ErrorConfirmationEmail, Mode=TwoWay}" />
+
+                            <Grid Margin="0,0,0,15" VerticalOptions="StartAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Spacing="0">
+                                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            HorizontalOptions="Start"
+                                            Text="Acepto los"
+                                            VerticalOptions="StartAndExpand" />
+
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="términos de uso"
+                                            TextColor="Blue"
+                                            VerticalOptions="StartAndExpand">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding TermsAndConditionsCommmand}" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+
+                                        <Switch
+                                            HorizontalOptions="EndAndExpand"
+                                            IsToggled="{Binding IsTermsAndConditions, Mode=TwoWay}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+
+                                    <Label
+                                        FontSize="{StaticResource font14}"
+                                        Text="políticas de tratamiento de datos personales."
+                                        TextColor="Blue"
+                                        VerticalOptions="EndAndExpand">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding DataManagementPolicyCommand}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
+
+                            </Grid>
+
+                        </StackLayout>
+
+                        <StackLayout VerticalOptions="End">
+                            <Button
+                                Command="{Binding NextToNameCommand}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="Siguiente" />
+
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding CancelCommand}"
+            Icon="ic_close"
+            Text="Cancelar" />
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

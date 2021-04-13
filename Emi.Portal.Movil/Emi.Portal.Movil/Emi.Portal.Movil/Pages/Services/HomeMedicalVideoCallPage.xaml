@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.Services.HomeMedicalVideoCallPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ChatInput="clr-namespace:Emi.Portal.Movil.Views"
+    xmlns:ext="clr-namespace:Emi.Portal.Movil.Controls"
+    xmlns:local="clr-namespace:Emi.Portal.Movil.Helpers"
+    xmlns:tok="clr-namespace:Emi.Portal.Movil.Logic.VideoCall;assembly=Emi.Portal.Movil.Logic"
+    BackgroundColor="white"
+    BindingContext="{Binding MedicalVideoCall, Source={StaticResource Locator}}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ChatTemplateSelector x:Key="MessageTemplateSelector" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical"
+            Spacing="0">
+            <StackLayout
+                BackgroundColor="#FFFFFF"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Vertical"
+                Spacing="0">
+
+                <Label
+                    Margin="15,25"
+                    FontAttributes="Bold"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    IsVisible="{Binding IsMessageCalled}"
+                    Style="{StaticResource TitleStyle}"
+                    Text="{Binding VidoCallText}" />
+
+
+                <Label
+                    Margin="15,25"
+                    FontAttributes="Bold"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    IsVisible="{Binding IsCallIcon}"
+                    Style="{StaticResource TitleStyle}"
+                    Text="Llamada Entrante" />
+
+            </StackLayout>
+
+            <Grid
+                BackgroundColor="{StaticResource Color13}"
+                ColumnSpacing="0"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding SubscriberIsVisible, Converter={StaticResource VisibleInverseBoolConverter}}"
+                VerticalOptions="FillAndExpand">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout
+                    Grid.Row="0"
+                    BackgroundColor="#FFFFFF"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Vertical"
+                    Spacing="0">
+
+                    <AbsoluteLayout Padding="15,20,0,0" HorizontalOptions="FillAndExpand">
+
+                        <Label
+                            AbsoluteLayout.LayoutBounds="0, 0, .5, 1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            HorizontalOptions="StartAndExpand"
+                            HorizontalTextAlignment="Start"
+                            LineBreakMode="WordWrap"
+                            Style="{StaticResource TitleStyle}"
+                            Text="{Binding WarningMessage}"
+                            VerticalOptions="StartAndExpand"
+                            VerticalTextAlignment="Center" />
+
+                        <Image
+                            Margin="5,10,0,0"
+                            AbsoluteLayout.LayoutBounds="1, 1"
+                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                            Source="DoctorLLamada.png" />
+
+                    </AbsoluteLayout>
+
+                    <BoxView Style="{StaticResource LineTitleStyle}" Color="#1592E6" />
+
+                    <StackLayout
+                        BackgroundColor="{StaticResource Color13}"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="0"
+                        VerticalOptions="FillAndExpand">
+
+                        <AbsoluteLayout
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding IsAcceptcall}"
+                            VerticalOptions="EndAndExpand">
+
+                            <!--<Image
+                                 AbsoluteLayout.LayoutFlags="All"
+                                 AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+                                 Source="ovaloBotones.png"
+                                 HorizontalOptions="CenterAndExpand"/>-->
+
+                            <ImageButton
+                                AbsoluteLayout.LayoutBounds=".63, .5"
+                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                BackgroundColor="Transparent"
+                                Command="{Binding AcceptcallCommand}"
+                                Source="ic_start_call.png" />
+
+                            <ImageButton
+                                AbsoluteLayout.LayoutBounds=".33, .5"
+                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                BackgroundColor="Transparent"
+                                Command="{Binding RejectedCallCommand}"
+                                Source="ic_end_call.png" />
+
+                        </AbsoluteLayout>
+
+                    </StackLayout>
+
+                </StackLayout>
+            </Grid>
+
+            <Grid
+                BackgroundColor="White"
+                ColumnSpacing="0"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding SubscriberIsVisible}"
+                VerticalOptions="FillAndExpand">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <tok:OpenTokSubscriberView Grid.Row="0" IsVisible="{Binding SubscriberIsVisible}" />
+
+                <tok:OpenTokPublisherView Grid.Row="1" IsVisible="{Binding PublisherIsVisible}" />
+
+                <Grid
+                    Grid.Row="1"
+                    BackgroundColor="#E6ffffff"
+                    ColumnSpacing="0"
+                    IsVisible="{Binding EnableChat}"
+                    RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ListView
+                        x:Name="ChatList"
+                        Grid.Row="0"
+                        Margin="0,0,0,50"
+                        FlowDirection="LeftToRight"
+                        HasUnevenRows="True"
+                        ItemTemplate="{StaticResource MessageTemplateSelector}"
+                        ItemsSource="{Binding Messages}"
+                        Rotation="180"
+                        SeparatorColor="Transparent"
+                        VerticalOptions="FillAndExpand" />
+                </Grid>
+
+                <StackLayout
+                    Margin="0,20,5,0"
+                    HorizontalOptions="End"
+                    Orientation="Vertical"
+                    VerticalOptions="Start">
+                    <Image
+                        BackgroundColor="Transparent"
+                        HeightRequest="40"
+                        IsVisible="{Binding EnableUpload}"
+                        Source="IconUpload.png"
+                        WidthRequest="40">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FileCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        BackgroundColor="Transparent"
+                        HeightRequest="40"
+                        Source="ActivarChat.png"
+                        VerticalOptions="End"
+                        WidthRequest="40">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Style.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding EnableChat}"
+                                        TargetType="Image"
+                                        Value="True">
+                                        <Setter Property="Source" Value="DesActivarChat.png" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenChatCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                </StackLayout>
+
+
+                <ChatInput:ChatInputBarView
+                    x:Name="chatInput"
+                    Grid.RowSpan="2"
+                    Margin="0"
+                    BackgroundColor="Transparent"
+                    IsVisible="{Binding EnableChat}"
+                    VerticalOptions="End" />
+
+                <ext:ImageZoomContainer
+                    Grid.RowSpan="2"
+                    AbsoluteLayout.LayoutBounds="0.5, 0.5, 250, 500"
+                    AbsoluteLayout.LayoutFlags="XProportional, YProportional"
+                    BackgroundColor="White"
+                    IsEnabled="{Binding IsVisibleImage}"
+                    IsVisible="{Binding IsVisibleImage}">
+                    <ext:ImageZoomContainer.Content>
+                        <Image
+                            Grid.RowSpan="2"
+                            Aspect="AspectFit"
+                            HeightRequest="50"
+                            IsVisible="{Binding BackActive}">
+                            <Image.Source>
+                                <UriImageSource CachingEnabled="false" Uri="{Binding UrlImage}" />
+                            </Image.Source>
+                        </Image>
+                    </ext:ImageZoomContainer.Content>
+                </ext:ImageZoomContainer>
+
+                <ext:PdfWebView
+                    Grid.RowSpan="2"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding IsVisiblePdf}"
+                    Source="{Binding UrlPdf}"
+                    VerticalOptions="FillAndExpand" />
+
+                <StackLayout
+                    Grid.Row="1"
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    VerticalOptions="End">
+                    <Image
+                        BackgroundColor="Transparent"
+                        HeightRequest="50"
+                        IsVisible="{Binding Close}"
+                        Source="IconSave.png"
+                        WidthRequest="50">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SaveFileCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        BackgroundColor="Transparent"
+                        HeightRequest="50"
+                        IsVisible="{Binding Close}"
+                        Source="IconExit.png"
+                        WidthRequest="50">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CloseFileCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                </StackLayout>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

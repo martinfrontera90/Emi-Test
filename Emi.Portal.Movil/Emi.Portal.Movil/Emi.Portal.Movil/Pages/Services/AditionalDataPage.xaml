@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    BindingContext="{Binding ServicesPage, Source={StaticResource Locator}}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Emi.Portal.Movil.Logic.Behaviors;assembly=Emi.Portal.Movil.Logic"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    x:Class="Emi.Portal.Movil.Pages.Services.AditionalDataPage">
+    
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding ServicesPage, Source={StaticResource Locator}}"
+            BackgroundColor="{StaticResource Color12}"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+
+            <views:CurrentServiceView />
+
+            <StackLayout           
+                BackgroundColor="{StaticResource Color13}"
+                Padding="20, 10, 10, 10"
+                HorizontalOptions="FillAndExpand"           
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label                        
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding Resources[TitleRequestRervice], Source={StaticResource Locator}}"/>
+            </StackLayout>
+            <BoxView Style="{StaticResource LineTitleStyle}"/>
+            <StackLayout    
+                BackgroundColor="{StaticResource Color11}"                
+                HorizontalOptions="FillAndExpand"
+                Padding="20"                                            
+                VerticalOptions="FillAndExpand">
+                
+                <Label                         
+                    HorizontalTextAlignment="Start"                    
+                    Margin="0, 0, 0, 20"
+                    Style="{StaticResource DescriptionStyle}"
+                    Text="Todos los campos marcados con (*) son obligatorios"/>
+                
+                <Label 
+                    Text="(*) Teléfono celular"
+                    Style="{StaticResource LabelTitleEntryStyle}"/>
+
+                <StackLayout 
+                    Orientation="Horizontal">
+                    <Entry                             
+                        BackgroundColor="Transparent"                            
+                        HorizontalOptions="FillAndExpand"                        
+                        Keyboard="Numeric"
+                        Style="{StaticResource EntryStyle}"
+                        Text="{Binding AditionlPhone, Mode=TwoWay}">
+
+                        <Entry.Behaviors>
+                            <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthCellPhone], Source={StaticResource Locator}}"/>
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Image                                            
+                        HorizontalOptions="End"
+                        Source="help.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding InformationCommand}"
+                                CommandParameter="3"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+                <Label 
+                    IsVisible="{Binding ErrorAditionlPhone, Converter={StaticResource VisibleLabelConverter}}"                                                                
+                    Style="{StaticResource LabelErrorEntryStyle}" 
+                    Text="{Binding ErrorAditionlPhone, Mode=TwoWay}" />
+
+                <Label 
+                    Text="(*) Correo electrónico"
+                    Style="{StaticResource LabelTitleEntryStyle}"/>
+
+                <StackLayout 
+                    Orientation="Horizontal">
+                    <Entry                             
+                        BackgroundColor="Transparent"                            
+                        HorizontalOptions="FillAndExpand"                        
+                        Keyboard="Email"
+                        Style="{StaticResource EntryStyle}"
+                        Text="{Binding AditionalEmail, Mode=TwoWay}">
+
+                        <Entry.Behaviors>
+                            <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthEmail], Source={StaticResource Locator}}"/>
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Image                                            
+                        HorizontalOptions="End"
+                        Source="help.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding InformationCommand}"
+                                CommandParameter="4"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+                <Label 
+                    IsVisible="{Binding ErrorAditionalEmail, Converter={StaticResource VisibleLabelConverter}}"                                                                
+                    Style="{StaticResource LabelErrorEntryStyle}" 
+                    Text="{Binding ErrorAditionalEmail, Mode=TwoWay}" />
+                
+                <Button             
+                    Command="{Binding AditionalDataContinueCommand}"                                        
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="Continuar"
+                    VerticalOptions="EndAndExpand"/>
+
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

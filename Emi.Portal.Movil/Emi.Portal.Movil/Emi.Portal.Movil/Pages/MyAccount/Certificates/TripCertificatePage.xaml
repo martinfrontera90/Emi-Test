@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.MyAccount.Certificates.TripCertificatePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="Padre"
+    BindingContext="{Binding CertificatesPage.CardSelected, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="{StaticResource Color13}">
+                <Label
+                    Margin="10"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding CertificateName}"
+                    VerticalOptions="Start" />
+                <Label
+                    Margin="20,0,20,5"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SubTitleStyle}"
+                    Text="Selecciona las ciudades a las que planeas viajar y la fecha de salida y regreso de tu viaje. Las ciudades que encontrarás listadas, son las que están disponibles. El servicio estará sujeto al área de cobertura de cada operador."
+                    VerticalOptions="Start" />
+            </StackLayout>
+            <ScrollView>
+                <StackLayout Margin="20,0,20,20" VerticalOptions="FillAndExpand">
+                    <Label
+                        Padding="0,10,20,0"
+                        IsVisible="{Binding IsVisibleThirdParty}"
+                        Style="{StaticResource LabelTitleEntryStyle}"
+                        Text="(*) País" />
+                    <Picker
+                        ItemDisplayBinding="{Binding Name}"
+                        ItemsSource="{Binding Countries}"
+                        SelectedItem="{Binding CountrySelected}"
+                        Style="{StaticResource PickerStyle}" />
+                    <Label
+                        IsVisible="{Binding ErrorCountry}"
+                        Style="{StaticResource LabelErrorEntryStyle}"
+                        Text="Campo Requerido" />
+
+                    <ListView
+                        Margin="{OnPlatform Android='10,0,0,0',
+                                            iOS='0'}"
+                        HasUnevenRows="True"
+                        HeightRequest="60"
+                        IsVisible="{Binding CitiesSelected.Count, Converter={StaticResource ListViewVisibleConverter}}"
+                        ItemsSource="{Binding CitiesSelected}"
+                        SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Margin="0,2" Spacing="3">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image
+                                                HeightRequest="10"
+                                                Source="ic_close.png"
+                                                WidthRequest="10" />
+                                            <Label
+                                                FontSize="11"
+                                                Text="{Binding Name}"
+                                                VerticalOptions="Center" />
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.RemoveCityCommand, Source={x:Reference Padre}}" CommandParameter="{Binding .}" />
+                                            </StackLayout.GestureRecognizers>
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                </ViewCell>
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <StackLayout IsVisible="{Binding CitiesSave.Count, Converter={StaticResource ListViewVisibleConverter}}">
+                        <SearchBar
+                            Margin="{OnPlatform Android='-20,0,0,0',
+                                                iOS='-10,0,0,0'}"
+                            Placeholder="Buscar Ciudades"
+                            Style="{StaticResource EntryStyle}"
+                            Text="{Binding CitySearch}" />
+                        <ListView
+                            HasUnevenRows="True"
+                            HeightRequest="125"
+                            ItemsSource="{Binding Cities}"
+                            SeparatorVisibility="None">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Margin="{OnPlatform Android='0', iOS='-7'}" Orientation="Horizontal">
+                                            <CheckBox
+                                                IsChecked="{Binding IsSelected}"
+                                                IsEnabled="False"
+                                                Color="Gray" />
+                                            <Label Text="{Binding Name}" VerticalOptions="Center" />
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.SelectCityCommand, Source={x:Reference Padre}}" CommandParameter="{Binding .}" />
+                                            </StackLayout.GestureRecognizers>
+
+                                        </StackLayout>
+                                    </ViewCell>
+
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+
+                        </ListView>
+                        <Label
+                            IsVisible="{Binding ErrorCity}"
+                            Style="{StaticResource LabelErrorEntryStyle}"
+                            Text="Campo Requerido" />
+                    </StackLayout>
+
+                    <Label
+                        Padding="0,10,20,0"
+                        IsVisible="{Binding IsVisibleThirdParty}"
+                        Style="{StaticResource LabelTitleEntryStyle}"
+                        Text="(*) Fecha Inicio" />
+                    <DatePicker
+                        Date="{Binding StartDateSelected}"
+                        Format="yyyy/MM/dd"
+                        MinimumDate="{Binding MinStartDate}" />
+                    <Label
+                        Padding="0,10,20,0"
+                        IsVisible="{Binding IsVisibleThirdParty}"
+                        Style="{StaticResource LabelTitleEntryStyle}"
+                        Text="(*) Fecha Fin" />
+                    <DatePicker
+                        Date="{Binding EndDateSelected}"
+                        Format="yyyy/MM/dd"
+                        MaximumDate="{Binding MaxEndDate}"
+                        MinimumDate="{Binding MinimumEndDate}" />
+
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="15"
+                        VerticalOptions="EndAndExpand">
+                        <Image Source="DownloadIcon.png" VerticalOptions="Center" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="{StaticResource font14}"
+                            Text="Visualizar PDF"
+                            VerticalOptions="Center" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BindingContext.OpenPdfCommand, Source={x:Reference Padre}}">
+                                <TapGestureRecognizer.CommandParameter>
+                                    <x:Boolean>False</x:Boolean>
+                                </TapGestureRecognizer.CommandParameter>
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="15"
+                        VerticalOptions="End">
+                        <Image Source="EmailIcon.png" VerticalOptions="Center" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="{StaticResource font14}"
+                            Text="Enviar por email "
+                            VerticalOptions="CenterAndExpand" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BindingContext.OpenPdfCommand, Source={x:Reference Padre}}">
+                                <TapGestureRecognizer.CommandParameter>
+                                    <x:Boolean>True</x:Boolean>
+                                </TapGestureRecognizer.CommandParameter>
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.MyAccount.RegisterMinorPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{StaticResource GeneralBackgroundColor}"
+    BindingContext="{Binding RegisterMinorPage, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="{StaticResource Color13}">
+                <Label
+                    Padding="10"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding TitlePage}"
+                    VerticalOptions="Start" />
+            </StackLayout>
+            <ScrollView>
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <Frame
+                        BackgroundColor="#EBEBEB"
+                        HasShadow="False"
+                        VerticalOptions="FillAndExpand">
+                        <StackLayout>
+                            <Label Style="{StaticResource SeccionNameStyle}" Text="Registrar un menor de edad" />
+                            <Label Style="{StaticResource TextStyle}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Para acceder a la historia clínica electrónica de tu hijo menor de edad debes " />
+                                        <Span
+                                            FontAttributes="Bold"
+                                            Style="{StaticResource TextStyle}"
+                                            Text="seleccionarlo de la lista de familiares y adjuntar " />
+                                        <Span Text="tu documento de identidad y su partida de nacimiento." />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                Margin="0,10,0,-15"
+                                Style="{StaticResource EntryDefaultStyle}"
+                                Text="(*) Menor de edad afiliado" />
+
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <Picker
+                                        ItemDisplayBinding="{Binding FullNames}"
+                                        ItemsSource="{Binding Members}"
+                                        SelectedItem="{Binding MemberSelected}"
+                                        Style="{StaticResource PickerStyle}" />
+
+                                    <Image Grid.Column="1" Source="help">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding InformationCommand}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </StackLayout>
+
+                            <Label
+                                IsVisible="{Binding ErrorArea, Converter={StaticResource VisibleLabelConverter}}"
+                                Style="{StaticResource LabelErrorEntryStyle}"
+                                Text="{Binding ErrorMinorSelected}" />
+
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        BackgroundColor="#f2f2f2"
+                        HasShadow="False"
+                        VerticalOptions="FillAndExpand">
+                        <StackLayout>
+                            <Label Style="{StaticResource TextStyle}" Text="Todos los campos marcados con (*) son obligatorios.   La fecha de expedición de la Cédula de identidad no puede ser mayor a tres(3) meses.   Los formatos permitidos son PDF, jpeg y png de máximo 2MB por documento." />
+
+                            <Label
+                                Margin="0,10,0,-15"
+                                Style="{StaticResource EntryDefaultStyle}"
+                                Text="(*) Documento de identidad del solicitante" />
+                            <Grid>
+                                <Frame
+                                    BackgroundColor="{StaticResource Color12}"
+                                    BorderColor="#333333"
+                                    HasShadow="False"
+                                    HeightRequest="10"
+                                    HorizontalOptions="FillAndExpand">
+                                    <StackLayout Margin="-5" Orientation="Horizontal">
+                                        <Image Margin="0,-10,0,-10" Source="ClipIcon.png" />
+                                        <Label Text="Adjuntar documento" TextColor="#727272" />
+                                    </StackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding AddIdentityFileCommand}" />
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                                <Frame
+                                    BackgroundColor="{StaticResource Color12}"
+                                    HasShadow="False"
+                                    HeightRequest="10"
+                                    IsVisible="{Binding IdentityFile.Name, Converter={StaticResource VisibleLabelConverter}}">
+                                    <StackLayout
+                                        Margin="-5"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="Center">
+                                        <Image
+                                            Margin="0,-10,0,-10"
+                                            HorizontalOptions="Start"
+                                            Source="FileIcon.png" />
+                                        <Label
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding IdentityFile.Name}"
+                                            TextColor="#727272" />
+                                        <Image HorizontalOptions="End" Source="TrashIcon.png">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding DeleteIdentityFileCommand}" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                            <Label
+                                IsVisible="{Binding ErrorArea, Converter={StaticResource VisibleLabelConverter}}"
+                                Style="{StaticResource LabelErrorEntryStyle}"
+                                Text="{Binding ErrorIdentityFile}" />
+
+
+                            <Label
+                                Margin="0,10,0,-15"
+                                Style="{StaticResource EntryDefaultStyle}"
+                                Text="(*) Cédula de identidad" />
+                            <Grid>
+                                <Frame
+                                    BackgroundColor="{StaticResource Color12}"
+                                    BorderColor="#333333"
+                                    HasShadow="False"
+                                    HeightRequest="10"
+                                    HorizontalOptions="FillAndExpand">
+                                    <StackLayout Margin="-5" Orientation="Horizontal">
+                                        <Image Margin="0,-10,0,-10" Source="ClipIcon.png" />
+                                        <Label Text="Adjuntar documento" TextColor="#727272" />
+                                    </StackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding AddRegisterFileCommand}" />
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+
+                                <Frame
+                                    BackgroundColor="{StaticResource Color12}"
+                                    HasShadow="False"
+                                    HeightRequest="10"
+                                    IsVisible="{Binding RegisterFile.Name, Converter={StaticResource VisibleLabelConverter}}">
+                                    <StackLayout
+                                        Margin="-5"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="Center">
+                                        <Image
+                                            Margin="0,-10,0,-10"
+                                            HorizontalOptions="Start"
+                                            Source="FileIcon.png" />
+                                        <Label
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding RegisterFile.Name}"
+                                            TextColor="#727272" />
+                                        <Image HorizontalOptions="End" Source="TrashIcon.png">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding DeleteRegisterFileCommand}" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                            <Label
+                                IsVisible="{Binding ErrorArea, Converter={StaticResource VisibleLabelConverter}}"
+                                Style="{StaticResource LabelErrorEntryStyle}"
+                                Text="{Binding ErrorRegisterFile}" />
+                            <Button
+                                Margin="0,10"
+                                Command="{Binding SendCommand}"
+                                Style="{StaticResource SecundaryButtonStyle}"
+                                Text="Enviar"
+                                VerticalOptions="EndAndExpand" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

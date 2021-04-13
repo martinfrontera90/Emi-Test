@@ -1,0 +1,1827 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="Emi.Portal.Movil.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Conv="clr-namespace:Emi.Portal.Movil.Converts"
+    xmlns:EX="clr-namespace:Emi.Portal.Movil.Controls"
+    xmlns:infra="clr-namespace:Emi.Portal.Movil.Infrastructure">
+
+    <Application.Resources>
+        <!--  Application resource dictionary  -->
+        <ResourceDictionary>
+
+            <!--  Locator  -->
+            <infra:InstanceLocator x:Key="Locator" />
+
+            <!--  Recursos de Colores  -->
+            <Color x:Key="Color1">#34C3EA</Color>
+            <Color x:Key="Color2">#009EE0</Color>
+            <Color x:Key="Color3">#006AB2</Color>
+            <Color x:Key="Color4">#005187</Color>
+            <Color x:Key="Color5">#00456B</Color>
+            <Color x:Key="Color6">#F29400</Color>
+            <Color x:Key="Color7">#4C4C4C</Color>
+            <Color x:Key="Color8">#666666</Color>
+            <Color x:Key="Color9">#999999</Color>
+            <Color x:Key="Color10">#CCCCCC</Color>
+            <Color x:Key="Color11">#DDDDDD</Color>
+            <Color x:Key="Color12">#EBEBEB</Color>
+            <Color x:Key="Color13">#F2F2F2</Color>
+            <Color x:Key="Color14">#5b9bd5</Color>
+
+            <Color x:Key="CardsHome">#80013661</Color>
+            <Color x:Key="ErrorColor">#E2001A</Color>
+            <Color x:Key="FifthColor">#97BE0D</Color>
+            <Color x:Key="FourthColor">#0082C7</Color>
+            <Color x:Key="GeneralBackgroundColor">#DDDDDD</Color>
+            <Color x:Key="CardsBackgroundColor">#FFFFFF</Color>
+            <Color x:Key="LineTitleColor">#A5A5A6</Color>
+            <Color x:Key="SecundaryColor">#234F9C</Color>
+            <Color x:Key="ThirdColor">#009DDF</Color>
+            <Color x:Key="TextColorButton">#FFFFFF</Color>
+            <Color x:Key="TransparentColor">#00FFFFFF</Color>
+            <Color x:Key="WhiteColor">#FFFFFF</Color>
+
+            <Color x:Key="DarkBlueColor">#136AB2</Color>
+            <Color x:Key="NavigationPageColor">#136AB2</Color>
+
+            <Color x:Key="ActivePerson">#97BE0D</Color>
+            <Color x:Key="InactivePerson">#e22005</Color>
+
+            <Conv:ActiveInactiveToColorConvert x:Key="ActiveInactiveToColorConvert" />
+            <Conv:CoordinationPendingToConverter x:Key="CoordinationPendingToConverter" />
+            <Conv:EnablePickerConverter x:Key="EnablePickerConverter" />
+            <Conv:EntryInactiveColorTextConvert x:Key="EntryInactiveColorTextConvert" />
+            <Conv:GroupListViewConverter x:Key="GroupListViewConverter" />
+            <Conv:ListViewVisibleConverter x:Key="ListViewVisibleConverter" />
+            <Conv:VisiblePickerConverter x:Key="VisiblePickerConverter" />
+            <Conv:VisibleLabelConverter x:Key="VisibleLabelConverter" />
+            <Conv:VisiblePriceConverter x:Key="VisiblePriceConverter" />
+            <Conv:VisibleDistanceConverter x:Key="VisibleDistanceConverter" />
+            <Conv:VisibleInverseBoolConverter x:Key="VisibleInverseBoolConverter" />
+            <!--  ButtonBorderRadius  -->
+            <OnPlatform x:Key="ButtonBorderRadius" x:TypeArguments="x:Int32">
+                <OnPlatform.iOS>23</OnPlatform.iOS>
+                <OnPlatform.Android>40</OnPlatform.Android>
+            </OnPlatform>
+
+            <!--  Font Sizes  -->
+            <OnPlatform
+                x:Key="font9"
+                x:TypeArguments="x:Double"
+                Android="9"
+                iOS="8" />
+            <OnPlatform
+                x:Key="font10"
+                x:TypeArguments="x:Double"
+                Android="10"
+                iOS="9" />
+            <OnPlatform
+                x:Key="font11"
+                x:TypeArguments="x:Double"
+                Android="11"
+                iOS="10" />
+            <OnPlatform
+                x:Key="font12"
+                x:TypeArguments="x:Double"
+                Android="12"
+                iOS="11" />
+            <OnPlatform
+                x:Key="font13"
+                x:TypeArguments="x:Double"
+                Android="13"
+                iOS="12" />
+            <OnPlatform
+                x:Key="font14"
+                x:TypeArguments="x:Double"
+                Android="14"
+                iOS="13" />
+            <OnPlatform
+                x:Key="font15"
+                x:TypeArguments="x:Double"
+                Android="15"
+                iOS="14" />
+            <OnPlatform
+                x:Key="font16"
+                x:TypeArguments="x:Double"
+                Android="16"
+                iOS="15" />
+            <OnPlatform
+                x:Key="font17"
+                x:TypeArguments="x:Double"
+                Android="17"
+                iOS="16" />
+            <OnPlatform
+                x:Key="font18"
+                x:TypeArguments="x:Double"
+                Android="18"
+                iOS="17" />
+            <OnPlatform
+                x:Key="font19"
+                x:TypeArguments="x:Double"
+                Android="19"
+                iOS="18" />
+            <OnPlatform
+                x:Key="font20"
+                x:TypeArguments="x:Double"
+                Android="20"
+                iOS="19" />
+            <OnPlatform
+                x:Key="font22"
+                x:TypeArguments="x:Double"
+                Android="23"
+                iOS="21" />
+
+            <!--  FrameShadow  -->
+            <OnPlatform
+                x:Key="FrameShadow"
+                x:TypeArguments="x:Boolean"
+                Android="True"
+                iOS="False" />
+
+            <!--  MarginTitleLabel  -->
+            <OnPlatform x:Key="MarginTitleLabel" x:TypeArguments="Thickness">
+                <On Platform="Android">
+                    <On.Value>
+                        5, 0, 0, 0
+                    </On.Value>
+                </On>
+            </OnPlatform>
+
+            <!--  SeccionNameStyle  -->
+            <Style x:Key="SeccionNameStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="{StaticResource font20}" />
+                <Setter Property="TextColor" Value="{StaticResource Color7}" />
+            </Style>
+
+            <!--  TitleStyle  -->
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="{StaticResource font18}" />
+                <Setter Property="TextColor" Value="{StaticResource Color7}" />
+            </Style>
+
+            <!--  SubTitleStyle  -->
+            <Style x:Key="SubTitleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="{StaticResource font14}" />
+                <Setter Property="TextColor" Value="{StaticResource Color7}" />
+            </Style>
+
+            <!--  DescriptionStyle  -->
+            <Style x:Key="DescriptionStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="{StaticResource font14}" />
+                <Setter Property="TextColor" Value="{StaticResource Color8}" />
+            </Style>
+
+            <!--  TextStyle  -->
+            <Style x:Key="TextStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="{StaticResource font14}" />
+                <Setter Property="TextColor" Value="{StaticResource Color7}" />
+            </Style>
+
+            <!--  EntryDefaultStyle  -->
+            <Style x:Key="EntryDefaultStyle" TargetType="Entry">
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="TextColor" Value="{StaticResource Color7}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Color13}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource TransparentColor}" />
+            </Style>
+
+            <!--  EntryStyle  -->
+            <Style
+                x:Key="EntryStyle"
+                BasedOn="{StaticResource EntryDefaultStyle}"
+                TargetType="Entry" />
+
+            <!--  EntryDisabledStyle  -->
+            <Style
+                x:Key="EntryDisabledStyle"
+                BasedOn="{StaticResource EntryDefaultStyle}"
+                TargetType="Entry" />
+
+            <!--  DefaultButtonStyle  -->
+            <Style x:Key="DefaultButtonStyle" TargetType="EX:ExtendedButton">
+                <Setter Property="BorderRadius" Value="{StaticResource ButtonBorderRadius}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="{StaticResource font16}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalContentAlignment" Value="Start" />
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="VerticalContentAlignment" Value="Start" />
+            </Style>
+
+            <!--  LabelTitleEntryStyle  -->
+            <Style x:Key="LabelTitleEntryStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="{StaticResource font12}" />
+                <Setter Property="Margin" Value="{StaticResource MarginTitleLabel}" />
+                <Setter Property="TextColor" Value="{StaticResource Color7}" />
+            </Style>
+
+            <!--  LabelErrorEntryStyle  -->
+            <Style x:Key="LabelErrorEntryStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="{StaticResource font12}" />
+                <Setter Property="Margin" Value="{StaticResource MarginTitleLabel}" />
+                <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+            </Style>
+
+            <!--  LineTitleStyle  -->
+            <Style x:Key="LineTitleStyle" TargetType="BoxView">
+                <Setter Property="Color" Value="{StaticResource LineTitleColor}" />
+                <Setter Property="HeightRequest" Value="0.3" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+
+            <!--  PrimaryButtonStyle  -->
+            <Style
+                x:Key="PrimaryButtonStyle"
+                BasedOn="{StaticResource DefaultButtonStyle}"
+                TargetType="EX:ExtendedButton">
+                <Setter Property="BackgroundColor" Value="{StaticResource Color1}" />
+            </Style>
+
+            <!--  SecundaryButtonStyle  -->
+            <Style
+                x:Key="SecundaryButtonStyle"
+                BasedOn="{StaticResource DefaultButtonStyle}"
+                TargetType="EX:ExtendedButton">
+                <Setter Property="BackgroundColor" Value="{StaticResource Color3}" />
+            </Style>
+
+            <!--  TertiaryButtonStyle  -->
+            <Style
+                x:Key="TertiaryButtonStyle"
+                BasedOn="{StaticResource DefaultButtonStyle}"
+                TargetType="EX:ExtendedButton">
+                <Setter Property="BackgroundColor" Value="{StaticResource Color14}" />
+            </Style>
+
+            <!--  CancelButtonStyle  -->
+            <Style
+                x:Key="CancelButtonStyle"
+                BasedOn="{StaticResource DefaultButtonStyle}"
+                TargetType="EX:ExtendedButton">
+                <Setter Property="BackgroundColor" Value="{StaticResource TransparentColor}" />
+                <Setter Property="BorderColor" Value="{StaticResource Color7}" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="TextColor" Value="{StaticResource Color7}" />
+            </Style>
+
+
+            <Style TargetType="Picker">
+                <Setter Property="Title" Value="Seleccionar" />
+            </Style>
+
+            <!--  PickerStyle  -->
+            <Style x:Key="PickerStyle" TargetType="Picker">
+                <Setter Property="BackgroundColor" Value="{StaticResource TransparentColor}" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="TextColor" Value="{StaticResource Color7}" />
+            </Style>
+
+            <!--  DatePickerStyle  -->
+            <Style x:Key="DatePickerStyle" TargetType="DatePicker">
+                <Setter Property="BackgroundColor" Value="{StaticResource TransparentColor}" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="TextColor" Value="{StaticResource Color7}" />
+            </Style>
+
+            <!--  FrameStyle  -->
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource CardsBackgroundColor}" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="HasShadow" Value="{StaticResource FrameShadow}" />
+            </Style>
+
+            <!--  AMDInProcessButtonStyle  -->
+            <Style x:Key="AMDInProcessButtonStyle" TargetType="EX:ExtendedButton">
+                <Setter Property="BackgroundColor" Value="{StaticResource Color1}" />
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+            </Style>
+
+            <!--  Data Templates  -->
+            <!--  ListClinicServicesTemplate  -->
+            <DataTemplate x:Key="ListClinicServicesTemplate">
+                <ViewCell>
+                    <Grid Padding="20,5">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+
+                        <Image Source="list.png" />
+
+                        <Label
+                            Grid.Column="1"
+                            FontSize="{StaticResource font14}"
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Start"
+                            Text="{Binding}"
+                            VerticalOptions="CenterAndExpand" />
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+
+            <!--  ListNearbyClinicTemplate  -->
+            <DataTemplate x:Key="ListNearbyClinicTemplate">
+
+                <ViewCell>
+                    <StackLayout Padding="10,5">
+                        <Frame Style="{StaticResource FrameStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image
+                                    Grid.Column="0"
+                                    Source="gps2.png"
+                                    VerticalOptions="Start" />
+
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Spacing="10"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource font16}"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{Binding Name}"
+                                        TextColor="{StaticResource DarkBlueColor}"
+                                        VerticalOptions="Center" />
+                                    <StackLayout Spacing="0">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image HeightRequest="13" Source="navigation.png" />
+                                            <Label
+                                                Grid.Row="2"
+                                                FontSize="{StaticResource font14}"
+                                                Text="{Binding Address}"
+                                                TextColor="#313131" />
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                    <StackLayout IsVisible="{Binding Distance, Converter={StaticResource VisibleDistanceConverter}}" Spacing="0">
+                                        <Grid RowSpacing="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image HeightRequest="13" Source="time.png" />
+                                            <StackLayout Grid.Column="1" Spacing="0">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="{StaticResource font14}"
+                                                    Text="Consulta Médica Adultos"
+                                                    TextColor="#313131" />
+                                                <Label
+                                                    FontSize="{StaticResource font14}"
+                                                    Text="Tiempo estimado de atención"
+                                                    TextColor="#313131" />
+                                                <Label
+                                                    FontSize="{StaticResource font14}"
+                                                    Text="{Binding AdultTime}"
+                                                    TextColor="{StaticResource Color1}" />
+                                            </StackLayout>
+
+                                        </Grid>
+                                    </StackLayout>
+
+                                    <StackLayout IsVisible="{Binding Distance, Converter={StaticResource VisibleDistanceConverter}}" Spacing="0">
+                                        <Grid RowSpacing="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image HeightRequest="13" Source="time.png" />
+                                            <StackLayout Grid.Column="1" Spacing="0">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="{StaticResource font14}"
+                                                    Text="Consulta Médica Pediátrica"
+                                                    TextColor="#313131" />
+                                                <Label
+                                                    FontSize="{StaticResource font14}"
+                                                    Text="Tiempo estimado de atención"
+                                                    TextColor="#313131" />
+                                                <Label
+                                                    FontSize="{StaticResource font14}"
+                                                    Text="{Binding PediatricTime}"
+                                                    TextColor="{StaticResource Color1}" />
+                                            </StackLayout>
+
+                                        </Grid>
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                                <StackLayout Grid.Column="2" VerticalOptions="Start">
+                                    <Image
+                                        HeightRequest="13"
+                                        HorizontalOptions="EndAndExpand"
+                                        Source="arrow_tabs.png" />
+                                    <Label
+                                        FontSize="{StaticResource font14}"
+                                        IsVisible="{Binding Distance, Converter={StaticResource VisibleDistanceConverter}}"
+                                        Text="{Binding Distance, StringFormat='{0} km'}"
+                                        TextColor="#313131" />
+                                </StackLayout>
+
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectCommand}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <!--  PendingCoordinationsTemplate  -->
+            <DataTemplate x:Key="PendingCoordinationsTemplate">
+                <ViewCell>
+
+                    <StackLayout Padding="10,5">
+                        <Frame Style="{StaticResource FrameStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Spacing="0" VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource font14}"
+                                        HorizontalTextAlignment="Start"
+                                        Text="{Binding Names}"
+                                        TextColor="{StaticResource Color1}"
+                                        VerticalOptions="Start" />
+                                    <Label
+                                        HorizontalTextAlignment="Start"
+                                        Style="{StaticResource TextStyle}"
+                                        Text="{Binding NameSpecialty}"
+                                        VerticalOptions="Center" />
+
+                                    <StackLayout Padding="0,10,0,0" Orientation="Horizontal">
+                                        <Image
+                                            HeightRequest="10"
+                                            HorizontalOptions="Start"
+                                            Source="medicalcenter.png"
+                                            WidthRequest="10" />
+                                        <Label
+                                            HorizontalOptions="Start"
+                                            Style="{StaticResource TextStyle}"
+                                            Text="{Binding ClinicName}"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image
+                                            HeightRequest="10"
+                                            HorizontalOptions="Start"
+                                            Source="navigation.png"
+                                            WidthRequest="10" />
+                                        <Label
+                                            HorizontalOptions="Start"
+                                            HorizontalTextAlignment="Start"
+                                            Style="{StaticResource TextStyle}"
+                                            Text="{Binding Address}"
+                                            VerticalOptions="CenterAndExpand"
+                                            XAlign="Start" />
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image
+                                            HeightRequest="10"
+                                            HorizontalOptions="Start"
+                                            Source="time.png"
+                                            WidthRequest="10" />
+                                        <Label
+                                            Grid.Column="1"
+                                            HorizontalOptions="Start"
+                                            HorizontalTextAlignment="Start"
+                                            Style="{StaticResource TextStyle}"
+                                            Text="{Binding Date}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                                <Image
+                                    Grid.Column="1"
+                                    HeightRequest="10"
+                                    Source="arrow_tabs.png"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectCommand}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </StackLayout>
+
+                </ViewCell>
+            </DataTemplate>
+
+            <!--  ListSchedulesTemplate  -->
+            <DataTemplate x:Key="ListSchedulesTemplate">
+                <ViewCell>
+                    <StackLayout Padding="10,5">
+                        <Frame Style="{StaticResource FrameStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Spacing="0" VerticalOptions="Center">
+
+                                    <StackLayout
+                                        Padding="2,5,0,0"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <Image
+                                            HeightRequest="10"
+                                            Source="calendar_black.png"
+                                            VerticalOptions="Center"
+                                            WidthRequest="10" />
+
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding DateMobile}"
+                                            TextColor="{StaticResource Color1}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        Padding="2"
+                                        IsVisible="{Binding IsVisiblePersonalData}"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <Image
+                                            HeightRequest="10"
+                                            Source="time.png"
+                                            VerticalOptions="Center"
+                                            WidthRequest="10" />
+
+                                        <Label
+                                            Style="{StaticResource TextStyle}"
+                                            Text="{Binding TimeMobile}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                                <Image
+                                    Grid.Column="1"
+                                    HeightRequest="10"
+                                    Source="arrow_tabs.png"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ConfirmNewCoordinationCommand}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </StackLayout>
+                </ViewCell>
+
+            </DataTemplate>
+
+            <DataTemplate x:Key="ListMyFamilyTemplate">
+
+                <ViewCell>
+                    <StackLayout Padding="10,5">
+                        <Frame Style="{StaticResource FrameStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Spacing="0" VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource font14}"
+                                        Text="{Binding FullNames}"
+                                        TextColor="{StaticResource Color1}"
+                                        VerticalOptions="Start"
+                                        XAlign="Start" />
+                                    <Label
+                                        Margin="0,0,0,10"
+                                        FontSize="{StaticResource font14}"
+                                        Text="{Binding FullDocument}"
+                                        VerticalOptions="Center"
+                                        XAlign="Start" />
+
+                                    <StackLayout
+                                        Padding="2,5,0,0"
+                                        IsVisible="{Binding IsVisiblePersonalData}"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <Image
+                                            HeightRequest="10"
+                                            Source="phone_black.png"
+                                            VerticalOptions="Center"
+                                            WidthRequest="10" />
+
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding Phone}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        Padding="2"
+                                        IsVisible="{Binding IsVisiblePersonalData}"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <Image
+                                            HeightRequest="10"
+                                            Source="email.png"
+                                            VerticalOptions="Center"
+                                            WidthRequest="10" />
+
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding Email}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+
+                                    <Label
+                                        FontSize="{StaticResource font14}"
+                                        Text="{Binding Status}"
+                                        TextColor="{Binding Active, Converter={StaticResource ActiveInactiveToColorConvert}}"
+                                        VerticalOptions="Center"
+                                        XAlign="Start" />
+
+                                </StackLayout>
+                                <Image
+                                    Grid.Column="1"
+                                    HeightRequest="30"
+                                    Source="more.png"
+                                    VerticalOptions="Start">
+
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OptionsCommand}" />
+                                    </Image.GestureRecognizers>
+
+                                </Image>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </ViewCell>
+
+            </DataTemplate>
+
+            <DataTemplate x:Key="ListMenuTemplate">
+                <ViewCell>
+
+                    <StackLayout
+                        Padding="20,10"
+                        Orientation="Horizontal"
+                        Spacing="20"
+                        VerticalOptions="FillAndExpand">
+
+                        <Image
+                            HeightRequest="17"
+                            Source="{Binding Icon}"
+                            VerticalOptions="Center"
+                            WidthRequest="17" />
+                        <Label
+                            FontSize="{StaticResource font14}"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{Binding Title}"
+                            VerticalOptions="Center" />
+                        <Image
+                            HeightRequest="10"
+                            HorizontalOptions="End"
+                            Source="arrow_tabs"
+                            VerticalOptions="Center"
+                            WidthRequest="10" />
+
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ListSubMenuTemplate">
+                <ViewCell>
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <StackLayout
+                            Padding="20,10"
+                            Orientation="Horizontal"
+                            Spacing="20"
+                            VerticalOptions="FillAndExpand">
+                            <Label
+                                FontSize="{StaticResource font14}"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding Title}"
+                                VerticalOptions="Center" />
+                            <Image
+                                HeightRequest="10"
+                                HorizontalOptions="End"
+                                Source="arrow_tabs"
+                                VerticalOptions="Center"
+                                WidthRequest="10" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectCommand}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource LineTitleStyle}" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ListBeneficiariesTemplate">
+
+                <ViewCell>
+                    <StackLayout Padding="10,5">
+                        <Frame Style="{StaticResource FrameStyle}">
+
+                            <StackLayout Spacing="0" VerticalOptions="Center">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="{StaticResource font14}"
+                                    Text="{Binding FullNames}"
+                                    TextColor="{StaticResource Color1}"
+                                    VerticalOptions="Start"
+                                    XAlign="Start" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontSize="{StaticResource font14}"
+                                        Text="{Binding DocumentTypeShort}"
+                                        VerticalOptions="Center"
+                                        XAlign="Start" />
+                                    <Label
+                                        FontSize="{StaticResource font14}"
+                                        Text="{Binding Document}"
+                                        VerticalOptions="Center"
+                                        XAlign="Start" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateCommand}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </StackLayout>
+                </ViewCell>
+
+            </DataTemplate>
+
+            <!--  ListPaymentMethodsTemplate  -->
+            <DataTemplate x:Key="ListPaymentMethodsTemplate">
+                <ViewCell>
+                    <StackLayout Padding="10,5">
+                        <Frame Style="{StaticResource FrameStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image
+                                    HeightRequest="45"
+                                    Source="{Binding Icon}"
+                                    VerticalOptions="Start"
+                                    WidthRequest="45" />
+
+                                <StackLayout
+                                    Grid.Column="1"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource font16}"
+                                        Text="{Binding PaymentMethodName}"
+                                        TextColor="{StaticResource Color1}" />
+
+                                    <Label Style="{StaticResource DescriptionStyle}" Text="{Binding PaymentMethodDescription}" />
+
+                                    <Label
+                                        Margin="0"
+                                        IsVisible="{Binding Installments.Count, Converter={StaticResource VisiblePickerConverter}}"
+                                        Style="{StaticResource LabelTitleEntryStyle}"
+                                        Text="Número de cuotas" />
+                                    <Picker
+                                        Margin="0"
+                                        IsVisible="{Binding Installments.Count, Converter={StaticResource VisiblePickerConverter}}"
+                                        ItemDisplayBinding="{Binding}"
+                                        ItemsSource="{Binding Installments}"
+                                        SelectedItem="{Binding InstallmentSelected, Mode=TwoWay}"
+                                        Style="{StaticResource PickerStyle}" />
+                                </StackLayout>
+
+                                <Image
+                                    Grid.Column="2"
+                                    HeightRequest="10"
+                                    HorizontalOptions="End"
+                                    Source="arrow_tabs.png"
+                                    VerticalOptions="Center" />
+                            </Grid>
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CoordinationPaymentMethodSelectedCommand}" />
+                            </Frame.GestureRecognizers>
+
+                        </Frame>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ListCard">
+
+                <ViewCell>
+                    <StackLayout Padding="10,5">
+                        <Frame Style="{StaticResource FrameStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Column="0"
+                                    Source="icon.png"
+                                    VerticalOptions="Center" />
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Spacing="0"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource font14}"
+                                        Text="{Binding Names}"
+                                        VerticalOptions="Start"
+                                        XAlign="Start" />
+                                    <Label
+                                        FontSize="{StaticResource font14}"
+                                        Text="{Binding Email}"
+                                        VerticalOptions="Center"
+                                        XAlign="Start" />
+                                </StackLayout>
+                                <Image
+                                    Grid.Column="2"
+                                    HeightRequest="10"
+                                    Source="arrow_tabs.png"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateCommand}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </StackLayout>
+                </ViewCell>
+
+            </DataTemplate>
+
+            <!--  FaqsTemplate  -->
+            <DataTemplate x:Key="FaqsTemplate">
+                <ViewCell Height="40">
+                    <StackLayout
+                        Padding="20,0"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
+
+                        <Label
+                            FontSize="{StaticResource font14}"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{Binding SubCategoryName}"
+                            TextColor="{StaticResource Color7}"
+                            VerticalOptions="Center" />
+
+                        <Image
+                            HeightRequest="10"
+                            HorizontalOptions="Fill"
+                            Source="arrow_tabs.png" />
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectedSubcategoryCommand}" />
+                        </StackLayout.GestureRecognizers>
+
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <!--  FaqsDetailTemplate  -->
+            <DataTemplate x:Key="FaqsDetailTemplate">
+                <ViewCell>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                        <Frame BackgroundColor="Transparent" HasShadow="false">
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Spacing="5">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="{StaticResource font14}"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding Question}"
+                                    TextColor="{StaticResource Color1}" />
+
+                                <Label
+                                    FontSize="{StaticResource font14}"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding AnswerText}"
+                                    TextColor="{StaticResource Color7}" />
+                            </StackLayout>
+                        </Frame>
+
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <!--  ListServicesHistoryTemplate  -->
+            <DataTemplate x:Key="ListServicesHistoryTemplate">
+
+                <ViewCell>
+                    <StackLayout Padding="10,5">
+                        <Frame Style="{StaticResource FrameStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Spacing="2" VerticalOptions="Center">
+
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource font16}"
+                                        Text="{Binding UserName}"
+                                        TextColor="{StaticResource Color2}"
+                                        VerticalOptions="Start"
+                                        XAlign="Start" />
+
+                                    <StackLayout
+                                        Padding="0,0,0,10"
+                                        IsVisible="{Binding IsVisiblePersonalData}"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <!--<Label
+                                            FontSize="{StaticResource font14}"
+                                            IsVisible="{Binding ServiceNumber, Converter={StaticResource VisibleLabelConverter}}"
+                                            Text="{Binding UserDocumentTypeStr}"
+                                            VerticalOptions="Center"/>-->
+
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding UserDocumentTypeStr}"
+                                            VerticalOptions="Center" />
+
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding UserDocument}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource font14}"
+                                        IsVisible="{Binding ServiceTypeDescription, Converter={StaticResource VisibleLabelConverter}}"
+                                        Text="{Binding ServiceTypeDescription}"
+                                        VerticalOptions="Center"
+                                        XAlign="Start" />
+
+                                    <Label
+                                        FontSize="{StaticResource font14}"
+                                        IsVisible="{Binding SpecialityName, Converter={StaticResource VisibleLabelConverter}}"
+                                        Text="{Binding SpecialityName}"
+                                        VerticalOptions="Center"
+                                        XAlign="Start" />
+
+                                    <StackLayout
+                                        Padding="2"
+                                        IsVisible="{Binding DoctorName, Converter={StaticResource VisibleLabelConverter}}"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="FillAndExpand">
+                                        <Image
+                                            HeightRequest="10"
+                                            Source="user.png"
+                                            VerticalOptions="Center"
+                                            WidthRequest="10" />
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding DoctorName}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        Padding="2,5,0,0"
+                                        IsVisible="{Binding IsVisiblePersonalData}"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <Image
+                                            HeightRequest="10"
+                                            Source="time.png"
+                                            VerticalOptions="Center"
+                                            WidthRequest="10" />
+
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding Date}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        Padding="2"
+                                        IsVisible="{Binding Address, Converter={StaticResource VisibleLabelConverter}}"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <Image
+                                            HeightRequest="10"
+                                            Source="navigation"
+                                            VerticalOptions="Center"
+                                            WidthRequest="10" />
+
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding Address}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        Padding="2"
+                                        IsVisible="{Binding CityName, Converter={StaticResource VisibleLabelConverter}}"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <Image
+                                            HeightRequest="10"
+                                            Source="navigation"
+                                            VerticalOptions="Center"
+                                            WidthRequest="10" />
+
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding CityName}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+
+                                </StackLayout>
+                                <Image
+                                    Grid.Column="1"
+                                    HeightRequest="30"
+                                    Source="more.png"
+                                    VerticalOptions="Start">
+
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OptionsCommand}" />
+                                    </Image.GestureRecognizers>
+
+                                </Image>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </ViewCell>
+
+            </DataTemplate>
+
+
+            <!--  ScheduledServicesTemplate  -->
+            <!--
+            <DataTemplate x:Key="ScheduledServicesTemplate">
+
+                <ViewCell>
+                    <StackLayout
+                        Padding="10,5">
+                        <Frame
+                            Style="{StaticResource FrameStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout
+                                    Spacing="0"
+                                    VerticalOptions="Center">
+
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource font14}"
+                                        Text="{Binding ServiceTypeDescription}"
+                                        TextColor="{StaticResource Color1}"
+                                        VerticalOptions="Center"
+                                        XAlign="Start"/>
+                                    <Label
+                                        FontSize="{StaticResource font14}"
+                                        IsVisible="{Binding SpecialityName, Converter={StaticResource VisibleLabelConverter}}"
+                                        Text="{Binding SpecialityName}"
+                                        VerticalOptions="Start"
+                                        XAlign="Start"/>
+                                    <Label
+                                        FontSize="{StaticResource font14}"
+                                        IsVisible="{Binding ServiceNumber, Converter={StaticResource VisibleLabelConverter}}"
+                                        Margin="0, 0, 0, 10"
+                                        Text="{Binding ServiceNumber}"
+                                        VerticalOptions="Start"
+                                        XAlign="Start"/>
+                                    <StackLayout
+                                        Orientation="Horizontal"
+                                        Padding="2, 5, 0, 0"
+                                        VerticalOptions="FillAndExpand">
+                                        <Image
+                                            Source="navigation"
+                                            WidthRequest="10"
+                                            HeightRequest="10"
+                                            VerticalOptions="Center"/>
+
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding Address}"
+                                            VerticalOptions="Center"/>
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        IsVisible="{Binding SpecialityName, Converter={StaticResource VisibleLabelConverter}}"
+                                        Orientation="Horizontal"
+                                        Padding="2"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <Image
+                                            Source="user"
+                                            WidthRequest="10"
+                                            HeightRequest="10"
+                                            VerticalOptions="Center"/>
+
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding DoctorName}"
+
+                                            VerticalOptions="Center"/>
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        Orientation="Horizontal"
+                                        Padding="2"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <Image
+                                            Source="time"
+                                            WidthRequest="10"
+                                            HeightRequest="10"
+                                            VerticalOptions="Center"/>
+
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding Date}"
+
+                                            VerticalOptions="Center"/>
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        Orientation="Horizontal"
+                                        Padding="2"
+                                        VerticalOptions="FillAndExpand">
+                                        <Image
+                                            Source="cost"
+                                            WidthRequest="10"
+                                            HeightRequest="10"
+                                            VerticalOptions="Center"/>
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding Cost}"
+
+                                            VerticalOptions="Center"/>
+                                    </StackLayout>
+
+                                </StackLayout>
+                                <Image
+                                    Grid.Column="1"
+                                    HeightRequest="30"
+                                    IsVisible="{Binding Cancelable}"
+                                    Source="ic_close"
+                                    VerticalOptions="Start">
+
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CancelScheduledServicesCommand}"/>
+                                    </Image.GestureRecognizers>
+
+                                </Image>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </ViewCell>
+
+            </DataTemplate>-->
+
+            <!--  ScheduledServicesTemplate  -->
+            <DataTemplate x:Key="ScheduledServicesTemplate">
+
+                <ViewCell>
+                    <StackLayout Padding="10,5">
+                        <Frame Style="{StaticResource FrameStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Spacing="0" VerticalOptions="Center">
+
+                                    <Label
+                                        Margin="0,0,0,12"
+                                        BackgroundColor="{StaticResource Color2}"
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource font12}"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{Binding DescriptionState}"
+                                        TextColor="{StaticResource WhiteColor}"
+                                        VerticalOptions="Center"
+                                        XAlign="Start" />
+
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource font18}"
+                                        Text="{Binding UserNameModified}"
+                                        TextColor="{StaticResource Color1}"
+                                        VerticalOptions="Center"
+                                        XAlign="Start" />
+
+                                    <StackLayout Margin="0,0,0,12" Orientation="Horizontal">
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding UserDocumentTypeStr}"
+                                            VerticalOptions="Center"
+                                            XAlign="Start" />
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding UserDocument}"
+                                            VerticalOptions="Center"
+                                            XAlign="Start" />
+                                    </StackLayout>
+
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource font14}"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{Binding ServiceTypeDescription}"
+                                        VerticalOptions="Center"
+                                        XAlign="Start" />
+
+                                    <Label
+                                        FontSize="{StaticResource font14}"
+                                        Text="{Binding ServiceNumber}"
+                                        VerticalOptions="Center"
+                                        XAlign="Start" />
+
+                                    <StackLayout
+                                        Padding="2"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="FillAndExpand">
+                                        <Image
+                                            HeightRequest="10"
+                                            Source="user"
+                                            VerticalOptions="Center"
+                                            WidthRequest="10" />
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding DoctorName}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        Padding="2"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="FillAndExpand">
+                                        <Image
+                                            HeightRequest="10"
+                                            Source="time"
+                                            VerticalOptions="Center"
+                                            WidthRequest="10" />
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding Date}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        Padding="2,5,0,0"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="FillAndExpand">
+                                        <Image
+                                            HeightRequest="10"
+                                            Source="navigation"
+                                            VerticalOptions="Center"
+                                            WidthRequest="10" />
+                                        <Label
+                                            FontSize="{StaticResource font14}"
+                                            Text="{Binding CityName}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                                <Image
+                                    Grid.Column="1"
+                                    HeightRequest="30"
+                                    IsVisible="{Binding Canceled}"
+                                    Source="ic_close"
+                                    VerticalOptions="Start">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CancelScheduledServicesCommand}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </ViewCell>
+
+            </DataTemplate>
+
+            <!--  CalificateServicesTemplate  -->
+            <DataTemplate x:Key="CalificateServicesTemplate">
+
+                <ViewCell>
+                    <StackLayout Padding="0,5">
+
+                        <StackLayout
+                            Padding="20,10"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding IsVisibleOneTen}">
+                            <Frame
+                                Padding="0"
+                                OutlineColor="{StaticResource Color9}"
+                                Style="{StaticResource FrameStyle}"
+                                VerticalOptions="StartAndExpand">
+                                <StackLayout>
+                                    <StackLayout
+                                        Padding="15"
+                                        HorizontalOptions="FillAndExpand"
+                                        Spacing="10"
+                                        VerticalOptions="Start">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            Text="{Binding Title}"
+                                            TextColor="{StaticResource Color1}" />
+                                        <Label Text="{Binding Description}" TextColor="{StaticResource Color7}" />
+                                    </StackLayout>
+                                    <BoxView
+                                        BackgroundColor="{StaticResource Color10}"
+                                        HeightRequest="1"
+                                        HorizontalOptions="FillAndExpand" />
+                                    <StackLayout
+                                        Padding="15"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="End">
+                                        <Slider
+                                            Maximum="10"
+                                            Minimum="1"
+                                            Value="{Binding ValueOneTen, Mode=TwoWay}" />
+                                        <StackLayout
+                                            Padding="15,0,15,0"
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal">
+                                            <Label
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="1"
+                                                TextColor="{StaticResource Color7}" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                HorizontalOptions="CenterAndExpand"
+                                                Text="{Binding ValueOneTen}"
+                                                TextColor="{StaticResource Color7}" />
+                                            <Label
+                                                HorizontalOptions="EndAndExpand"
+                                                Text="10"
+                                                TextColor="{StaticResource Color7}" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout
+                            Padding="20,10"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding IsVisibleOneFive}">
+                            <Frame
+                                Padding="0"
+                                OutlineColor="{StaticResource Color9}"
+                                Style="{StaticResource FrameStyle}"
+                                VerticalOptions="StartAndExpand">
+
+                                <StackLayout>
+                                    <StackLayout
+                                        Padding="15"
+                                        HorizontalOptions="FillAndExpand"
+                                        Spacing="10"
+                                        VerticalOptions="Start">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            Text="{Binding Title}"
+                                            TextColor="{StaticResource Color1}" />
+                                        <Label Text="{Binding Description}" TextColor="{StaticResource Color7}" />
+                                    </StackLayout>
+                                    <BoxView
+                                        BackgroundColor="{StaticResource Color10}"
+                                        HeightRequest="1"
+                                        HorizontalOptions="FillAndExpand" />
+                                    <StackLayout
+                                        Padding="15"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="End">
+                                        <Slider
+                                            Maximum="5"
+                                            Minimum="1"
+                                            Value="{Binding ValueOneFive, Mode=TwoWay}" />
+                                        <StackLayout
+                                            Padding="15,0,15,0"
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal">
+
+                                            <Label
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="1"
+                                                TextColor="{StaticResource Color7}" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                HorizontalOptions="CenterAndExpand"
+                                                Text="{Binding ValueOneFive}"
+                                                TextColor="{StaticResource Color7}" />
+                                            <Label
+                                                HorizontalOptions="EndAndExpand"
+                                                Text="5"
+                                                TextColor="{StaticResource Color7}" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout
+                            Padding="20,10"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding IsVisibleYesNo}">
+                            <Frame
+                                Padding="0"
+                                OutlineColor="{StaticResource Color9}"
+                                Style="{StaticResource FrameStyle}"
+                                VerticalOptions="StartAndExpand">
+
+                                <StackLayout>
+                                    <StackLayout
+                                        Padding="15"
+                                        HorizontalOptions="FillAndExpand"
+                                        Spacing="10"
+                                        VerticalOptions="Start">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            Text="{Binding Title}"
+                                            TextColor="{StaticResource Color1}" />
+                                        <Label Text="{Binding Description}" TextColor="{StaticResource Color7}" />
+                                    </StackLayout>
+                                    <BoxView
+                                        BackgroundColor="{StaticResource Color10}"
+                                        HeightRequest="1"
+                                        HorizontalOptions="FillAndExpand" />
+                                    <StackLayout
+                                        Padding="20"
+                                        HorizontalOptions="FillAndExpand"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="End">
+                                        <Label
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding LabelYesNo}"
+                                            TextColor="{StaticResource Color7}" />
+                                        <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding IsTogglesYesNo, Mode=TwoWay}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+
+                    </StackLayout>
+                </ViewCell>
+
+            </DataTemplate>
+
+            <!--  ListServicesEnabledsTemplate  -->
+            <DataTemplate x:Key="ListServicesEnabledsTemplate">
+
+                <StackLayout Padding="10,5">
+                    <Frame Style="{StaticResource FrameStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Image
+                                HeightRequest="50"
+                                Source="{Binding Icon}"
+                                VerticalOptions="Center"
+                                WidthRequest="50" />
+                            <StackLayout
+                                Grid.Column="1"
+                                Margin="0,0,-3,0"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="Center">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="{StaticResource font15}"
+                                    Text="{Binding Name}"
+                                    TextColor="{StaticResource Color1}" />
+                            </StackLayout>
+                            <Frame
+                                Grid.Column="2"
+                                CornerRadius="7"
+                                HasShadow="False"
+                                HeightRequest="20"
+                                HorizontalOptions="End"
+                                IsClippedToBounds="True"
+                                IsVisible="{Binding EstimatedTime, Converter={StaticResource VisibleLabelConverter}}"
+                                WidthRequest="50">
+                                <StackLayout
+                                    Margin="-20"
+                                    HorizontalOptions="FillAndExpand"
+                                    Spacing="4"
+                                    VerticalOptions="FillAndExpand">
+                                    <Label
+                                        Margin="0,0,0,-3"
+                                        Padding="0,0,0,2"
+                                        BackgroundColor="#34C3EA"
+                                        FontSize="8"
+                                        HorizontalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding EstimatedTimeText}"
+                                        TextColor="White"
+                                        VerticalOptions="Fill"
+                                        VerticalTextAlignment="Center" />
+                                    <StackLayout
+                                        BackgroundColor="#00456B"
+                                        HeightRequest="15"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="FillAndExpand">
+                                        <Image
+                                            Margin="8,0,-4,0"
+                                            HeightRequest="17"
+                                            Source="IconWatch" />
+                                        <Label
+                                            Margin="-3,0,3,0"
+                                            BackgroundColor="#00456B"
+                                            FontAttributes="Bold"
+                                            FontSize="18"
+                                            HorizontalOptions="FillAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding EstimatedTime}"
+                                            TextColor="White"
+                                            VerticalOptions="FillAndExpand"
+                                            VerticalTextAlignment="Center" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                            <Image
+                                Grid.Column="3"
+                                Margin="5,0,0,0"
+                                HeightRequest="10"
+                                HorizontalOptions="End"
+                                Source="arrow_tabs.png"
+                                VerticalOptions="Center" />
+                        </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding RequestServiceCommand}" />
+                        </Frame.GestureRecognizers>
+
+                    </Frame>
+                </StackLayout>
+
+            </DataTemplate>
+
+            <!--  ListInvoicesTemplate  -->
+            <DataTemplate x:Key="ListInvoicesTemplate">
+                <ViewCell>
+                    <StackLayout Padding="10,5">
+                        <Frame Style="{StaticResource FrameStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Spacing="0" VerticalOptions="Center">
+
+                                    <Label
+                                        Margin="0,0,0,12"
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource font18}"
+                                        Text="{Binding NumberModified}"
+                                        TextColor="{StaticResource Color1}"
+                                        VerticalOptions="Center"
+                                        XAlign="Start" />
+
+                                    <StackLayout
+                                        Margin="0,0,0,6"
+                                        Padding="2"
+                                        Orientation="Vertical"
+                                        VerticalOptions="FillAndExpand">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image
+                                                HeightRequest="10"
+                                                Source="calendar_black.png"
+                                                VerticalOptions="Center"
+                                                WidthRequest="10" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="{StaticResource font14}"
+                                                Text="Fecha de facturación:"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                        <StackLayout>
+                                            <Label
+                                                Margin="15,0,0,0"
+                                                FontSize="{StaticResource font14}"
+                                                Text="{Binding BroadcastDate}"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        Margin="0,0,0,6"
+                                        Padding="2"
+                                        Orientation="Vertical"
+                                        VerticalOptions="FillAndExpand">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image
+                                                HeightRequest="10"
+                                                Source="calendar_black.png"
+                                                VerticalOptions="Center"
+                                                WidthRequest="10" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="{StaticResource font14}"
+                                                Text="Fecha de vencimiento:"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                        <StackLayout>
+                                            <Label
+                                                Margin="15,0,0,0"
+                                                FontSize="{StaticResource font14}"
+                                                Text="{Binding ExpirationDate}"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        Margin="0,0,0,6"
+                                        Padding="2,5,0,0"
+                                        IsVisible="{Binding IsVisiblePersonalData}"
+                                        Orientation="Vertical"
+                                        VerticalOptions="FillAndExpand">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image
+                                                HeightRequest="10"
+                                                Source="cost.png"
+                                                VerticalOptions="Center"
+                                                WidthRequest="10" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="{StaticResource font14}"
+                                                Text="{Binding AmountTitle}"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                        <StackLayout>
+                                            <Label
+                                                Margin="15,0,0,0"
+                                                FontSize="{StaticResource font14}"
+                                                Text="{Binding Amount}"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        Padding="2,5,0,0"
+                                        IsVisible="{Binding IsVisiblePersonalData}"
+                                        Orientation="Vertical"
+                                        VerticalOptions="FillAndExpand">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image
+                                                HeightRequest="10"
+                                                Source="ic_done.png"
+                                                VerticalOptions="Center"
+                                                WidthRequest="10" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="{StaticResource font14}"
+                                                Text="Estado:"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                        <StackLayout>
+                                            <Label
+                                                Margin="15,0,0,0"
+                                                FontSize="{StaticResource font14}"
+                                                Text="{Binding State}"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                </StackLayout>
+                                <Image
+                                    Grid.Column="1"
+                                    HeightRequest="30"
+                                    Source="more.png"
+                                    VerticalOptions="Start">
+
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OptionsCommand}" />
+                                    </Image.GestureRecognizers>
+
+                                </Image>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+            <!--  ListaBeneficiariosPlanesTemplate  -->
+            <DataTemplate x:Key="ListBeneficiariosTemplate">
+                <ViewCell>
+                    <StackLayout Padding="10,5">
+                        <StackLayout Spacing="0" VerticalOptions="Center">
+
+                            <StackLayout
+                                Margin="0,0,0,6"
+                                Padding="2"
+                                Orientation="Vertical">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image
+                                        HeightRequest="10"
+                                        Source="ic_person.png"
+                                        VerticalOptions="Center"
+                                        WidthRequest="10" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource font14}"
+                                        Text="Beneficiarios:"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical">
+                                    <Label
+                                        Margin="15,0,0,0"
+                                        FontSize="{StaticResource font14}"
+                                        Text="{Binding LineName}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Margin="15,0,0,0"
+                                        FontSize="{StaticResource font14}"
+                                        Text="{Binding ProductLine}"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <!--<StackLayout
+                                Margin="0,0,0,6"
+                                Orientation="Vertical"
+                                Padding="2">
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <Image
+                                        Source="calendar_black.png"
+                                        WidthRequest="10"
+                                        HeightRequest="10"
+                                        VerticalOptions="Center"/>
+                                    <Label
+                                        FontSize="{StaticResource font14}"
+                                        Text="Planes y productos:"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label
+                                        FontSize="{StaticResource font14}"
+                                        Text="{Binding ProductLine}"
+                                        VerticalOptions="Center"/>
+                                </StackLayout>
+                            </StackLayout>-->
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

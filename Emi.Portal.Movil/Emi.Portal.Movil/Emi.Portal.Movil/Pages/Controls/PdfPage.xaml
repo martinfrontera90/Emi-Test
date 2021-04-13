@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.Controls.PdfPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ext="clr-namespace:Emi.Portal.Movil.Controls"
+    BindingContext="{Binding PdfPage, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <StackLayout BackgroundColor="{StaticResource Color13}">
+                <Label
+                    Padding="10"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding Title}"
+                    VerticalOptions="Start" />
+            </StackLayout>
+            <Grid VerticalOptions="FillAndExpand">
+                <ext:PdfWebView
+                    Grid.RowSpan="2"
+                    BackgroundColor="Red"
+                    HorizontalOptions="FillAndExpand"
+                    Source="{Binding PdfSource}" />
+                <Image
+                    Grid.Row="1"
+                    Margin="20"
+                    BackgroundColor="Transparent"
+                    HeightRequest="40"
+                    HorizontalOptions="Start"
+                    IsVisible="{Binding IsVisibleShare}"
+                    Source="ShareIcon.png"
+                    VerticalOptions="End"
+                    WidthRequest="40">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SharePdfCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.Services.ServicesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:iOSSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    BindingContext="{Binding ServicesPage, Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="{StaticResource Color12}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <views:CurrentServiceView />
+            <StackLayout
+                Padding="10"
+                BackgroundColor="{StaticResource Color13}"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding TitlePage}" />
+            </StackLayout>
+            <BoxView Style="{StaticResource LineTitleStyle}" />
+            <ScrollView>
+                <StackLayout
+                    BackgroundColor="{StaticResource Color11}"
+                    HorizontalOptions="FillAndExpand"
+                    Spacing="0"
+                    VerticalOptions="Fill">
+
+                    <StackLayout Spacing="0">
+
+                        <StackLayout
+                            Padding="20,10,20,20"
+                            BackgroundColor="{StaticResource Color11}"
+                            HorizontalOptions="FillAndExpand"
+                            Spacing="10"
+                            VerticalOptions="Start">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource TitleStyle}"
+                                Text="{Binding Resources[RequestServiceQuestion], Source={StaticResource Locator}}" />
+                            <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Familiar" />
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <Picker
+                                        iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                        IsEnabled="{Binding People.Count, Converter={StaticResource EnablePickerConverter}}"
+                                        ItemDisplayBinding="{Binding FullNames}"
+                                        ItemsSource="{Binding People}"
+                                        SelectedItem="{Binding PersonSelected, Mode=TwoWay}"
+                                        Style="{StaticResource PickerStyle}" />
+                                    <Image Grid.Column="1" Source="help">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding InformationCommand}" CommandParameter="1" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout
+                            Padding="0,0,0,10"
+                            BackgroundColor="{StaticResource Color12}"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding IsVisibleListAddresses}"
+                            VerticalOptions="Start">
+                            <BoxView Style="{StaticResource LineTitleStyle}" />
+                            <StackLayout Padding="20,10" Spacing="10">
+
+                                <Label
+                                    FontAttributes="Bold"
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource TitleStyle}"
+                                    Text="Buscar la dirección del paciente" />
+
+                                <Label Style="{StaticResource DescriptionStyle}" Text="Es importante que nos des la dirección donde está ubicado el paciente en caso de que debamos enviarle un servicio. Ten en cuenta que, si se encuentra al interior de una institución prestadora de salud, no podemos atenderlo dentro de ella." />
+
+                                <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Direccion" />
+                                <StackLayout>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="40" />
+                                        </Grid.RowDefinitions>
+                                        <Picker
+                                            x:Name="pickerAddresses"
+                                            iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                            IsEnabled="{Binding Addresses.Count, Converter={StaticResource EnablePickerConverter}}"
+                                            ItemDisplayBinding="{Binding StandardizedAddress}"
+                                            ItemsSource="{Binding Addresses}"
+                                            SelectedItem="{Binding AddressSelected, Mode=TwoWay}"
+                                            Style="{StaticResource PickerStyle}" />
+                                        <Image Grid.Column="1" Source="plus">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OptionsCommand}" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout
+                            Padding="20"
+                            BackgroundColor="{StaticResource Color13}"
+                            IsVisible="{Binding ServicesEnableds.Count, Converter={StaticResource ListViewVisibleConverter}}"
+                            VerticalOptions="FillAndExpand">
+                            <Label Style="{StaticResource DescriptionStyle}" Text="Estos son los servicios a los que puedes acceder con tu plan actual o adquirir por evento." />
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <StackLayout
+                        BackgroundColor="{StaticResource Color13}"
+                        BindableLayout.ItemTemplate="{StaticResource ListServicesEnabledsTemplate}"
+                        BindableLayout.ItemsSource="{Binding ServicesEnableds}"
+                        VerticalOptions="FillAndExpand" />
+
+                    <StackLayout Padding="20" Spacing="5">
+                        <Label LineBreakMode="WordWrap" Style="{StaticResource DescriptionStyle}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Para poder solicitar atención médica domiciliaria, chat de orientación médica y/o línea telefónica de orientación médica, el paciente debe ser asociado ucm. Para más información comunícate con Servicio al Cliente o adquiere alguno de nuestros planes " />
+                                    <Span
+                                        FontAttributes="Bold"
+                                        FontSize="{StaticResource font14}"
+                                        Text="aqui.">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding ShopOnlineCommand}" />
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <Label
+                            FontAttributes="Bold"
+                            Style="{StaticResource DescriptionStyle}"
+                            Text="Los tiempos que se muestran a continuación corresponden a la zona donde se encuentra ubicado el paciente. Estos son los servicios a los que puedes acceder con tu plan actual o adquirir de forma eventual." />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"
+            Text="Llamar" />
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

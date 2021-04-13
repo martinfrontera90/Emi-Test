@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Emi.Portal.Movil.Pages.Services.ControlStarsRating"
+             xmlns:localRating="clr-namespace:Emi.Portal.Movil.Logic.Behaviors;assembly=Emi.Portal.Movil.Logic"
+             xmlns:converter="clr-namespace:Emi.Portal.Movil.Converters">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converter:RatingConverter x:Key="ratingConverter"/>
+            <converter:NegateBooleanConverter x:Key="negateBooleanConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <StackLayout>
+            <FlexLayout Wrap="NoWrap"
+                        JustifyContent="SpaceEvenly"
+                        Margin="15,0">
+
+                <StackLayout WidthRequest="50" HeightRequest="50">
+                    <StackLayout.Behaviors>
+                        <localRating:StarRatingBehavior x:Name="starOne" GroupName="default"/>
+                    </StackLayout.Behaviors>
+                    <Image Aspect="AspectFit"
+                           IsVisible="{Binding Source={x:Reference starOne}, Path=IsStarred, Converter={StaticResource negateBooleanConverter}}"
+                           Source="star_empty.png"/>
+                    <Image Aspect="AspectFit"
+                           IsVisible="{Binding Source={x:Reference starOne}, Path=IsStarred}"
+                           Source="star_full.png"/>
+                </StackLayout>
+
+                <StackLayout WidthRequest="50" HeightRequest="50">
+                    <StackLayout.Behaviors>
+                        <localRating:StarRatingBehavior x:Name="starTwo" GroupName="default"/>
+                    </StackLayout.Behaviors>
+                    <Image Aspect="AspectFit"
+                           IsVisible="{Binding Source={x:Reference starTwo}, Path=IsStarred, Converter={StaticResource negateBooleanConverter}}"
+                           Source="star_empty.png"/>
+                    <Image Aspect="AspectFit"
+                           IsVisible="{Binding Source={x:Reference starTwo}, Path=IsStarred}"
+                           Source="star_full.png"/>
+                </StackLayout>
+
+                <StackLayout WidthRequest="50" HeightRequest="50">
+                    <StackLayout.Behaviors>
+                        <localRating:StarRatingBehavior x:Name="starThree" GroupName="default"/>
+                    </StackLayout.Behaviors>
+                    <Image Aspect="AspectFit"
+                           IsVisible="{Binding Source={x:Reference starThree}, Path=IsStarred, Converter={StaticResource negateBooleanConverter}}"
+                           Source="star_empty.png"/>
+                    <Image Aspect="AspectFit"
+                           IsVisible="{Binding Source={x:Reference starThree}, Path=IsStarred}"
+                           Source="star_full.png"/>
+                </StackLayout>
+
+                <StackLayout WidthRequest="50" HeightRequest="50">
+                    <StackLayout.Behaviors>
+                        <localRating:StarRatingBehavior x:Name="starFour" GroupName="default"/>
+                    </StackLayout.Behaviors>
+                    <Image Aspect="AspectFit"
+                           IsVisible="{Binding Source={x:Reference starFour}, Path=IsStarred, Converter={StaticResource negateBooleanConverter}}"
+                           Source="star_empty.png"/>
+                    <Image Aspect="AspectFit"
+                           IsVisible="{Binding Source={x:Reference starFour}, Path=IsStarred}"
+                           Source="star_full.png"/>
+                </StackLayout>
+
+                <StackLayout WidthRequest="50" HeightRequest="50">
+                    <StackLayout.Behaviors>
+                        <localRating:StarRatingBehavior x:Name="starFive" GroupName="default"/>
+                    </StackLayout.Behaviors>
+                    <Image Aspect="AspectFit"
+                           IsVisible="{Binding Source={x:Reference starFive}, Path=IsStarred, Converter={StaticResource negateBooleanConverter}}"
+                           Source="star_empty.png"/>
+                    <Image Aspect="AspectFit"
+                           IsVisible="{Binding Source={x:Reference starFive}, Path=IsStarred}"
+                           Source="star_full.png"/>
+                </StackLayout>
+
+            </FlexLayout>
+
+            <Label IsVisible="False" PropertyChanged="LabelRating_PropertyChanged" Text="{Binding Source={x:Reference starFive}, Path=Rating}"/>
+
+            <StackLayout Padding="0">
+                <StackLayout.Margin>
+                    <OnIdiom x:TypeArguments="Thickness"
+                            Phone="0,10,0,0"
+                            Tablet="0,15,0,0" />
+                </StackLayout.Margin>
+                <Label Text="{Binding Source={x:Reference starFive}, Path=Rating, Converter={StaticResource ratingConverter}}"
+                        FontSize="{Binding FontSizeLabelLarge}"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

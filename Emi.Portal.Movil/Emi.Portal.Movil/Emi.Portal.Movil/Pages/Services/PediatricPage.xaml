@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.Services.PediatricPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="Padre"
+    BackgroundColor="{StaticResource GeneralBackgroundColor}"
+    BindingContext="{Binding ServicesPage, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="{StaticResource Color13}">
+                <Label
+                    Padding="10"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding DynamicTitlePage}"
+                    VerticalOptions="Start" />
+            </StackLayout>
+            <Label
+                Margin="20"
+                Style="{StaticResource DescriptionStyle}"
+                Text="Realiza aquí tus consultas pediátricas para niños hasta los 13 años y que presenten síntomas que no pongan en riesgo inminente su vida." />
+            <StackLayout BindableLayout.ItemsSource="{Binding PediatricServices}" VerticalOptions="Start">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackLayout Padding="10,5">
+                            <Frame Style="{StaticResource FrameStyle}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Image
+                                        HeightRequest="50"
+                                        Source="{Binding Icon}"
+                                        VerticalOptions="Center"
+                                        WidthRequest="50" />
+                                    <StackLayout
+                                        Grid.Column="1"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="Center">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="{StaticResource font16}"
+                                            Text="{Binding Name}"
+                                            TextColor="{StaticResource Color1}" />
+                                    </StackLayout>
+                                    <Frame
+                                        Grid.Column="2"
+                                        CornerRadius="7"
+                                        HasShadow="False"
+                                        HeightRequest="20"
+                                        HorizontalOptions="End"
+                                        IsClippedToBounds="True"
+                                        IsVisible="{Binding EstimatedTime, Converter={StaticResource VisibleLabelConverter}}"
+                                        WidthRequest="50">
+                                        <StackLayout
+                                            Margin="-20"
+                                            HorizontalOptions="FillAndExpand"
+                                            Spacing="4"
+                                            VerticalOptions="FillAndExpand">
+                                            <Label
+                                                Margin="0,0,0,-3"
+                                                Padding="0,0,0,2"
+                                                BackgroundColor="#34C3EA"
+                                                FontSize="8"
+                                                HorizontalOptions="FillAndExpand"
+                                                HorizontalTextAlignment="Center"
+                                                Text="Tiempo estimado de espera"
+                                                TextColor="White"
+                                                VerticalOptions="Fill"
+                                                VerticalTextAlignment="Center" />
+                                            <StackLayout
+                                                BackgroundColor="#00456B"
+                                                HeightRequest="15"
+                                                Orientation="Horizontal"
+                                                VerticalOptions="FillAndExpand">
+                                                <Image
+                                                    Margin="8,0,-4,0"
+                                                    HeightRequest="17"
+                                                    Source="IconWatch" />
+                                                <Label
+                                                    Margin="-3,0,3,0"
+                                                    BackgroundColor="#00456B"
+                                                    FontAttributes="Bold"
+                                                    FontSize="18"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding EstimatedTime}"
+                                                    TextColor="White"
+                                                    VerticalOptions="FillAndExpand"
+                                                    VerticalTextAlignment="Center" />
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                    <Image
+                                        Grid.Column="3"
+                                        Margin="5,0,0,0"
+                                        HeightRequest="10"
+                                        HorizontalOptions="End"
+                                        Source="arrow_tabs.png"
+                                        VerticalOptions="Center" />
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding RequestServiceCommand}" />
+                                </Frame.GestureRecognizers>
+
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+            <Label
+                Margin="20,10"
+                Style="{StaticResource DescriptionStyle}"
+                Text="Videoconsulta de Orientación Pediátrica Prioritaria: podrás comunicarte en breve con un pediatra." />
+            <Label
+                Margin="20,0"
+                Style="{StaticResource DescriptionStyle}"
+                Text="Videoconsulta de Orientación Pediátrica Programada: agenda tu consulta virtual con un pediatra." />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    BindingContext="{Binding LoaderPage, Source={StaticResource Locator}}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Emi.Portal.Movil.Pages.Loader.LoaderPage">
+    
+    <ContentPage.Content>
+        <AbsoluteLayout                          
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+
+            <Image 
+                AbsoluteLayout.LayoutFlags="All" 
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                Aspect="AspectFill"
+                Source="loader"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

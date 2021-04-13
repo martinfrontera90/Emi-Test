@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.MyAccount.AddFamilyPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Emi.Portal.Movil.Logic.Behaviors;assembly=Emi.Portal.Movil.Logic"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}"
+    BindingContext="{Binding Call, Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding AddFamilyPage, Source={StaticResource Locator}}"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+
+            <views:CurrentServiceView />
+            <StackLayout
+                Padding="10"
+                BackgroundColor="{StaticResource Color13}"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding Resources[TitleFamily], Source={StaticResource Locator}}" />
+            </StackLayout>
+            <BoxView Style="{StaticResource LineTitleStyle}" />
+            <ScrollView BackgroundColor="{StaticResource Color11}" VerticalOptions="FillAndExpand">
+
+                <StackLayout VerticalOptions="FillAndExpand">
+
+                    <StackLayout Padding="20" VerticalOptions="Start">
+                        <Label
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            Style="{StaticResource DescriptionStyle}"
+                            Text="{Binding Message, Mode=TwoWay}"
+                            VerticalOptions="Start" />
+                    </StackLayout>
+
+                    <StackLayout
+                        Padding="20"
+                        BindingContext="{Binding NewMember, Mode=TwoWay}"
+                        VerticalOptions="FillAndExpand">
+                        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+
+                            <StackLayout Orientation="Vertical">
+
+                                <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Nombres" />
+                                <Entry Style="{StaticResource EntryStyle}" Text="{Binding Names, Mode=TwoWay}">
+
+                                    <Entry.Behaviors>
+                                        <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthName], Source={StaticResource Locator}}" />
+                                    </Entry.Behaviors>
+
+                                </Entry>
+
+                                <Label Style="{StaticResource LabelErrorEntryStyle}" Text="{Binding ErrorNames, Mode=TwoWay}" />
+
+                                <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Apellidos" />
+                                <Entry Style="{StaticResource EntryStyle}" Text="{Binding Surnames, Mode=TwoWay}">
+
+                                    <Entry.Behaviors>
+                                        <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthName], Source={StaticResource Locator}}" />
+                                    </Entry.Behaviors>
+
+                                </Entry>
+
+                                <Label Style="{StaticResource LabelErrorEntryStyle}" Text="{Binding ErrorSurnames, Mode=TwoWay}" />
+
+                            </StackLayout>
+
+                            <StackLayout IsVisible="{Binding IsVisiblePersonalData}" Orientation="Vertical">
+
+                                <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Teléfono celular" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Entry
+                                        Keyboard="Numeric"
+                                        Style="{StaticResource EntryStyle}"
+                                        Text="{Binding Phone, Mode=TwoWay}">
+
+                                        <Entry.Behaviors>
+                                            <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthCellPhone], Source={StaticResource Locator}}" />
+                                        </Entry.Behaviors>
+
+                                    </Entry>
+
+                                    <Image HorizontalOptions="End" Source="help.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding InformationCommand}" CommandParameter="1" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                                <Label Style="{StaticResource LabelErrorEntryStyle}" Text="{Binding ErrorPhone, Mode=TwoWay}" />
+
+                                <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Correo electrónico" />
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Entry
+                                        Keyboard="Email"
+                                        Style="{StaticResource EntryStyle}"
+                                        Text="{Binding Email, Mode=TwoWay}">
+
+                                        <Entry.Behaviors>
+                                            <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthEmail], Source={StaticResource Locator}}" />
+                                        </Entry.Behaviors>
+
+                                    </Entry>
+
+                                    <Image HorizontalOptions="End" Source="help.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding InformationCommand}" CommandParameter="2" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+
+                                <Label Style="{StaticResource LabelErrorEntryStyle}" Text="{Binding ErrorEmail, Mode=TwoWay}" />
+
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="End">
+                        <Button
+                            Margin="20,10,20,20"
+                            Command="{Binding AddMemberCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="Agregar" />
+                    </StackLayout>
+                </StackLayout>
+
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"
+            Text="Llamar" />
+    </ContentPage.ToolbarItems>
+</ContentPage>

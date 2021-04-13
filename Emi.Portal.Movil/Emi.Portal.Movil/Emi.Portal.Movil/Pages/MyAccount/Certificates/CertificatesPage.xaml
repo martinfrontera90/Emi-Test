@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.MyAccount.Certificates.CertificatesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:iOSSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    BindingContext="{Binding CertificatesPage, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+
+        <StackLayout BackgroundColor="{StaticResource Color12}" Spacing="5">
+            <StackLayout BackgroundColor="{StaticResource Color13}">
+                <Label
+                    Padding="10"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding TitlePage}"
+                    VerticalOptions="Start" />
+            </StackLayout>
+            <StackLayout Margin="20" Spacing="10">
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource TitleStyle}"
+                    Text="¿Para quién deseas generar un certificado? " />
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+                    <Picker
+                        Title="Selecciona un familiar"
+                        iOSSpecific:Picker.UpdateMode="WhenFinished"
+                        ItemDisplayBinding="{Binding FullNames}"
+                        ItemsSource="{Binding Beneficiaries}"
+                        SelectedItem="{Binding BeneficiarySelected}"
+                        Style="{StaticResource PickerStyle}" />
+                    <Image Grid.Column="1" Source="help">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding InformationCommand}" CommandParameter="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
+                <Picker
+                    Title="Selecciona el grupo familiar"
+                    iOSSpecific:Picker.UpdateMode="WhenFinished"
+                    IsVisible="{Binding IsVisibleGroup}"
+                    ItemDisplayBinding="{Binding GroupName}"
+                    ItemsSource="{Binding GroupCertificates}"
+                    SelectedItem="{Binding GroupCertificateSelected}"
+                    Style="{StaticResource PickerStyle}" />
+                <Label Style="{StaticResource DescriptionStyle}" Text="{Binding Resources[CertificatesText], Source={StaticResource Locator}}" />
+
+            </StackLayout>
+            <ScrollView>
+                <StackLayout BackgroundColor="#f2f2f2" BindableLayout.ItemsSource="{Binding CertificateCards}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="10" HasShadow="False">
+                                <StackLayout Spacing="10">
+                                    <Label
+                                        Margin="0,10"
+                                        Style="{StaticResource TitleStyle}"
+                                        Text="{Binding CertificateName}"
+                                        TextColor="{StaticResource Color1}"
+                                        VerticalOptions="Center" />
+
+                                    <BoxView HeightRequest="1" Color="Gray" />
+                                    <StackLayout>
+
+                                        <StackLayout
+                                            IsVisible="{Binding IsVisibleGenerate}"
+                                            Orientation="Horizontal"
+                                            Spacing="15">
+                                            <Image
+                                                HeightRequest="20"
+                                                Source="ic_done.png"
+                                                WidthRequest="20" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="{StaticResource font14}"
+                                                Text="Generar"
+                                                VerticalOptions="Center" />
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding GeneratePdfCommand}" />
+                                            </StackLayout.GestureRecognizers>
+                                        </StackLayout>
+                                        <StackLayout IsVisible="{Binding IsVisibleGenerate, Converter={StaticResource VisibleInverseBoolConverter}}" Spacing="0">
+                                            <StackLayout Orientation="Horizontal" Spacing="15">
+                                                <Image Source="DownloadIcon.png" VerticalOptions="Center" />
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="{StaticResource font14}"
+                                                    Text="Visualizar PDF"
+                                                    VerticalOptions="Center" />
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding GeneratePdfCommand}">
+                                                        <TapGestureRecognizer.CommandParameter>
+                                                            <x:Boolean>False</x:Boolean>
+                                                        </TapGestureRecognizer.CommandParameter>
+
+                                                    </TapGestureRecognizer>
+                                                </StackLayout.GestureRecognizers>
+
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" Spacing="15">
+                                                <Image Source="EmailIcon.png" VerticalOptions="Center" />
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="{StaticResource font14}"
+                                                    Text="Enviar por email "
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding GeneratePdfCommand}">
+                                                        <TapGestureRecognizer.CommandParameter>
+                                                            <x:Boolean>True</x:Boolean>
+                                                        </TapGestureRecognizer.CommandParameter>
+                                                    </TapGestureRecognizer>
+                                                </StackLayout.GestureRecognizers>
+                                            </StackLayout>
+                                        </StackLayout>
+
+
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+
+
+
+    </ContentPage.Content>
+</ContentPage>

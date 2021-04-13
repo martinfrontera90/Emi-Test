@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.MyHealth.SearchServicesHistoryPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:iOSSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}"
+    BindingContext="{Binding ServicesHistoryPage, Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <StackLayout Spacing="0" VerticalOptions="FillAndExpand">
+            <views:CurrentServiceView />
+            <StackLayout
+                Padding="10"
+                BackgroundColor="{StaticResource Color13}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start">
+                <Label
+                    HorizontalOptions="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding TitlePage}" />
+            </StackLayout>
+            <StackLayout
+                BackgroundColor="{StaticResource Color11}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <BoxView Style="{StaticResource LineTitleStyle}" />
+                <StackLayout
+                    BackgroundColor="{StaticResource Color11}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <ScrollView
+                        Padding="20,0,20,10"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Label
+                                Margin="0,10,0,20"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource TitleStyle}"
+                                Text="Busca tu historial de servicio" />
+
+                            <Label
+                                IsVisible="{Binding IsVisiblePatient}"
+                                Style="{StaticResource LabelTitleEntryStyle}"
+                                Text="Paciente" />
+                            <Picker
+                                x:Name="patients"
+                                iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                IsVisible="{Binding IsVisiblePatient}"
+                                ItemDisplayBinding="{Binding FullName}"
+                                ItemsSource="{Binding Minors, Mode=TwoWay}"
+                                SelectedItem="{Binding MinorSelected, Mode=TwoWay}"
+                                Style="{StaticResource PickerStyle}" />
+
+                            <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Servicio" />
+                            <Picker
+                                iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                IsEnabled="{Binding Services.Count, Converter={StaticResource EnablePickerConverter}}"
+                                ItemDisplayBinding="{Binding Name}"
+                                ItemsSource="{Binding Services, Mode=TwoWay}"
+                                SelectedItem="{Binding ServiceSelected, Mode=TwoWay}"
+                                Style="{StaticResource PickerStyle}" />
+
+                            <Label
+                                IsVisible="{Binding IsCO, Mode=TwoWay}"
+                                Style="{StaticResource LabelTitleEntryStyle}"
+                                Text="Ciudad" />
+                            <Picker
+                                iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                IsEnabled="{Binding Cities.Count, Converter={StaticResource EnablePickerConverter}}"
+                                IsVisible="{Binding IsCO, Mode=TwoWay}"
+                                ItemDisplayBinding="{Binding Name}"
+                                ItemsSource="{Binding Cities, Mode=TwoWay}"
+                                SelectedItem="{Binding CitySelected, Mode=TwoWay}"
+                                Style="{StaticResource PickerStyle}" />
+
+                            <Label
+                                IsVisible="{Binding IsUY, Mode=TwoWay}"
+                                Style="{StaticResource LabelTitleEntryStyle}"
+                                Text="Especialidad" />
+                            <Picker
+                                iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                IsEnabled="{Binding Specialities.Count, Converter={StaticResource EnablePickerConverter}}"
+                                IsVisible="{Binding IsUY, Mode=TwoWay}"
+                                ItemDisplayBinding="{Binding Name}"
+                                ItemsSource="{Binding Specialities, Mode=TwoWay}"
+                                SelectedItem="{Binding SpecialitySelected, Mode=TwoWay}"
+                                Style="{StaticResource PickerStyle}" />
+
+                            <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Médico" />
+
+                            <Picker
+                                iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                IsEnabled="{Binding Doctors.Count, Converter={StaticResource EnablePickerConverter}}"
+                                ItemDisplayBinding="{Binding Name}"
+                                ItemsSource="{Binding Doctors, Mode=TwoWay}"
+                                SelectedItem="{Binding DoctorSelected, Mode=TwoWay}"
+                                Style="{StaticResource PickerStyle}" />
+
+                            <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Fecha inicio" />
+                            <DatePicker
+                                BackgroundColor="Transparent"
+                                Date="{Binding InitDate}"
+                                Format="d"
+                                HorizontalOptions="FillAndExpand"
+                                MaximumDate="{Binding MaximumDate, Mode=TwoWay}"
+                                Style="{StaticResource DatePickerStyle}" />
+                            <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Fecha fin" />
+                            <DatePicker
+                                BackgroundColor="Transparent"
+                                Date="{Binding EndDate}"
+                                Format="d"
+                                HorizontalOptions="FillAndExpand"
+                                MaximumDate="{Binding MaximumDate, Mode=TwoWay}"
+                                Style="{StaticResource DatePickerStyle}" />
+
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+
+                <StackLayout
+                    Padding="20,0,20,20"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="End">
+                    <Button
+                        Command="{Binding SearchServicesHistoryCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="Buscar" />
+                </StackLayout>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            BindingContext="{Binding Call, Source={StaticResource Locator}}"
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"
+            Text="Llamar" />
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

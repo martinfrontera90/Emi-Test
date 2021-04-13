@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "352949487695",
+    "firebase_url": "https://ucm-uruguay.firebaseio.com",
+    "project_id": "ucm-uruguay",
+    "storage_bucket": "ucm-uruguay.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352949487695:android:1efe209c6e70bfd847023a",
+        "android_client_info": {
+          "package_name": "net.runid.ucm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352949487695-pkbdv9r7pheata4jpun1pgnoh4hure7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAyT_D7ihGeQDy7p3iy6a0YPHKOh8lkoA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352949487695-pkbdv9r7pheata4jpun1pgnoh4hure7r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

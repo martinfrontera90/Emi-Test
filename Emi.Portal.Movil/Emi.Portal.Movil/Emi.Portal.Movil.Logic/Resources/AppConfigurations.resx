@@ -1,0 +1,765 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string" />
+                            <xsd:attribute name="type" type="xsd:string" />
+                            <xsd:attribute name="mimetype" type="xsd:string" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string" />
+                            <xsd:attribute name="name" type="xsd:string" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="AgendaType" xml:space="preserve">
+    <value>AgendaType</value>
+  </data>
+    <data name="ApplicationJson" xml:space="preserve">
+    <value>application/json</value>
+  </data>
+    <data name="BirthDate" xml:space="preserve">
+    <value>BirthDate</value>
+  </data>
+    <data name="Brand" xml:space="preserve">
+    <value>ucm</value>
+  </data>
+    <data name="CellPhone" xml:space="preserve">
+    <value>CellPhone</value>
+  </data>
+    <data name="Channel" xml:space="preserve">
+    <value>Channel</value>
+  </data>
+    <data name="RegexName" xml:space="preserve">
+    <value>^[a-zäÄáÁàÀëËéÉèÈïÏíÍìÌöÖóÓòÒüÜúÚùÙñÑçÇA-Z ]+$</value>
+  </data>
+    <data name="ChannelKey" xml:space="preserve">
+    <value>2</value>
+  </data>
+    <data name="ClinicCode" xml:space="preserve">
+    <value>ClinicCode</value>
+  </data>
+    <data name="ConfirmPassword" xml:space="preserve">
+    <value>ConfirmPassword</value>
+  </data>
+    <data name="DateFormat" xml:space="preserve">
+    <value>yyyy-MM-dd</value>
+  </data>
+    <data name="Document" xml:space="preserve">
+    <value>Document</value>
+  </data>
+    <data name="DocumentType" xml:space="preserve">
+    <value>DocumentType</value>
+  </data>
+    <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+    <data name="Environment" xml:space="preserve">
+    <value>UyVal</value>
+  </data>
+    <data name="EnvironmentString" xml:space="preserve">
+    <value>Ambiente</value>
+  </data>
+    <data name="FamilyController" xml:space="preserve">
+    <value>Family</value>
+  </data>
+    <data name="GetMembers" xml:space="preserve">
+    <value>GetMembers</value>
+  </data>
+    <data name="GooglePlayWaze" xml:space="preserve">
+    <value>market://search?q=waze</value>
+  </data>
+    <data name="GrantType" xml:space="preserve">
+    <value>grant_type</value>
+  </data>
+    <data name="IconChat" xml:space="preserve">
+    <value>chat.png</value>
+  </data>
+    <data name="IconCheck" xml:space="preserve">
+    <value>check.png</value>
+  </data>
+    <data name="IconGps" xml:space="preserve">
+    <value>ur_gps.png</value>
+  </data>
+    <data name="IconLocation" xml:space="preserve">
+    <value>gps.png</value>
+  </data>
+    <data name="IconNavigation" xml:space="preserve">
+    <value>navigation.png</value>
+  </data>
+    <data name="IconOk" xml:space="preserve">
+    <value>ok.png</value>
+  </data>
+    <data name="IconUser" xml:space="preserve">
+    <value>micuenta.png</value>
+  </data>
+    <data name="IdDocument" xml:space="preserve">
+    <value>IdDocument</value>
+  </data>
+    <data name="IdReference" xml:space="preserve">
+    <value>IdReference</value>
+  </data>
+    <data name="LastNameOne" xml:space="preserve">
+    <value>LastNameOne</value>
+  </data>
+    <data name="LastNameTwo" xml:space="preserve">
+    <value>LastNameTwo</value>
+  </data>
+    <data name="LocalCode" xml:space="preserve">
+    <value>LocalCode</value>
+  </data>
+    <data name="MedicalCenterLine" xml:space="preserve">
+    <value>24873333</value>
+  </data>
+    <data name="NameOne" xml:space="preserve">
+    <value>NameOne</value>
+  </data>
+    <data name="Names" xml:space="preserve">
+    <value>Names</value>
+  </data>
+    <data name="NameTwo" xml:space="preserve">
+    <value>NameTwo</value>
+  </data>
+    <data name="Number" xml:space="preserve">
+    <value>Number</value>
+  </data>
+    <data name="OcpApimSubscriptionKey" xml:space="preserve">
+    <value>Ocp-Apim-Subscription-Key</value>
+  </data>
+    <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+    <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+    <data name="PrimaryButtonColor" xml:space="preserve">
+    <value>#622180</value>
+  </data>
+    <data name="RDACode" xml:space="preserve">
+    <value>RDACode</value>
+  </data>
+    <data name="RegexCellPhone" xml:space="preserve">
+    <value>^09[0-9]{3}\d{4}$</value>
+  </data>
+    <data name="RegexEmail" xml:space="preserve">
+    <value>^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$</value>
+  </data>
+    <data name="RegexPhone" xml:space="preserve">
+    <value>^[1-9]{1}\d{3}\d{4}$</value>
+  </data>
+    <data name="RemoveMember" xml:space="preserve">
+    <value>RemoveMember</value>
+  </data>
+    <data name="SecundaryButtonColor" xml:space="preserve">
+    <value>#006AB2</value>
+  </data>
+    <data name="ServiceType" xml:space="preserve">
+    <value>ServiceType</value>
+  </data>
+    <data name="SpecialityCode" xml:space="preserve">
+    <value>SpecialityCode</value>
+  </data>
+    <data name="UnauthorizedUser" xml:space="preserve">
+    <value>Inicie sesión nuevamente</value>
+  </data>
+    <data name="UnauthorizedUserTitle" xml:space="preserve">
+    <value>Error de autorización</value>
+  </data>
+    <data name="SubscriptionkeyString" xml:space="preserve">
+    <value>subscription-key</value>
+  </data>
+    <data name="Surnames" xml:space="preserve">
+    <value>Surnames</value>
+  </data>
+    <data name="TermsAndConditions" xml:space="preserve">
+    <value>TermsAndConditions</value>
+  </data>
+    <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+    <data name="Token" xml:space="preserve">
+    <value>Token</value>
+  </data>
+    <data name="TypeDocument" xml:space="preserve">
+    <value>TypeDocument</value>
+  </data>
+    <data name="UpdateEmail" xml:space="preserve">
+    <value>UpdateEmail</value>
+  </data>
+    <data name="UpdateMember" xml:space="preserve">
+    <value>UpdateMember</value>
+  </data>
+    
+    
+    <!--DEV-->
+  <!--<data name="UrlBaseMiddleware" xml:space="preserve">
+    <value>https://dev-portalclientesyventas.azure-api.net</value>
+  </data>
+    <data name="Subscriptionkey" xml:space="preserve">
+    <value>bdb20b696dac4a72aed27d359bfd779c</value>
+  </data>-->
+    
+    
+    <!--QA-->
+    <!--<data name="UrlBaseMiddleware" xml:space="preserve">
+    <value>https://test-portalclientesyventas.azure-api.net</value>
+  </data>
+  <data name="Subscriptionkey" xml:space="preserve">
+    <value>b7ca6567e168467584036ecb468510ef</value>
+  </data>-->
+    
+    
+    
+    <!--PEPROD-->
+    <!--<data name="UrlBaseMiddleware" xml:space="preserve">
+    <value>https://grupoemi-test-portalclientesyventas.azure-api.net</value>
+  </data>
+  <data name="Subscriptionkey" xml:space="preserve">
+    <value>46023e2bbb87407fbd7c10765183500c</value>
+  </data>-->
+    
+    
+    <!--PROD-->
+    <data name="UrlBaseMiddleware" xml:space="preserve">
+    <value>https://fl-gen-apimgmt-prd.azure-api.net</value>
+  </data>
+  <data name="Subscriptionkey" xml:space="preserve">
+    <value>2e7c46a168d24d7f95295ee4383aa9e9</value>
+  </data>
+    
+    
+    <data name="UserName" xml:space="preserve">
+    <value>UserName</value>
+  </data>
+    <data name="GetEventAreas" xml:space="preserve">
+    <value>GetEventAreas</value>
+  </data>
+    <data name="WazeNavigationUrl" xml:space="preserve">
+    <value>waze://?ll={0},{1}&amp;navigate=yes</value>
+  </data>
+    <data name="YearMonthDay" xml:space="preserve">
+    <value>YearMonthDay</value>
+  </data>
+    <data name="SearchMember" xml:space="preserve">
+    <value>SearchMember</value>
+  </data>
+    <data name="GetRefundType" xml:space="preserve">
+    <value>GetRefundType</value>
+  </data>
+    <data name="FileAction" xml:space="preserve">
+    <value>SaveFile</value>
+  </data>
+    <data name="CancelCoordination" xml:space="preserve">
+    <value>CancelCoordination</value>
+  </data>
+    <data name="ConfirmCoordination" xml:space="preserve">
+    <value>ConfirmCoordination</value>
+  </data>
+    <data name="CoordinationsController" xml:space="preserve">
+    <value>Coordinations</value>
+  </data>
+    <data name="PendingCoordinations" xml:space="preserve">
+    <value>PendingCoordinations</value>
+  </data>
+    <data name="RegistrationController" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+    <data name="VerifyUpdateEmailCode" xml:space="preserve">
+    <value>VerifyUpdateEmailCode</value>
+  </data>
+    <data name="ForgotPassword" xml:space="preserve">
+    <value>ForgotPassword</value>
+  </data>
+    <data name="LoginController" xml:space="preserve">
+    <value>Login</value>
+  </data>
+    <data name="GetClinics" xml:space="preserve">
+    <value>MedicalCenters</value>
+  </data>
+    <data name="MiddlewareController" xml:space="preserve">
+    <value>Middleware</value>
+  </data>
+    <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+    <data name="SendVerificationCode" xml:space="preserve">
+    <value>SendVerificationCode</value>
+  </data>
+    <data name="PreRegister" xml:space="preserve">
+    <value>PreRegister</value>
+  </data>
+    <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+    <data name="GetDocumentTypes" xml:space="preserve">
+    <value>GetDocumentTypes</value>
+  </data>
+    <data name="MedicalCenterSchedules" xml:space="preserve">
+    <value>MedicalCenterSchedules</value>
+  </data>
+    <data name="DataListsController" xml:space="preserve">
+    <value>DataLists</value>
+  </data>
+    <data name="GetMedicalSpecialites" xml:space="preserve">
+    <value>GetMedicalSpecialites</value>
+  </data>
+    <data name="GetServiceTypes" xml:space="preserve">
+    <value>GetServiceTypes</value>
+  </data>
+    <data name="AffiliateController" xml:space="preserve">
+    <value>Affiliate</value>
+  </data>
+    <data name="GetBeneficiaries" xml:space="preserve">
+    <value>GetBeneficiaries</value>
+  </data>
+    <data name="ChangePassword" xml:space="preserve">
+    <value>ChangePassword</value>
+  </data>
+    <data name="ChangeEmail" xml:space="preserve">
+    <value>ChangeEmail</value>
+  </data>
+    <data name="NewPassword" xml:space="preserve">
+    <value>NewPassword</value>
+  </data>
+    <data name="OldPassword" xml:space="preserve">
+    <value>OldPassword</value>
+  </data>
+    <data name="GetAffiliate" xml:space="preserve">
+    <value>GetAffiliate</value>
+  </data>
+    <data name="UpdateAffiliate" xml:space="preserve">
+    <value>UpdateAffiliate</value>
+  </data>
+    <data name="IconHome" xml:space="preserve">
+    <value>home.png</value>
+  </data>
+    <data name="SendActivationEmail" xml:space="preserve">
+    <value>SendActivationEmail</value>
+  </data>
+    <data name="DecimalSeparator" xml:space="preserve">
+    <value>,</value>
+  </data>
+    <data name="MaxLengthEmail" xml:space="preserve">
+    <value>60</value>
+  </data>
+    <data name="MaxLengthCellPhone" xml:space="preserve">
+    <value>9</value>
+  </data>
+    <data name="MaxLengthDocument" xml:space="preserve">
+    <value>20</value>
+  </data>
+    <data name="MaxLengthName" xml:space="preserve">
+    <value>30</value>
+  </data>
+    <data name="IconNavigationBar" xml:space="preserve">
+    <value>logoNavigation</value>
+  </data>
+    <data name="GetDocumentTypesRegister" xml:space="preserve">
+    <value>GetDocumentTypesRegister</value>
+  </data>
+    <data name="CancelPreRegister" xml:space="preserve">
+    <value>CancelPreRegister</value>
+  </data>
+    <data name="PhoneNumber" xml:space="preserve">
+    <value>PhoneNumber</value>
+  </data>
+    <data name="IconMyHealth" xml:space="preserve">
+    <value>misalud.png</value>
+  </data>
+    <data name="Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+    <data name="ContentsController" xml:space="preserve">
+    <value>Contents</value>
+  </data>
+    <data name="GetLegalContent" xml:space="preserve">
+    <value>GetLegalContent</value>
+  </data>
+    <data name="TagPPC" xml:space="preserve">
+    <value>PPC</value>
+  </data>
+    <data name="TagTYCC" xml:space="preserve">
+    <value>TYCC</value>
+  </data>
+    <data name="IconCustomService" xml:space="preserve">
+    <value>help.png</value>
+  </data>
+    <data name="PatientCode" xml:space="preserve">
+    <value>PatientCode</value>
+  </data>
+    <data name="ProductCode" xml:space="preserve">
+    <value>ProductCode</value>
+  </data>
+    <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+    <data name="Installments" xml:space="preserve">
+    <value>Installments</value>
+  </data>
+    <data name="PaymentMethodCode" xml:space="preserve">
+    <value>PaymentMethodCode</value>
+  </data>
+    <data name="UserEmail" xml:space="preserve">
+    <value>UserEmail</value>
+  </data>
+    <data name="PaymentMethodName" xml:space="preserve">
+    <value>PaymentMethodName</value>
+  </data>
+    <data name="GetAllFaqs" xml:space="preserve">
+    <value>GetAllFaqs</value>
+  </data>
+    <data name="GetContactPhones" xml:space="preserve">
+    <value>GetContactPhones</value>
+  </data>
+    <data name="IconCustomerService" xml:space="preserve">
+    <value>servicioalcliente.png</value>
+  </data>
+    <data name="IconLogOut" xml:space="preserve">
+    <value>back.png</value>
+  </data>
+    <data name="SendServiceFile" xml:space="preserve">
+    <value>SendServiceFile</value>
+  </data>
+    <data name="ServicesController" xml:space="preserve">
+    <value>Services</value>
+  </data>
+    <data name="GetServiceFile" xml:space="preserve">
+    <value>GetServiceFile</value>
+  </data>
+    <data name="GetServicesHistory" xml:space="preserve">
+    <value>GetServicesHistory</value>
+  </data>
+    <data name="GetServicesHistoryLists" xml:space="preserve">
+    <value>GetServicesHistoryLists</value>
+  </data>
+    <data name="TitleFileServiceHistory" xml:space="preserve">
+    <value>RegistroClinico.pdf</value>
+  </data>
+    <data name="AndroidProjectId" xml:space="preserve">
+    <value>fl-gen-pushnotifications-prd</value>
+  </data>
+    <data name="NotificationHubName" xml:space="preserve">
+    <value>FL-GEN-NOTIFICATIONHUB-PRD-02</value>
+  </data>
+    <data name="NotificationHubConnectionString" xml:space="preserve">
+    <value>Endpoint=sb://fl-gen-notificationhub-prd-02.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=UIHT1EEO3eX6xNPt+N1Z3ssYzKkQw1CqJRg00hxYtrg=</value>
+  </data>
+    <data name="AndroidProjectNumber" xml:space="preserve">
+    <value>869297771029</value>
+  </data>
+    <data name="HtmlChat" xml:space="preserve">
+    <value>&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt; &lt;title&gt;Document&lt;/title&gt; &lt;link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet"&gt; &lt;link rel="stylesheet" href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css"&gt; &lt;link rel="stylesheet" href="https://fontawesome.com/v4.7.0/assets/font-awesome/css/font-awesome.css"&gt; &lt;link rel="stylesheet" href="https://daneden.github.io/animate.css/animate.min.css"&gt; &lt;style&gt;html, body{margin: 0; padding: 0; font-family: Roboto; height: 100%;}body .emi-contenedor{background-image: url(http://grupoemi.com/_/images/upload/1400_654_img_com_slider_top_86.jpg); background-size: 100%; background-repeat: no-repeat; background-position: center -41px;}.emi-pasarelapp{height: 100%; background-color: #0e5b8d; display: table; width: 100%; height: 100%; min-height: 100%; -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5); box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);}.emi-contenedor{display: table-cell; vertical-align: middle; padding: 20px 0px;}.emi-pasarelapp .emi-contenedor h1, .emi-pasarelapp .emi-contenedor h2, .emi-pasarelapp .emi-contenedor h3, .emi-pasarelapp .emi-contenedor h4{color: white; margin: 0px; padding: 0;}.emi-pasarelapp .emi-contenedor h1{font-family: 'Roboto', sans-serif; margin: 20px 0; display: block; font-weight: 300}.emi-pasarelapp .emi-contenedor h1 span{font-family: 'Roboto', sans-serif; font-weight: 700}.emi-pasarelapp .emi-contenedor h3{font-family: 'Roboto', sans-serif; /* margin: 20px 0px; */ display: block; font-weight: 300; margin-top: 0px;}.emi-pasarelapp .emi-contenedor h3 span{font-family: 'Roboto', sans-serif; font-weight: 700;}.emi-pasarelapp .emi-contenedor h4{font-family: 'Roboto', sans-serif; margin: 20px 0px; display: block; font-weight: 300; float: left; width: 100%;}.emi-pasarelapp .emi-contenedor .btn-pay{background-color: #ebebeb; color: #4c4c4c; text-transform: uppercase; width: 300px; border-radius: 20px; font-size: 16px;}.emi-pasarelapp .emi-contenedor .lead{font-size: 16px; font-weight: 300; margin: 0px auto; color: white; padding: 0px; float: left; width: 100%;}.icon{display: flex; background-color: #006AB2; width: 120px; height: 120px; border-radius: 50%; align-content: center; align-items: center; justify-content: center; border: 5px solid white; margin: 20px auto;}.icon i{font-size: 40px; color: #006AB2; background: white; border-radius: 50%; padding: 18px;}.table{color: white;}.ubichat{background-color: #f2f2f2; float: left; width: 100%; padding: 20px;}.ubichat p{color: #0398d2; margin-top: 10px;}.emi-contenedor .chat{display: block; width: 100%;}.emi-contenedor .chat .icono, .emi-contenedor .chat .textochat{display: inline-block; vertical-align: top;}.emi-contenedor .chat .icono{background-color: #0398d2; width: 40px; height: 40px; padding: 0; margin: 0; text-align: center; justify-content: center;}.emi-contenedor .chat .icono i{color: white; text-align: center; font-size: 20px; margin-top: 9px;}.emi-contenedor .chat .textochat{width: 90px; background-color: #20a5e9; padding: 0; margin: 0; margin-left: -3px; height: 40px; vertical-align: top;}.emi-contenedor .chat .textochat p{color: white; margin: 0; padding: 0; justify-content: center; display: flex; margin-top: 9px;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;div class="emi-pasarelapp"&gt; &lt;div class="emi-contenedor"&gt; &lt;div class="col-md-6 col-md-offset-3"&gt; &lt;div class=""&gt; &lt;h3 class="cover-heading"&gt;Bienvenido a &lt;span&gt; &lt;br&gt;nuestro &lt;br&gt;chat &lt;/span&gt; de servicio &lt;br&gt;al cliente&lt;/h3&gt; &lt;h1&gt; &lt;span&gt;En ucm&lt;/span&gt; &lt;br&gt;nos interesa &lt;br&gt;conocer tu opinión &lt;/h1&gt; &lt;p class="lead"&gt;Antes de interactuar con nosotros ten en cuenta que tienes dos &lt;br&gt;opciones disponibles: &lt;strong&gt;Servicio al cliente y Quiero Afiliarme&lt;/strong&gt; &lt;/p&gt;&lt;h4&gt;Horario de atencion:&lt;/h4&gt; &lt;div class="col-md-6"&gt; &lt;div class="row"&gt; &lt;table class="table"&gt; &lt;thead&gt; &lt;tr&gt; &lt;th&gt;Día&lt;/th&gt; &lt;th&gt;Hora&lt;/th&gt; &lt;/tr&gt;&lt;/thead&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td&gt;Lunes a Jueves&lt;/td&gt;&lt;td&gt;7:30 am a 6:00 pm&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt; &lt;td&gt;Viernes&lt;/td&gt;&lt;td&gt;7:30 am a 5:00 pm&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt; &lt;/table&gt; &lt;/div&gt;&lt;/div&gt;&lt;div class="col-md-6"&gt;&lt;/div&gt;&lt;div class="col-md-12"&gt; &lt;div class="row"&gt; &lt;div class="col-md-6"&gt; &lt;div class="row"&gt; &lt;div class="ubichat"&gt; &lt;p&gt;Para iniciar el chat ubicate en la esquina derecha de abajo, allí vas a ver un recuadro pequeño como el siguiente:&lt;/p&gt;&lt;div class="chat"&gt; &lt;div class="icono"&gt; &lt;i class="fa fa-comment" aria-hidden="true"&gt;&lt;/i&gt; &lt;/div&gt;&lt;div class="textochat"&gt; &lt;p&gt;Chat&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;p&gt;Da clic en el recuadro e inicia chat con Nosotros&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="col-md-6"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"&gt;&lt;/script&gt; &lt;script src="https://getbootstrap.com/docs/3.3/dist/js/bootstrap.min.js"&gt;&lt;/script&gt; &lt;script type="text/javascript"&gt;window.$zopim || (function (d, s){var z=$zopim=function (c){z._.push(c)}, $=z.s=d.createElement(s), e=d.getElementsByTagName(s)[0]; z.set=function (o){z.set._.push(o)}; z._=[]; z.set._=[]; $.async=!0; $.setAttribute("charset", "utf-8"); $.src="https://v2.zopim.com/?2OHRXgyrizEto9z7gvcEl6tag6lDja6m"; z.t=+new Date; $.type="text/javascript"; e.parentNode.insertBefore($, e)})(document, "script"); $zopim(function (){$zopim.livechat.set({language: 'es', name:</value>
+  </data>
+    <data name="EmergencyLine" xml:space="preserve">
+    <value>147</value>
+  </data>
+    <data name="GetSheduledServices" xml:space="preserve">
+    <value>GetSheduledServices</value>
+  </data>
+    <data name="CancelService" xml:space="preserve">
+    <value>CancelService</value>
+  </data>
+    <data name="HtmlChat2" xml:space="preserve">
+    <value>'{0}', email: '{1}'</value>
+  </data>
+    <data name="HtmlChat3" xml:space="preserve">
+    <value>});}); &lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</value>
+  </data>
+    <data name="PatientName" xml:space="preserve">
+    <value>PatientName</value>
+  </data>
+    <data name="MaxLengthBis" xml:space="preserve">
+    <value>3</value>
+  </data>
+    <data name="AppliantDocument" xml:space="preserve">
+    <value>AppliantDocument</value>
+  </data>
+    <data name="AppliantDocumentType" xml:space="preserve">
+    <value>AppliantDocumentType</value>
+  </data>
+    <data name="CancelCoordinationRequest" xml:space="preserve">
+    <value>CancelCoordinationRequest</value>
+  </data>
+    <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+    <data name="DoctorName" xml:space="preserve">
+    <value>DoctorName</value>
+  </data>
+    <data name="EndDate" xml:space="preserve">
+    <value>EndDate</value>
+  </data>
+    <data name="InitDate" xml:space="preserve">
+    <value>InitDate</value>
+  </data>
+    <data name="PatientDocument" xml:space="preserve">
+    <value>PatientDocument</value>
+  </data>
+    <data name="PatientDocumentType" xml:space="preserve">
+    <value>PatientDocumentType</value>
+  </data>
+    <data name="Speciality" xml:space="preserve">
+    <value>Speciality</value>
+  </data>
+    <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+    <data name="Value" xml:space="preserve">
+    <value>value</value>
+  </data>
+    <data name="GetLocationInformationService" xml:space="preserve">
+    <value>GetLocationInformationService</value>
+  </data>
+    <data name="CoverageCode" xml:space="preserve">
+    <value>UCM</value>
+  </data>
+    <data name="Country" xml:space="preserve">
+    <value>Uruguay</value>
+  </data>
+    <data name="AddMember" xml:space="preserve">
+    <value>AddMember</value>
+  </data>
+    <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+    <data name="AddressDetails" xml:space="preserve">
+    <value>AddressDetails</value>
+  </data>
+    <data name="Apartment" xml:space="preserve">
+    <value>Apartment</value>
+  </data>
+    <data name="ApplicantCellPhone" xml:space="preserve">
+    <value>ApplicantCellPhone</value>
+  </data>
+    <data name="ApplicantHomePhone" xml:space="preserve">
+    <value>ApplicantHomePhone</value>
+  </data>
+    <data name="Bis" xml:space="preserve">
+    <value>Bis</value>
+  </data>
+    <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+    <data name="Corner" xml:space="preserve">
+    <value>Corner</value>
+  </data>
+    <data name="Department" xml:space="preserve">
+    <value>Department</value>
+  </data>
+    <data name="DoorNumber" xml:space="preserve">
+    <value>DoorNumber</value>
+  </data>
+    <data name="Neighborhood" xml:space="preserve">
+    <value>Neighborhood</value>
+  </data>
+    <data name="PatientCellPhone" xml:space="preserve">
+    <value>PatientCellPhone</value>
+  </data>
+    <data name="PatientHomePhone" xml:space="preserve">
+    <value>PatientHomePhone</value>
+  </data>
+    <data name="Street" xml:space="preserve">
+    <value>Street</value>
+  </data>
+    <data name="HomeHealthCare" xml:space="preserve">
+    <value>HomeHealthCare</value>
+  </data>
+    <data name="MedicalOrientation" xml:space="preserve">
+    <value>MedicalOrientation</value>
+  </data>
+    <data name="ConfigurationChat" xml:space="preserve">
+    <value>"{0}?name={1}&amp;email={2}&amp;phone={3}&amp;department={4}&amp;message={5}"</value>
+  </data>
+    <data name="CodeProfile" xml:space="preserve">
+    <value>1</value>
+  </data>
+    <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+    <data name="UrlPayCoordinationApp" xml:space="preserve">
+    <value>https://portal.ucm.com.uy/paymentGatewayApp</value>
+  </data>
+    <data name="ServiceChatAgent" xml:space="preserve">
+    <value>ServiceChatAgent</value>
+  </data>
+    <data name="GetExistsMedicalHomeService" xml:space="preserve">
+    <value>GetExistsMedicalHomeService</value>
+  </data>
+    <data name="GetCancelMedicalHomeService" xml:space="preserve">
+    <value>GetCancelMedicalHomeService</value>
+  </data>
+    <data name="GetListStatusInvoice" xml:space="preserve">
+    <value>GetListStatusInvoice</value>
+  </data>
+    <data name="InvoicesController" xml:space="preserve">
+    <value>Invoices</value>
+  </data>
+    <data name="GetListInvoices" xml:space="preserve">
+    <value>GetListInvoices</value>
+  </data>
+    <data name="GetDetailInvoice" xml:space="preserve">
+    <value>GetDetailInvoice</value>
+  </data>
+    <data name="ValidateIsYoung" xml:space="preserve">
+    <value>GetYoung</value>
+  </data>
+    <data name="UrlPaymentMethodsApp" xml:space="preserve">
+    <value>https://portal.ucm.com.uy/paymentMethodsApp</value>
+  </data>
+    <data name="IosGoogleMapsAPIKey" xml:space="preserve">
+    <value>AIzaSyA8E2s5zGo2rvRBBN77CPXAUsULLkTDgwc</value>
+  </data>
+    <data name="GetOpenTokDataForAffiliate" xml:space="preserve">
+    <value>GetOpenTokDataForAffiliate</value>
+  </data>
+    <data name="GetOpenTokRoutedSession" xml:space="preserve">
+    <value>GetOpenTokRoutedSession</value>
+  </data>
+    <data name="VideoCallController" xml:space="preserve">
+    <value>VideoCall</value>
+  </data>
+    <data name="PostCallRating" xml:space="preserve">
+    <value>PostCallRating</value>
+  </data>
+    <data name="AccountController" xml:space="preserve">
+    <value>Account</value>
+  </data>
+    <data name="DeactivationType" xml:space="preserve">
+    <value>GetDeactivationType</value>
+  </data>
+    <data name="DeactivateUserAccount" xml:space="preserve">
+    <value>DeactivateUserAccount</value>
+  </data>
+    <data name="GetAsociatedUserAccounts" xml:space="preserve">
+    <value>GetAsociatedUserAccounts</value>
+  </data>
+    <data name="VerifyCodeForgortPassword" xml:space="preserve">
+    <value>VerifyCodeForgortPassword</value>
+  </data>
+    <data name="SetPassword" xml:space="preserve">
+  <value>SetPassword</value>
+  </data>
+    <data name="AuthorizeChangePasswordByCellPhone" xml:space="preserve">
+    <value>AuthorizeChangePasswordByCellPhone</value>
+  </data>
+    <data name="QueryVersionApp" xml:space="preserve">
+    <value>QueryVersionApp</value>
+  </data>
+    <data name="GetFirebaseConfiguration" xml:space="preserve">
+    <value>GetFirebaseConfiguration</value>
+  </data>
+    <data name="PostPatientServiceType" xml:space="preserve">
+    <value>PostPatientServiceType</value>
+  </data>
+    <data name="GetReasonsAbandonment" xml:space="preserve">
+    <value>GetReasonsAbandonment</value>
+  </data>
+    <data name="PostIntent" xml:space="preserve">
+    <value>PostIntent</value>
+  </data>
+</root>

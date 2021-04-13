@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>352949487695-nf09s75g969aaca5tl4teqh53d58orbi.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.352949487695-nf09s75g969aaca5tl4teqh53d58orbi</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC-HXFpjrzT8pmY3o6EtvIdSmciotAC1kM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>352949487695</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ucm.ucmapp</string>
+	<key>PROJECT_ID</key>
+	<string>ucm-uruguay</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ucm-uruguay.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:352949487695:ios:6465f825903d99b347023a</string>
+	<key>DATABASE_URL</key>
+	<string>https://ucm-uruguay.firebaseio.com</string>
+</dict>
+</plist>

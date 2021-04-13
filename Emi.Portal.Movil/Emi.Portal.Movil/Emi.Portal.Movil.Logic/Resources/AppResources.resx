@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Accept" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="AcceptTermsConditions" xml:space="preserve">
+    <value>Para continuar, debes aceptar los términos y condiciones.</value>
+  </data>
+  <data name="ConfirmationRegister" xml:space="preserve">
+    <value>Por favor revisa tu correo electrónico para continuar tu registro.</value>
+  </data>
+  <data name="DifferentEmail" xml:space="preserve">
+    <value>Los correos deben ser los mismos</value>
+  </data>
+  <data name="DifferentPassword" xml:space="preserve">
+    <value>Las contraseñas deben ser las mismas</value>
+  </data>
+  <data name="DuplicateData" xml:space="preserve">
+    <value>Tus datos ya están asociados a una cuenta existente.</value>
+  </data>
+  <data name="InvalidCode" xml:space="preserve">
+    <value>Por favor comunícate con servicio al cliente para completar el registro.</value>
+  </data>
+  <data name="InvalidData" xml:space="preserve">
+    <value>Tu correo electrónico o contraseña no son válidos.</value>
+  </data>
+  <data name="InvalidDInvalidNumber" xml:space="preserve">
+    <value>El número celular no está asociado con tu documento de identidad. Por favor comunícate con servicio al cliente para completar el registro.</value>
+  </data>
+  <data name="InvalidPhone" xml:space="preserve">
+    <value>Número no válido.</value>
+  </data>
+  <data name="LoginAccount" xml:space="preserve">
+    <value>Ingresar a tu cuenta</value>
+  </data>
+  <data name="MailRequired" xml:space="preserve">
+    <value>El correo es obligatorio</value>
+  </data>
+  <data name="TitleNearbyClinics" xml:space="preserve">
+    <value>Centros médicos</value>
+  </data>
+  <data name="PasswordInvalid" xml:space="preserve">
+    <value>Contraseña inválida</value>
+  </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>La contraseña es obligatoria</value>
+  </data>
+  <data name="RecoverPassword" xml:space="preserve">
+    <value>Por favor revisa tu correo electrónico para recuperar tu contraseña.</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>Volver a intentar</value>
+  </data>
+  <data name="SuccessfulCancellation" xml:space="preserve">
+    <value>Tu coordinación fue cancelada con éxito.</value>
+  </data>
+  <data name="TittleConfirmationRegister" xml:space="preserve">
+    <value>Confirmar registro</value>
+  </data>
+  <data name="TittleDuplicateData" xml:space="preserve">
+    <value>Datos duplicados</value>
+  </data>
+  <data name="TittleRecoverPassword" xml:space="preserve">
+    <value>Recuperar contraseña</value>
+  </data>
+  <data name="TitlePQRS" xml:space="preserve">
+    <value>Agradecimientos y reembolsos</value>
+  </data>
+  <data name="TittleInSuccessfulCancellation" xml:space="preserve">
+    <value>Cancelación exitosa</value>
+  </data>
+  <data name="TittleInvalidCode" xml:space="preserve">
+    <value>Código inválido</value>
+  </data>
+  <data name="TittleInvalidData" xml:space="preserve">
+    <value>Datos incorrectos</value>
+  </data>
+  <data name="TittleInvalidNumber" xml:space="preserve">
+    <value>Número inválido</value>
+  </data>
+  <data name="TittleValidCode" xml:space="preserve">
+    <value>Código válido</value>
+  </data>
+  <data name="TitleWithoutConnection" xml:space="preserve">
+    <value>Problemas de conectividad</value>
+  </data>
+  <data name="ViewContactData" xml:space="preserve">
+    <value>Ver datos de contacto</value>
+  </data>
+  <data name="WithoutConnection" xml:space="preserve">
+    <value>En este momento no podemos validar la información. Por favor intentalo más tarde.</value>
+  </data>
+  <data name="WriteValidEmail" xml:space="preserve">
+    <value>Escribir un correo eletrónico válido</value>
+  </data>
+  <data name="TitleCard" xml:space="preserve">
+    <value>Carné de afiliación</value>
+  </data>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>ucm</value>
+  </data>
+  <data name="ExitApplicationMessage" xml:space="preserve">
+    <value>¿Deseas salir de la aplicación?</value>
+  </data>
+  <data name="NoButtonText" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="YesButtonText" xml:space="preserve">
+    <value>SI</value>
+  </data>
+  <data name="TittleInvalidEmail" xml:space="preserve">
+    <value>Correo electrónico inválido</value>
+  </data>
+  <data name="TittleErrorRegister" xml:space="preserve">
+    <value>Registro inválido</value>
+  </data>
+  <data name="TittleInformationRegister" xml:space="preserve">
+    <value>Validación de correo</value>
+  </data>
+  <data name="PasswordLength" xml:space="preserve">
+    <value>La contraseña debe tener mínimo 8 caracteres</value>
+  </data>
+  <data name="CellPhoneRequired" xml:space="preserve">
+    <value>El teléfono celular es obligatorio</value>
+  </data>
+  <data name="TittleInformationNewCoordinatioFailed" xml:space="preserve">
+    <value>Nueva coordinación fallida</value>
+  </data>
+  <data name="TittleNewCoordination" xml:space="preserve">
+    <value>Nueva coordinación</value>
+  </data>
+  <data name="CancelCoordination" xml:space="preserve">
+    <value>¿Estás seguro que deseas cancelar la coordinación?</value>
+  </data>
+  <data name="CancelCoordinationTittle" xml:space="preserve">
+    <value>Cancelar coordinación</value>
+  </data>
+  <data name="TittleMedicalCenterCoordination" xml:space="preserve">
+    <value>Coordinaciones en centros médicos</value>
+  </data>
+  <data name="TitlePersonalInformation" xml:space="preserve">
+    <value>Mis datos</value>
+  </data>
+  <data name="TitleCertificates" xml:space="preserve">
+    <value>Generar certificados</value>
+  </data>
+  <data name="TitleMyAccount" xml:space="preserve">
+    <value>Mi cuenta</value>
+  </data>
+  <data name="TitleBenericiaries" xml:space="preserve">
+    <value>Mis afiliados</value>
+  </data>
+  <data name="TitleFamily" xml:space="preserve">
+    <value>Agregar familiar</value>
+  </data>
+  <data name="ActivePerson" xml:space="preserve">
+    <value>Afiliado</value>
+  </data>
+  <data name="PQRSText" xml:space="preserve">
+    <value>Aquí podrás presentar tus agradecimientos, felicitaciones y solicitudes de reembolso. Deberás diligenciar todos los campos obligatorios marcados con (*) dentro del siguiente formulario y al enviarlo recibirás un número de comprobante o radicado con el que podrás hacer seguimiento por la opción Agradecimientos y reembolsos en curso.
+   </value>
+  </data>
+  <data name="InactivePerson" xml:space="preserve">
+    <value>No afiliado</value>
+  </data>
+  <data name="DeleteText" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="EditText" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+    <data name="EstimatedTime" xml:space="preserve">
+    <value>Tiempo estimado de espera</value>
+  </data>
+  <data name="EstimatedTimeZone" xml:space="preserve">
+    <value>Tiempo estimado de espera en tu zona</value>
+  </data>
+  <data name="TitleQuestion" xml:space="preserve">
+    <value>¿Qué deseas hacer?</value>
+  </data>
+  <data name="CancelText" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="DeleteFamilyMemberMessage" xml:space="preserve">
+    <value>¿Estás seguro que deseas eliminar?</value>
+  </data>
+  <data name="DeleteFamilyMemberTitle" xml:space="preserve">
+    <value>Borrar familiar</value>
+  </data>
+  <data name="EditFamilyTitle" xml:space="preserve">
+    <value>Editar familiar</value>
+  </data>
+  <data name="NameRequired" xml:space="preserve">
+    <value>El nombre es obligatorio</value>
+  </data>
+  <data name="DocumentRequired" xml:space="preserve">
+    <value>Escribir número de documento.</value>
+  </data>
+  <data name="DocumentTypeRequired" xml:space="preserve">
+    <value>Seleccione un tipo de documento.</value>
+  </data>
+  <data name="SunamesRequired" xml:space="preserve">
+    <value>El apellido es obligatorio</value>
+  </data>
+  <data name="TitleMyBeneficiaries" xml:space="preserve">
+    <value>Mis afiliados</value>
+  </data>
+  <data name="TitleChangePassword" xml:space="preserve">
+    <value>Editar contraseña</value>
+  </data>
+  <data name="TitlePersonalData" xml:space="preserve">
+    <value>Mis datos</value>
+  </data>
+  <data name="TitleChangeEmail" xml:space="preserve">
+    <value>Editar correo electrónico</value>
+  </data>
+  <data name="TitleDisableAccount" xml:space="preserve">
+    <value>Desactivar cuenta</value>
+  </data>
+  <data name="AllFieldsRequired" xml:space="preserve">
+    <value>Todos los campos son obligatorios.</value>
+  </data>
+  <data name="AllFieldStarRequired" xml:space="preserve">
+    <value>Todos los campos marcados con (*) son obligatorios.</value>
+  </data>
+  <data name="MessagePersonalDataPage" xml:space="preserve">
+    <value>En esta sección solo podrás modificar el número de celular. Si deseas cambiar tu correo debes ir a la opción Editar correo electrónico dentro de Mi cuenta. Si quieres modificar otros datos debes hacerlo a través de nuestro Portal Clientes.</value>
+  </data>
+  <data name="TitleLandingPage" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="SendActivationEmail" xml:space="preserve">
+    <value>¿Enviar correo de activación?</value>
+  </data>
+  <data name="PasswordDescription" xml:space="preserve">
+    <value>La contraseña debe tener mínino 8 caracteres incluyendo una letra mayúscula, una minúscula, un carácter especial y un número.</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Fecha de nacimiento.</value>
+  </data>
+  <data name="CellConditions" xml:space="preserve">
+    <value>El teléfono fijo debe ser de 7 dígitos, numérico y el primer dígito debe ser mayor o igual a 1.</value>
+  </data>
+  <data name="CellPhoneConditions" xml:space="preserve">
+    <value>El teléfono celular debe ser de 9 dígitos, numérico y empezar por 09.</value>
+  </data>
+  <data name="TitleEmpty" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="TitleConfirmedCoordination" xml:space="preserve">
+    <value>Coordinaciones confirmadas.</value>
+  </data>
+  <data name="TitleNoConfirmedCoordination" xml:space="preserve">
+    <value>No hay coordinaciones confirmadas.</value>
+  </data>
+  <data name="TitleExpiredMedicalServices" xml:space="preserve">
+    <value>Servicios médicos con vencimiento</value>
+  </data>
+  <data name="ViewMedicalCenterList" xml:space="preserve">
+    <value>Ver listado de centros médicos</value>
+  </data>
+  <data name="TitleEditFamily" xml:space="preserve">
+    <value>Editar datos</value>
+  </data>
+  <data name="EmailCondition" xml:space="preserve">
+    <value>Debes usar un correo con el siguiente formato nombre@dominio.xx</value>
+  </data>
+  <data name="PhoneRequired" xml:space="preserve">
+    <value>El teléfono es obligatorio</value>
+  </data>
+  <data name="DontEditFamilyMember" xml:space="preserve">
+    <value>La información no puede ser modificada. Para más información comunícate con nuestra línea de Servicio al Cliente.</value>
+  </data>
+  <data name="TitleMyHealth" xml:space="preserve">
+    <value>Mi salud</value>
+  </data>
+  <data name="TitleServicesHistory" xml:space="preserve">
+    <value>Historial de servicios</value>
+  </data>
+  <data name="TitleCustomService" xml:space="preserve">
+    <value>Servicio al cliente</value>
+  </data>
+  <data name="TermsAndConditions" xml:space="preserve">
+    <value>Términos y condiciones de uso</value>
+  </data>
+  <data name="DataManagementPolicy" xml:space="preserve">
+    <value>Políticas de tratamiento de datos</value>
+  </data>
+  <data name="TitleCustomerServices" xml:space="preserve">
+    <value>Servicio al cliente</value>
+  </data>
+  <data name="TitleMedicalCare" xml:space="preserve">
+    <value>Atención médica</value>
+  </data>
+  <data name="TitleTelephoneLinesAvailable" xml:space="preserve">
+    <value>Líneas telefónicas disponibles</value>
+  </data>
+  <data name="TitleConfirmNewCoordination" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="TitlePay" xml:space="preserve">
+    <value>Pagar</value>
+  </data>
+  <data name="TitlePayCoordination" xml:space="preserve">
+    <value>Pagar coordinación</value>
+  </data>
+  <data name="TitleFaqs" xml:space="preserve">
+    <value>Preguntas frecuentes</value>
+  </data>
+  <data name="TitleLogOut" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
+  <data name="CancelSheduledService" xml:space="preserve">
+    <value>¿Estás seguro que deseas cancelar el servicio?</value>
+  </data>
+  <data name="ChatCustomerService" xml:space="preserve">
+    <value>Chat servicio al cliente</value>
+  </data>
+  <data name="TitleSheduledServices" xml:space="preserve">
+    <value>Servicios coordinados</value>
+  </data>
+  <data name="TitleCalificateServices" xml:space="preserve">
+    <value>Calificar servicios</value>
+  </data>
+  <data name="EmailDescription" xml:space="preserve">
+    <value>Recuerda que a este correo electrónico llegarán todas las notificaciones del portal y debe ser el mismo que registraste en tu contrato.</value>
+  </data>
+  <data name="TitleRequestRervice" xml:space="preserve">
+    <value>Solicitar servicio</value>
+  </data>
+  <data name="CityRequired" xml:space="preserve">
+    <value>La {0} es obligatoria</value>
+  </data>
+  <data name="DepartmentRequired" xml:space="preserve">
+    <value>El departamento es obligatorio</value>
+  </data>
+  <data name="DirectionRequired" xml:space="preserve">
+    <value>La dirección es obligatoria</value>
+  </data>
+  <data name="StreetRequired" xml:space="preserve">
+    <value>La calle es obligatoria</value>
+  </data>
+  <data name="NeighborhoodRequired" xml:space="preserve">
+    <value>El barrio es obligatorio</value>
+  </data>
+  <data name="ErrorDoorNumber" xml:space="preserve">
+    <value>El número de puerta es obligatorio.</value>
+  </data>
+   <data name="TitleProductsAndPlans" xml:space="preserve">
+    <value>Mis Planes</value>
+  </data>
+  <data name="ErrorMainRoadType" xml:space="preserve">
+    <value>El tipo de vía principal es obligatorio.</value>
+  </data>
+  <data name="ErrorNumberMainRoad" xml:space="preserve">
+    <value>El número de via principal es obligatorio.</value>
+  </data>
+  <data name="ErrorNumberNomenclature" xml:space="preserve">
+    <value>El número nomenclatura generadora es obligatorio.</value>
+  </data>
+  <data name="CompleteData" xml:space="preserve">
+    <value>Completa los datos que son obligatorios.</value>
+  </data>
+  <data name="AddressOutsideTheCoverageArea" xml:space="preserve">
+    <value>La ubicación que estas ingresando está fuera de nuestra zona de cobertura</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Uruguay</value>
+  </data>
+  <data name="CancelChat" xml:space="preserve">
+    <value>¿Estás seguro que deseas cancelar el chat?</value>
+  </data>
+  <data name="ExitChat" xml:space="preserve">
+    <value>¿Estás seguro que deseas salir del chat?</value>
+  </data>
+  <data name="AddFamiliyServicePage" xml:space="preserve">
+    <value>En caso de que en el anterior listado no encuentres a la persona para quien deseas solicitar servicio, puedes agregarla ingresando a la opción Mi cuenta / Mis familiares.</value>
+  </data>
+  <data name="CoverageMessage" xml:space="preserve">
+    <value>Recuerda que para poder prestarte el servicio de atención médica domiciliaria, debes estar dentro de nuestra zona de cobertura. Ten en cuenta que si te encuentras al interior de una institución prestadora de salud, no podemos atenderte dentro de ella.</value>
+  </data>
+  <data name="AddFamiliyCoordinationPage" xml:space="preserve">
+    <value>Si deseas solicitar una coordinación para otra persona, regresa a la opción Solicitar Servicio o al Inicio.</value>
+  </data>
+  <data name="FamilyDoesNotFind" xml:space="preserve">
+    <value>Tu familiar no fue encontrado en nuestro sistema. Ingresa los siguientes datos para agregarlo.</value>
+  </data>
+  <data name="HomeCareDescription" xml:space="preserve">
+    <value>Para poder prestarte el servicio de atención médica domiciliaria, debes estar dentro de nuestra zona de cobertura. Ten en cuenta que si te encuentras al interior de una institución prestadora de salud, no podemos atenderte dentro de ella.</value>
+  </data>
+  <data name="MedicalOrientationDescription" xml:space="preserve">
+    <value>Es importante que nos des tu dirección en caso de que debamos enviarte un servicio.</value>
+  </data>
+  <data name="TitleProgressMedicalHomeService" xml:space="preserve">
+    <value>¿Desea conocer el estado de este servicio?</value>
+  </data>
+  <data name="CancelMedicalHomeService" xml:space="preserve">
+    <value>¿Deseas cancelar el servicio?</value>
+  </data>
+  <data name="MessageCancelMedigalHomeService" xml:space="preserve">
+    <value>Atención médica domiciliaria en curso para {0}</value>
+  </data>
+  <data name="MessageProgressMedicalHomeService" xml:space="preserve">
+    <value>Atención médica domiciliaria en curso para {0}</value>
+  </data>
+  <data name="TitleMyInvoices" xml:space="preserve">
+    <value>Mis facturas</value>
+  </data>
+  <data name="MessageValidateDates" xml:space="preserve">
+    <value>La fecha final debe ser mayor a la inicial.</value>
+  </data>
+  <data name="TitleValidateDates" xml:space="preserve">
+    <value>Validación de fechas</value>
+  </data>
+  <data name="TitleInvoiceDetail" xml:space="preserve">
+    <value>Detalle de tu factura</value>
+  </data>
+  <data name="TitleMyServices" xml:space="preserve">
+    <value>Mis servicios</value>
+  </data>
+  <data name="CallWarningMessage" xml:space="preserve">
+    <value>No salgas de la videoconsulta mientras estés esperando o conectado con el médico, en caso de que esto suceda debes iniciar el proceso de la solicitud nuevamente.</value>
+  </data>
+  <data name="TitleMessageWaitCall" xml:space="preserve">
+    <value>Llamada perdida</value>
+  </data>
+  <data name="Lostcall" xml:space="preserve">
+    <value>Intentamos contactarte, pero no contestaste. Si todavía necesitas una videoconsulta, solicítala nuevamente.</value>
+  </data>
+  <data name="MessageWaitCall" xml:space="preserve">
+    <value>El médico {0} te llamará en breve.</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+    <data name="PickDocument" xml:space="preserve">
+    <value>Adjuntar Documento</value>
+  </data>
+    <data name="SelectedPhotoGalery" xml:space="preserve">
+    <value>Adjuntar Imagen</value>
+  </data>
+  <data name="MessageWelcomeVideoCall" xml:space="preserve">
+    <value>BIENVENIDO A UCM VIDEOCONSULTA DE ORIENTACIÓN MÉDICA</value>
+  </data>
+  <data name="WaitPlease" xml:space="preserve">
+    <value>Espere por favor...</value>
+  </data>
+  <data name="ValidateVideoChat" xml:space="preserve">
+    <value>Espera a que se abra la videoconsulta para hablar con un médico. Asegúrate de tener correctamente configurados cámara y micrófono para poder hablar.</value>
+  </data>
+  <data name="ValidatePermissions" xml:space="preserve">
+    <value>Validando permisos.</value>
+  </data>
+  <data name="TestServiceOpenTok" xml:space="preserve">
+    <value>Validando conexión con los servidores.</value>
+  </data>
+  <data name="VideoCallTitle" xml:space="preserve">
+    <value>videoconsulta de Orientación Médica</value>
+  </data>
+  <data name="EvaluateVideoCallTittle" xml:space="preserve">
+    <value>Calificación de la videoconsulta</value>
+  </data>
+  <data name="QuestionEvaluate" xml:space="preserve">
+    <value>¿Cómo evalúas la calidad de la conexión?</value>
+  </data>
+  <data name="ObservationEvaluate" xml:space="preserve">
+    <value>Danos tu opinión</value>
+  </data>
+  <data name="NotNowEvaluate" xml:space="preserve">
+    <value>Ahora no</value>
+  </data>
+   <data name="SendEvaluate" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="TextChangeEmail" xml:space="preserve">
+    <value>Ten presente que, al modificar tu correo electrónico, modificarás automáticamente el usuario con el que accedes hoy al portal. Adicionalmente, a este nuevo correo te llegarán las notificaciones.</value>
+  </data>
+  <data name="EmailEqualError" xml:space="preserve">
+    <value>Los correos electrónicos no coinciden</value>
+  </data>
+  <data name="EmailCurrentError" xml:space="preserve">
+    <value>El correo electrónico actual no es válido</value>
+  </data>
+  <data name="ConfirmChangeEmail" xml:space="preserve">
+    <value>Ten presente que al aceptar, tu sesión se cerrará automáticamente para que ingreses con el nuevo usuario.</value>
+  </data>
+  <data name="QuestionConfirmChangeEmail" xml:space="preserve">
+    <value>¿Estás seguro de que deseas cambiar tu correo electrónico?</value>
+  </data>
+  <data name="FieldRequired" xml:space="preserve">
+    <value>Campo obligatorio</value>
+  </data>
+  <data name="EmailOrPhoneRequired" xml:space="preserve">
+    <value>Es obligatorio que ingreses tu número de celular o tu correo electrónico</value>
+  </data>
+  <data name="PhoneValidate" xml:space="preserve">
+    <value>El celular debe tener 9 números y empezar por 09</value>
+  </data>
+  <data name="VerifyCodeRequired" xml:space="preserve">
+    <value>Campo requerido: Ingrese los 6 números.</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Descarga la aplicación más reciente</value>
+  </data>
+  <data name="UpdateRequired" xml:space="preserve">
+    <value>Descárgate la aplicación más reciente para sacar el máximo provecho.</value>
+  </data>
+  <data name="NextAtetion" xml:space="preserve">
+    <value>Tú serás el próximo en ser atentido.</value>
+  </data>
+  <data name="NumberAtetion" xml:space="preserve">
+    <value>Te encuentras en el lugar #</value>
+  </data>
+  <data name="TitleDoctorNotAvailable" xml:space="preserve">
+    <value>Médicos no disponibles</value>
+  </data>
+  <data name="DoctorNotAvailable" xml:space="preserve">
+    <value>Servicio no disponible en este momento, por favor inténtalo más tarde o solicita un Chat de orientación médica.</value>
+  </data>
+  <data name="SelectStar" xml:space="preserve">
+    <value>Seleccione una estrella</value>
+  </data>
+</root>

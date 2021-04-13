@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage     
+    BindingContext="{Binding Call, Source={StaticResource Locator}}"        
+    xmlns="http://xamarin.com/schemas/2014/forms"             
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+    x:Class="Emi.Portal.Movil.Pages.MedicalCenterCoordination.NewMedicalCenterCoordinationPage"
+    xmlns:iOSSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <StackLayout
+            BackgroundColor="{StaticResource GeneralBackgroundColor}"   
+            BindingContext="{Binding NewMedicalCenterCoordinationPage, Source={StaticResource Locator}}"            
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+
+            <views:CurrentServiceView />
+
+            <StackLayout           
+                BackgroundColor="{StaticResource Color13}"
+                Padding="20, 10, 10, 10"
+                HorizontalOptions="FillAndExpand"           
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label                        
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding Resources[TittleMedicalCenterCoordination], Source={StaticResource Locator}}"/>
+            </StackLayout>
+            <BoxView Style="{StaticResource LineTitleStyle}"/>
+            <StackLayout
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <ScrollView     
+                    Orientation="Vertical"
+                    Padding="20, 0, 20, 0"                    
+                    VerticalOptions="FillAndExpand">
+
+                    <StackLayout                                                          
+                        Padding="0, 10, 0, 0"
+                        VerticalOptions="Start">
+                        <Label 
+                            Style="{StaticResource TitleStyle}"
+                            Text="Nueva Coordinación"/>
+                        <Label                                                                                           
+                            HorizontalTextAlignment="Center"                    
+                            Margin="20"
+                            Style="{StaticResource DescriptionStyle}"
+                            Text="Completa el siguiente formulario para agregar una nueva coordinación"/>
+
+                        <Label 
+                            Text="¿Para quién es?"
+                            Style="{StaticResource LabelTitleEntryStyle}"/>
+
+                        <Grid
+                            IsVisible="{Binding IsVisiblePersonGrid}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>                                
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Picker   
+                                iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                IsEnabled="{Binding People.Count, Converter={StaticResource EnablePickerConverter}}"                            
+                                ItemDisplayBinding="{Binding FullNames}" 
+                                ItemsSource="{Binding People}"
+                                SelectedItem="{Binding PersonSelected, Mode=TwoWay}"
+                                Style="{StaticResource PickerStyle}"/>                            
+                        </Grid>
+
+                        <StackLayout
+                            IsVisible="{Binding IsVisibleEntryPersonFullNames}"
+                            Orientation="Horizontal">
+                            <Entry
+                                HorizontalOptions="FillAndExpand"
+                                IsEnabled="False"
+                                Text="{Binding PersonSelected.FullNames}"
+                                Style="{StaticResource EntryStyle}"/>
+                            <Image                                                                                            
+                                Source="help">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Command="{Binding InformationCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+
+                        <Label 
+                            Text="Tipo de servicio"
+                            Style="{StaticResource LabelTitleEntryStyle}"/>
+                        <Picker                            
+                            iOSSpecific:Picker.UpdateMode="WhenFinished"
+                            IsEnabled="{Binding Services.Count, Converter={StaticResource EnablePickerConverter}}"                            
+                            ItemsSource="{Binding Services, Mode=TwoWay}"
+                            ItemDisplayBinding="{Binding Name}"                            
+                            SelectedItem="{Binding ServiceSelected, Mode=TwoWay}"
+                            Style="{StaticResource DatePickerStyle}"/>
+
+                        <Label 
+                            Text="Especialidad"
+                            Style="{StaticResource LabelTitleEntryStyle}"/>
+                        <Picker
+                            iOSSpecific:Picker.UpdateMode="WhenFinished"
+                            IsEnabled="{Binding Specialities.Count, Converter={StaticResource EnablePickerConverter}}"                            
+                            ItemsSource="{Binding Specialities, Mode=TwoWay}"
+                            ItemDisplayBinding="{Binding Description}"
+                            SelectedItem="{Binding SpecialitySelected, Mode=TwoWay}"
+                            Style="{StaticResource DatePickerStyle}"/>
+
+                        <Label 
+                            Text="Centro médico"
+                            Style="{StaticResource LabelTitleEntryStyle}"/>
+                        <Picker  
+                            iOSSpecific:Picker.UpdateMode="WhenFinished"
+                            IsEnabled="{Binding MedicalCenters.Count, Converter={StaticResource EnablePickerConverter}}"                            
+                            ItemsSource="{Binding MedicalCenters, Mode=TwoWay}"
+                            ItemDisplayBinding="{Binding ClinicName}"
+                            SelectedItem="{Binding MedicalCenterSelected, Mode=TwoWay}"
+                            Style="{StaticResource DatePickerStyle}"/>
+                        
+                    </StackLayout>
+                </ScrollView>
+
+            </StackLayout>
+            <StackLayout          
+                Padding="20"
+                VerticalOptions="End">
+                <Button                     
+                    Command="{Binding SchedulesCommand}"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="Ver horarios"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"            
+            Text="Llamar"/>
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

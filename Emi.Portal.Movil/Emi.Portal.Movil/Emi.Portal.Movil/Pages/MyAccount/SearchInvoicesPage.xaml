@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage BindingContext="{Binding Call, Source={StaticResource Locator}}"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             x:Class="Emi.Portal.Movil.Pages.MyAccount.SearchInvoicesPage"
+             xmlns:iOSSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+             Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <StackLayout 
+            BindingContext="{Binding InvoicesPage, Source={StaticResource Locator}}"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <views:CurrentServiceView />
+            <StackLayout 
+                Padding="10" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Start">
+                <Label 
+                    HorizontalOptions="Start" 
+                    Style="{StaticResource SeccionNameStyle}" 
+                    Text="{Binding Resources[TitleMyInvoices], Source={StaticResource Locator}}" />
+            </StackLayout>
+            <StackLayout 
+                BackgroundColor="{StaticResource Color11}"
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand">
+                <BoxView 
+                    Style="{StaticResource LineTitleStyle}"/>
+                <StackLayout
+                    BackgroundColor="{StaticResource Color11}"
+                    HorizontalOptions="FillAndExpand" 
+
+                    VerticalOptions="FillAndExpand">
+                    <ScrollView 
+                        HorizontalOptions="FillAndExpand" 
+                        Padding="20, 0 , 20, 10"
+                        VerticalOptions="FillAndExpand">
+                        <StackLayout 
+                            HorizontalOptions="FillAndExpand" 
+                            VerticalOptions="FillAndExpand">
+                            <Label 
+                                HorizontalTextAlignment="Center"
+                                Margin="0, 10, 0, 20"
+                                Text="Busca tu factura"
+                                Style="{StaticResource TitleStyle}" />
+
+                            <!--Fecha del servicio-->
+                            <Label 
+                                Text="Fecha inicio" 
+                                Style="{StaticResource LabelTitleEntryStyle}" />
+                            <DatePicker 
+                                BackgroundColor="Transparent" 
+                                Date="{Binding InitDate}" 
+                                Format="dd/MM/yyyy" 
+                                HorizontalOptions="FillAndExpand" 
+                                MinimumDate="{Binding MinimumDate, Mode=TwoWay}"
+                                MaximumDate="{Binding EndDate, Mode=TwoWay}"
+                                Style="{StaticResource DatePickerStyle}"/>
+                            <Label 
+                                Text="Fecha fin" 
+                                Style="{StaticResource LabelTitleEntryStyle}" />
+                            <DatePicker 
+                                BackgroundColor="Transparent" 
+                                Date="{Binding EndDate}" 
+                                Format="dd/MM/yyyy" 
+                                HorizontalOptions="FillAndExpand" 
+                                MinimumDate="{Binding InitDate, Mode=TwoWay}"
+                                MaximumDate="{Binding MaximumDate, Mode=TwoWay}"
+                                Style="{StaticResource DatePickerStyle}"/>
+
+                            <!--Estado-->
+                            <Label 
+                                Text="Estado" 
+                                Style="{StaticResource LabelTitleEntryStyle}" />
+                            <Picker 
+                                iOSSpecific:Picker.UpdateMode="WhenFinished"
+                                IsEnabled="{Binding Services.Count, Converter={StaticResource EnablePickerConverter}}"
+                                ItemDisplayBinding="{Binding Name}"                                 
+                                ItemsSource="{Binding StatusInvoices, Mode=TwoWay}" 
+                                SelectedItem="{Binding StatusInvoiceSelected, Mode=TwoWay}" 
+                                Style="{StaticResource PickerStyle}"                                
+                                Title="Seleccione un estado.."/>
+
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+
+                <StackLayout
+                    HorizontalOptions="FillAndExpand"
+                    Padding="20, 0, 20, 20"
+                    VerticalOptions="End">
+                    <Button
+                        Command="{Binding SearchInvoicesCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="Buscar"/>
+                </StackLayout>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding CallCategoryCommand}" 
+            Icon="phone.png" 
+            Text="Llamar" />
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

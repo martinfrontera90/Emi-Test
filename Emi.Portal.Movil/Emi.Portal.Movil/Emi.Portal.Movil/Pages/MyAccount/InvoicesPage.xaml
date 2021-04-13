@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    BindingContext="{Binding Call, Source={StaticResource Locator}}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:Emi.Portal.Movil.Controls"
+    x:Class="Emi.Portal.Movil.Pages.MyAccount.InvoicesPage"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <StackLayout 
+            BindingContext="{Binding InvoicesPage, Source={StaticResource Locator}}"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <views:CurrentServiceView />
+            <StackLayout 
+                BackgroundColor="{StaticResource Color13}"
+                Padding="10" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Start">
+                <Label 
+                    HorizontalOptions="Start" 
+                    Style="{StaticResource SeccionNameStyle}" 
+                    Text="{Binding Resources[TitleMyInvoices], Source={StaticResource Locator}}" />
+            </StackLayout>
+            <StackLayout 
+                BackgroundColor="{StaticResource Color11}"
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand">
+                <BoxView Style="{StaticResource LineTitleStyle}"/>
+                <StackLayout
+                    BackgroundColor="{StaticResource Color11}"
+                    HorizontalOptions="FillAndExpand"     
+                    VerticalOptions="FillAndExpand">
+
+                    <ListView
+                        BackgroundColor="{StaticResource Color11}"                
+                        HasUnevenRows="True"         
+                        IsPullToRefreshEnabled="false"                        
+                        ItemsSource="{Binding Invoices}"
+                        ItemTemplate="{StaticResource ListInvoicesTemplate}"                                        
+                        SelectedItem="{Binding ServiceHistorySelected}"
+                        SeparatorVisibility="None"
+                        VerticalOptions="FillAndExpand"/>
+                </StackLayout>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding CallCategoryCommand}" 
+            Icon="phone.png" 
+            Text="Llamar" />
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

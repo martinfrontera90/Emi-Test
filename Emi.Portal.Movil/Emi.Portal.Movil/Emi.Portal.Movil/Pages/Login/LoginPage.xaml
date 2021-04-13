@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage    
+    BindingContext="{Binding LoginPage, Source={StaticResource Locator}}"
+    xmlns:behaviors="clr-namespace:Emi.Portal.Movil.Logic.Behaviors;assembly=Emi.Portal.Movil.Logic"
+    xmlns="http://xamarin.com/schemas/2014/forms"        
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Emi.Portal.Movil.Pages.LoginPage"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+
+        <AbsoluteLayout                          
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+
+            <Image 
+                AbsoluteLayout.LayoutFlags="All" 
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                Aspect="AspectFill"
+                Source="bg_login"/>
+
+            <StackLayout
+                AbsoluteLayout.LayoutFlags="All" 
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <ScrollView                 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <StackLayout
+                        Padding="20"
+                        VerticalOptions="FillAndExpand">
+
+                        <StackLayout                         
+                            VerticalOptions="Start">
+                            <Image                     
+                                Margin="0, 20, 0, 20"
+                                HorizontalOptions="Center"
+                                Source="logo.png"
+                                VerticalOptions="Center"/>
+                        </StackLayout>
+
+                        <StackLayout                 
+                            VerticalOptions="Start">
+                            <Label
+                                HorizontalTextAlignment="Center"                            
+                                HorizontalOptions="Center"
+                                Style="{StaticResource SeccionNameStyle}"
+                                Text="Bienvenido"/>
+                            <Label                                                                                    
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions="Center"
+                                Style="{StaticResource DescriptionStyle}"
+                                Text="Ingresa los datos que usaste cuando te registraste en el portal"/>
+                        </StackLayout>
+
+                        <StackLayout                 
+                            VerticalOptions="CenterAndExpand">
+
+                            <Label 
+                                Text="Correo electrónico"
+                                Style="{StaticResource LabelTitleEntryStyle}"/>
+                            <Entry              
+                                Keyboard="Email"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding Email, Mode=TwoWay}">
+                                <Entry.Behaviors>
+                                    <behaviors:EntryLengthValidatorBehavior MaxLength="{Binding Configurations[MaxLengthEmail], Source={StaticResource Locator}}"/>
+                                </Entry.Behaviors>
+                            </Entry>
+
+                            <Label                                   
+                                Style="{StaticResource LabelErrorEntryStyle}"                      
+                                Text="{Binding ErrorEmail, Mode=TwoWay}"/>
+
+                            <Label 
+                                Text="Contraseña"
+                                Style="{StaticResource LabelTitleEntryStyle}"/>
+
+                            <Entry                             
+                                Text="{Binding Password, Mode=TwoWay}"                                                   
+                                IsPassword="True"
+                                Style="{StaticResource EntryStyle}">
+
+                            </Entry>
+
+                            <Label            
+                                Style="{StaticResource LabelErrorEntryStyle}"                           
+                                Text="{Binding ErrorPassword, Mode=TwoWay}"/>
+
+                        </StackLayout>
+
+                        <StackLayout              
+                            Spacing="0"
+                            VerticalOptions="End">
+                            <Button                                                     
+                                Command="{Binding LoginCommand}"                            
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="Ingresar"/>
+                            <Label                                                                         
+                                FontSize="{StaticResource font12}"
+                                HorizontalOptions="Center"                                             
+                                Margin="0, 5, 0, 20"
+                                Text="¿Olvidaste la contraseña?">
+
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding GoToRememberPasswordCommand}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Button                            
+                                Command="{Binding RegisterCommand}"                                                        
+                                Style="{StaticResource SecundaryButtonStyle}"
+                                Text="Regístrate"/>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

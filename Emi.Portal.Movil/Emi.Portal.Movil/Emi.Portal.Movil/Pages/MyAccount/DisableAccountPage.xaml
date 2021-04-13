@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.MyAccount.DisableAccountPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}"
+    BindingContext="{Binding Call, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding DisableAccountPage, Source={StaticResource Locator}}"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <views:CurrentServiceView />
+            <StackLayout
+                Padding="10"
+                BackgroundColor="{StaticResource Color13}"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding TitlePage}" />
+            </StackLayout>
+            <BoxView Style="{StaticResource LineTitleStyle}" />
+            <ScrollView BackgroundColor="{StaticResource Color11}" VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <StackLayout IsVisible="{Binding AcceptDisableAccount}" VerticalOptions="FillAndExpand">
+
+                        <StackLayout Padding="20" VerticalOptions="FillAndExpand">
+                            <Label
+                                FontSize="{StaticResource font14}"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Start">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            FontAttributes="Bold"
+                                            FontSize="{StaticResource font14}"
+                                            Text="¿Estás seguro de que deseas desactivar tu cuenta de acceso al Portal? " />
+                                        <Span Text="Ten presente que al aceptar tendrás que solicitar servicios por medio de nuestra línea telefónica." />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+
+                        <Button
+                            Margin="20,10,20,0"
+                            Command="{Binding AcceptCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="Aceptar" />
+
+                        <Button
+                            Margin="20,10,20,20"
+                            Command="{Binding CancelCommand}"
+                            Style="{StaticResource CancelButtonStyle}"
+                            Text="Cancelar" />
+
+                    </StackLayout>
+
+                    <StackLayout IsVisible="{Binding AcceptDisableAccount, Converter={StaticResource VisibleInverseBoolConverter}}" VerticalOptions="FillAndExpand">
+
+                        <StackLayout Padding="20,0" VerticalOptions="Start">
+                            <Label
+                                FontSize="{StaticResource font14}"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Start">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            FontAttributes="Bold"
+                                            FontSize="{StaticResource font14}"
+                                            Text="Con esta acción sólo estas inactivando tu cuenta de acceso al portal para clientes de ucm. " />
+                                        <Span Text="Sin embargo seguirás teniendo acceso a todos los servicios contratados con nosotros." />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label
+                                Margin="0,15"
+                                FontAttributes="Bold"
+                                FontSize="{StaticResource font14}"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Start"
+                                Text="¿Estás seguro de que deseas inactivar tu usuario de acceso al portal? Cuéntanos por qué:" />
+
+                            <Label
+                                FontSize="{StaticResource font14}"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Start"
+                                Text="Es obligatorio que respondas esta pregunta para desactivar tu cuenta." />
+
+                        </StackLayout>
+
+                        <StackLayout Padding="20,10" VerticalOptions="StartAndExpand">
+
+                            <Label Style="{StaticResource LabelTitleEntryStyle}" Text="Seleccione una opción (*)" />
+                            <Picker
+                                ItemDisplayBinding="{Binding Name}"
+                                ItemsSource="{Binding DeactivationType}"
+                                SelectedItem="{Binding DeactivationTypeSelected, Mode=TwoWay}"
+                                Style="{StaticResource PickerStyle}" />
+                            <Label
+                                IsVisible="{Binding ErrorDeactivationType, Converter={StaticResource VisibleLabelConverter}}"
+                                Style="{StaticResource LabelErrorEntryStyle}"
+                                Text="{Binding ErrorDeactivationType, Mode=TwoWay}" />
+
+                            <Label
+                                IsVisible="{Binding IsDeactivationOther}"
+                                Style="{StaticResource LabelTitleEntryStyle}"
+                                Text="Escribe cuales (*)" />
+                            <Entry
+                                IsVisible="{Binding IsDeactivationOther}"
+                                Keyboard="Text"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding Other, Mode=TwoWay}" />
+                            <Label
+                                IsVisible="{Binding ErrorOther, Converter={StaticResource VisibleLabelConverter}}"
+                                Style="{StaticResource LabelErrorEntryStyle}"
+                                Text="{Binding ErrorOther, Mode=TwoWay}" />
+
+                        </StackLayout>
+
+                        <StackLayout Spacing="0" VerticalOptions="EndAndExpand">
+
+                            <Button
+                                Margin="20,10,20,0"
+                                Command="{Binding DisableAccountCommand}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="Aceptar" />
+
+                            <Button
+                                Margin="20,10,20,20"
+                                Command="{Binding CancelCommand}"
+                                Style="{StaticResource CancelButtonStyle}"
+                                Text="Cancelar" />
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+                </StackLayout>
+
+            </ScrollView>
+
+        </StackLayout>
+    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"
+            Text="Llamar" />
+    </ContentPage.ToolbarItems>
+</ContentPage>

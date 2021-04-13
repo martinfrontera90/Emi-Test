@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    BindingContext="{Binding Call, Source={StaticResource Locator}}"        
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Emi.Portal.Movil.Pages.MedicalCenterCoordination.SchedulesMedicalCenterCoordinationPage"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    Title="{Binding Resources[TitleEmpty], Source={StaticResource Locator}}">
+    
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding NewMedicalCenterCoordinationPage, Source={StaticResource Locator}}"            
+            BackgroundColor="{StaticResource Color11}"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <views:CurrentServiceView />
+            <StackLayout           
+                BackgroundColor="{StaticResource Color13}"
+                Padding="20, 10, 10, 10"
+                HorizontalOptions="FillAndExpand"           
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label                        
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding Resources[TittleMedicalCenterCoordination], Source={StaticResource Locator}}"/>
+            </StackLayout>
+            <BoxView Style="{StaticResource LineTitleStyle}"/>
+            <StackLayout                
+                Padding="20, 5, 5, 0"
+                VerticalOptions="Start">
+                <Label                                 
+                    Text="{Binding MedicalCenterSelected.ClinicName}"       
+                    Style="{StaticResource TitleStyle}"/>
+            </StackLayout>
+            <ListView       
+                BackgroundColor="{StaticResource Color11}"
+                HasUnevenRows="True"                                
+                ItemTemplate="{StaticResource ListSchedulesTemplate}"
+                ItemsSource="{Binding Schedules, Mode=TwoWay}"
+                SeparatorVisibility="None"
+                SelectedItem="{Binding ScheduleSelected}"               
+                VerticalOptions="FillAndExpand"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"            
+            Text="Llamar"/>
+    </ContentPage.ToolbarItems>
+    
+</ContentPage>

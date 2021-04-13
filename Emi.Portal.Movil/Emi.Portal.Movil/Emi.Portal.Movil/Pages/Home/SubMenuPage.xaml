@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.Home.SubMenuPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Emi.Portal.Movil.Views"
+    BindingContext="{Binding Call, Source={StaticResource Locator}}">
+
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding SubMenuPage, Source={StaticResource Locator}}"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <views:CurrentServiceView />
+            <StackLayout
+                Padding="10"
+                BackgroundColor="{StaticResource Color13}"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SeccionNameStyle}"
+                    Text="{Binding Title}" />
+            </StackLayout>
+            <BoxView Style="{StaticResource LineTitleStyle}" />
+            <ListView
+                BackgroundColor="{StaticResource WhiteColor}"
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="True"
+                ItemTemplate="{StaticResource ListSubMenuTemplate}"
+                ItemsSource="{Binding Items}"
+                RowHeight="40"
+                SelectedItem="{Binding SelectedItem}"
+                SeparatorVisibility="None" />
+        </StackLayout>
+    </ContentPage.Content>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding CallCategoryCommand}"
+            Icon="phone.png"
+            Text="Llamar" />
+        <ToolbarItem
+            Command="{Binding OpenChatCommand}"
+            Icon="IconNewChat.png"
+            Text="Chat" />
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

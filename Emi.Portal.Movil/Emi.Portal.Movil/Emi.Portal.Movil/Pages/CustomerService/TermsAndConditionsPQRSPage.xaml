@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.CustomerService.TermsAndConditionsPQRSPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BindingContext="{Binding PQRSPageViewModel, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout
+            Margin="20"
+            Spacing="30"
+            VerticalOptions="FillAndExpand">
+            <Label
+                Margin="0,50,0,0"
+                HorizontalOptions="FillAndExpand"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource SeccionNameStyle}"
+                Text="Términos y condiciones"
+                VerticalOptions="Start" />
+            <ScrollView VerticalOptions="CenterAndExpand">
+                <Label Style="{StaticResource DescriptionStyle}" Text="{Binding TermsAndConditionsText}" />
+            </ScrollView>
+            <StackLayout Spacing="10" VerticalOptions="EndAndExpand">
+                <Button
+                    Command="{Binding TermsAndConditionsCommand}"
+                    CommandParameter="1"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="Aceptar"
+                    VerticalOptions="End" />
+                <Button
+                    Command="{Binding TermsAndConditionsCommand}"
+                    CommandParameter="2"
+                    Style="{StaticResource CancelButtonStyle}"
+                    Text="Cancelar"
+                    VerticalOptions="End" />
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

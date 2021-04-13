@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView     
+    BindingContext="{Binding CurrentServiceView, Source={StaticResource Locator}}" 
+    IsVisible="{Binding InProgress}"
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Emi.Portal.Movil.Views.CurrentServiceView">
+        
+    <StackLayout     
+        BackgroundColor="{StaticResource Color1}"
+        HorizontalOptions="FillAndExpand"
+        Padding="5">
+
+        <Label             
+            FontSize="{StaticResource font14}"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Text="{Binding MessageHomeMedicalCare}"
+            TextColor="{StaticResource WhiteColor}"/>
+
+        <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding ScheduledServicesCommand}"/>
+        </StackLayout.GestureRecognizers>
+
+    </StackLayout>          
+    
+</ContentView>

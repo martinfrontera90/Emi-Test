@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Emi.Portal.Movil.Pages.Services.ChatMedicalServicePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BindingContext="{Binding ServicesPage, Source={StaticResource Locator}}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content />
+    <StackLayout Margin="{OnPlatform Android='20,0', iOS='20'}" Spacing="0">
+        <Image
+            Margin="{OnPlatform Android='0,20,0,0',
+                                iOS='0,30,0,0'}"
+            HeightRequest="30"
+            HorizontalOptions="EndAndExpand"
+            Source="ic_close.png"
+            WidthRequest="30">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ExitChatCommand}" />
+            </Image.GestureRecognizers>
+        </Image>
+
+        <WebView
+            HorizontalOptions="FillAndExpand"
+            Source="{Binding UrlChat}"
+            VerticalOptions="FillAndExpand" />
+
+    </StackLayout>
+</ContentPage>
